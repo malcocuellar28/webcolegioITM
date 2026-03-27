@@ -517,7 +517,7 @@ main > section:not(#inicio)::before {
     opacity: calc(0.06 + (var(--hero-student-progress, 0) * 0.88));
     transform: translateX(calc(-92px + (var(--hero-student-progress, 0) * 92px)));
     filter: drop-shadow(0 22px 34px rgba(8, 16, 30, 0.22)) saturate(0.96);
-    transition: opacity 0.24s linear, transform 0.24s linear;
+    will-change: transform, opacity;
 }
 
 .hero-copy > *:not(.hero-student-figure) {

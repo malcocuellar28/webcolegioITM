@@ -514,9 +514,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const scrollTopBtn = document.getElementById("scrollTop");
 const progressBar = document.getElementById("progressBar");
 const heroSection = document.querySelector(".hero");
+const heroStudentFigure = document.querySelector(".hero-student-figure");
 let heroRevealDistance = 180;
 let latestScrollY = window.scrollY;
 let scrollTicking = false;
+let shouldAnimateHeroStudent = false;
+
+function syncHeroStudentAnimationState() {
+    shouldAnimateHeroStudent = Boolean(
+        heroSection &&
+        heroStudentFigure &&
+        !prefersReducedMotion() &&
+        window.getComputedStyle(heroStudentFigure).display !== "none"
+    );
+}
 
 function syncHeroRevealDistance() {
     if (!heroSection) {
@@ -524,6 +535,7 @@ function syncHeroRevealDistance() {
     }
 
     heroRevealDistance = Math.max(heroSection.offsetHeight * 0.45, 180);
+    syncHeroStudentAnimationState();
 }
 
 if (heroSection) {
@@ -544,7 +556,7 @@ function updateScrollUI() {
     const progress = docHeight > 0 ? (latestScrollY / docHeight) * 100 : 0;
     progressBar.style.width = progress + "%";
 
-    if (heroSection) {
+    if (heroSection && shouldAnimateHeroStudent) {
         const heroStudentProgress = Math.min(Math.max(latestScrollY / heroRevealDistance, 0), 1);
         heroSection.style.setProperty("--hero-student-progress", heroStudentProgress.toFixed(3));
     }
@@ -565,6 +577,7 @@ window.addEventListener("scroll", () => {
 
 window.addEventListener("resize", syncHeroRevealDistance);
 window.addEventListener("resize", updateBreadcrumbFromScroll);
+reduceMotionQuery.addEventListener("change", syncHeroRevealDistance);
 updateBreadcrumbFromScroll();
 
 scrollTopBtn.addEventListener("click", () => {
