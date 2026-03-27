@@ -128,9 +128,25 @@ if (heroMainFrame && heroMainImage && heroMainDots && heroSeasonalNote && heroCo
 
         heroMainImage.src = slide.image;
         heroMainImage.alt = slide.alt;
-        heroSeasonalNote.textContent = slide.note;
         currentHeroMainSlide = index;
         renderHeroMainDots();
+    }
+
+    function updateHeroSeasonalNote(index) {
+        const slide = HERO_MAIN_SLIDES[index];
+
+        if (prefersReducedMotion()) {
+            heroSeasonalNote.textContent = slide.note;
+            heroCopy.classList.remove("is-switching");
+            return;
+        }
+
+        heroCopy.classList.add("is-switching");
+
+        window.setTimeout(() => {
+            heroSeasonalNote.textContent = slide.note;
+            heroCopy.classList.remove("is-switching");
+        }, 170);
     }
 
     function goToHeroMainSlide(index) {
@@ -141,11 +157,10 @@ if (heroMainFrame && heroMainImage && heroMainDots && heroSeasonalNote && heroCo
         const slide = HERO_MAIN_SLIDES[index];
 
         if (!heroMainImageNext || prefersReducedMotion()) {
-            heroCopy.classList.add("is-switching");
+            updateHeroSeasonalNote(index);
 
             window.setTimeout(() => {
                 applyHeroMainSlide(index);
-                heroCopy.classList.remove("is-switching");
             }, prefersReducedMotion() ? 0 : 220);
             return;
         }
@@ -154,7 +169,7 @@ if (heroMainFrame && heroMainImage && heroMainDots && heroSeasonalNote && heroCo
         heroMainImageNext.src = slide.image;
         heroMainImageNext.alt = slide.alt;
         heroMainImageNext.setAttribute("aria-hidden", "false");
-        heroCopy.classList.add("is-switching");
+        updateHeroSeasonalNote(index);
         heroMainFrame.classList.remove("is-resetting");
 
         window.requestAnimationFrame(() => {
@@ -169,7 +184,6 @@ if (heroMainFrame && heroMainImage && heroMainDots && heroSeasonalNote && heroCo
             heroMainImageNext.removeEventListener("transitionend", finishTransition);
             applyHeroMainSlide(index);
             heroMainFrame.classList.remove("is-switching");
-            heroCopy.classList.remove("is-switching");
             resetHeroMainNextImage();
             heroMainTransitioning = false;
         };
@@ -198,6 +212,7 @@ if (heroMainFrame && heroMainImage && heroMainDots && heroSeasonalNote && heroCo
 
     preloadHeroMainSlides();
     applyHeroMainSlide(currentHeroMainSlide);
+    heroSeasonalNote.textContent = HERO_MAIN_SLIDES[currentHeroMainSlide].note;
     resetHeroMainNextImage();
 
     restartHeroMainAutoplay();

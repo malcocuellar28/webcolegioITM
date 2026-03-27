@@ -540,14 +540,16 @@ main > section:not(#inicio)::before {
     text-align: left;
     box-shadow: 0 10px 24px rgba(8, 18, 34, 0.14);
     backdrop-filter: blur(12px);
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    transition: opacity 0.28s ease-out, transform 0.38s ease-out;
 }
 
-.hero-copy.is-switching .hero-seasonal-note {
+.hero-seasonal-note span {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.22s ease-out;
+}
+
+.hero-copy.is-switching .hero-seasonal-note span {
     opacity: 0;
-    transform: translate3d(22px, 0, 0);
 }
 
 .hero-kicker {
