@@ -11,6 +11,7 @@ const heroMainImageNext = document.getElementById("heroMainImageNext");
 const heroMainDots = document.getElementById("heroMainDots");
 const heroSeasonalNote = document.getElementById("heroSeasonalNote");
 const heroCopy = document.querySelector(".hero-copy");
+const heroTitleIntro = document.getElementById("heroTitleIntro");
 
 const HERO_MAIN_SLIDES = [
     {
@@ -354,6 +355,18 @@ if (heroMainFrame && heroMainImage && heroMainDots && heroSeasonalNote && heroCo
     });
 }
 
+if (heroTitleIntro) {
+    if (prefersReducedMotion()) {
+        heroTitleIntro.classList.add("is-visible");
+    } else {
+        heroTitleIntro.classList.remove("is-visible");
+
+        window.setTimeout(() => {
+            heroTitleIntro.classList.add("is-visible");
+        }, 260);
+    }
+}
+
 toggle.addEventListener("click", () => {
     nav.classList.toggle("active");
     toggle.classList.toggle("active");
@@ -519,6 +532,60 @@ let heroRevealDistance = 180;
 let latestScrollY = window.scrollY;
 let scrollTicking = false;
 let shouldAnimateHeroStudent = false;
+let heroStudentCurrentProgress = 0;
+let heroStudentTargetProgress = 0;
+let heroStudentAnimationFrame = null;
+
+function animateHeroStudentProgress() {
+    heroStudentAnimationFrame = null;
+
+    if (!heroSection || !shouldAnimateHeroStudent) {
+        return;
+    }
+
+    heroStudentCurrentProgress += (heroStudentTargetProgress - heroStudentCurrentProgress) * 0.14;
+
+    if (Math.abs(heroStudentTargetProgress - heroStudentCurrentProgress) < 0.0015) {
+        heroStudentCurrentProgress = heroStudentTargetProgress;
+    }
+
+    heroSection.style.setProperty("--hero-student-progress", heroStudentCurrentProgress.toFixed(3));
+
+    if (heroStudentCurrentProgress !== heroStudentTargetProgress) {
+        heroStudentAnimationFrame = window.requestAnimationFrame(animateHeroStudentProgress);
+    }
+}
+
+function syncHeroStudentProgress(force = false) {
+    if (!heroSection) {
+        return;
+    }
+
+    if (!shouldAnimateHeroStudent) {
+        heroStudentCurrentProgress = 0;
+        heroStudentTargetProgress = 0;
+        heroSection.style.setProperty("--hero-student-progress", "0");
+
+        if (heroStudentAnimationFrame) {
+            window.cancelAnimationFrame(heroStudentAnimationFrame);
+            heroStudentAnimationFrame = null;
+        }
+
+        return;
+    }
+
+    heroStudentTargetProgress = Math.min(Math.max(latestScrollY / heroRevealDistance, 0), 1);
+
+    if (force) {
+        heroStudentCurrentProgress = heroStudentTargetProgress;
+        heroSection.style.setProperty("--hero-student-progress", heroStudentCurrentProgress.toFixed(3));
+        return;
+    }
+
+    if (!heroStudentAnimationFrame) {
+        heroStudentAnimationFrame = window.requestAnimationFrame(animateHeroStudentProgress);
+    }
+}
 
 function syncHeroStudentAnimationState() {
     shouldAnimateHeroStudent = Boolean(
@@ -527,6 +594,8 @@ function syncHeroStudentAnimationState() {
         !prefersReducedMotion() &&
         window.getComputedStyle(heroStudentFigure).display !== "none"
     );
+
+    syncHeroStudentProgress(true);
 }
 
 function syncHeroRevealDistance() {
@@ -556,10 +625,7 @@ function updateScrollUI() {
     const progress = docHeight > 0 ? (latestScrollY / docHeight) * 100 : 0;
     progressBar.style.width = progress + "%";
 
-    if (heroSection && shouldAnimateHeroStudent) {
-        const heroStudentProgress = Math.min(Math.max(latestScrollY / heroRevealDistance, 0), 1);
-        heroSection.style.setProperty("--hero-student-progress", heroStudentProgress.toFixed(3));
-    }
+    syncHeroStudentProgress();
 
     updateBreadcrumbFromScroll();
 }
