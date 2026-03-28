@@ -1208,17 +1208,15 @@ const countdownSubtitle = document.getElementById("countdown-subtitle");
 const countdownMessage = document.getElementById("countdown-message");
 
 // Configura aqui los eventos del contador regresivo.
-// Cambia subtitle y message si quieres otro texto.
-// Cambia la fecha dentro de getDate(year) para actualizar cada evento.
+// Ajusta subtitle y message para cambiar el texto visible.
+// Define la fecha objetivo dentro de getDate(year) para cada evento.
 const COUNTDOWN_EVENTS = [
     {
         key: "graduation",
         subtitle: "para la próxima Graduación",
         message: "Cuenta regresiva para nuestra ceremonia de graduación.",
         // Recuerda: en JavaScript los meses van de 0 a 11.
-        // 0 = enero, 1 = febrero, 2 = marzo, 3 = abril, 4 = mayo, 5 = junio,
-        // 6 = julio, 7 = agosto, 8 = septiembre, 9 = octubre, 10 = noviembre, 11 = diciembre.
-        // Graduacion: mes 10 = noviembre, dia 30, hora 3:30 PM.
+        // Graduacion actual: 30 de noviembre, 3:30 PM.
         getDate(year) {
             return new Date(year, 10, 30, 15, 30, 0, 0);
         }
@@ -1227,7 +1225,7 @@ const COUNTDOWN_EVENTS = [
         key: "classes",
         subtitle: "para el próximo Inicio de Clases",
         message: "Prepárate para el inicio de un nuevo ciclo académico.",
-        // Inicio de clases: toma el siguiente lunes a partir del 10 de febrero a las 7:00 AM.
+        // Inicio de clases: calcula el siguiente lunes a partir del 10 de febrero a las 7:00 AM.
         getDate(year) {
             const date = getNextMonday(new Date(year, 1, 10));
             date.setHours(7, 0, 0, 0);
