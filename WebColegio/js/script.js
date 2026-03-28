@@ -695,6 +695,22 @@ function getVisibleThemeIcon() {
         : themeToggle.querySelector(".icon-sun");
 }
 
+function syncNewsThemeLinks() {
+    const currentTheme = html.getAttribute("data-theme") === "dark" ? "dark" : "light";
+
+    document.querySelectorAll('a[href*="noticias.html"], a[href*="noticias-pagina-2.html"]').forEach((anchor) => {
+        const rawHref = anchor.getAttribute("href");
+
+        if (!rawHref || rawHref.startsWith("#")) {
+            return;
+        }
+
+        const url = new URL(rawHref, window.location.href);
+        url.searchParams.set("theme", currentTheme);
+        anchor.setAttribute("href", `${url.pathname.split("/").pop()}${url.search}${url.hash}`);
+    });
+}
+
 function animateThemeToggleIcon() {
     if (!themeToggle) {
         return;
@@ -712,6 +728,7 @@ themeToggle.addEventListener("click", () => {
     const isDark = html.getAttribute("data-theme") === "dark";
     html.setAttribute("data-theme", isDark ? "light" : "dark");
     localStorage.setItem("theme", isDark ? "light" : "dark");
+    syncNewsThemeLinks();
     window.requestAnimationFrame(syncHeaderHeight);
     window.requestAnimationFrame(animateThemeToggleIcon);
     showToast(isDark ? "Tema claro activado" : "Tema oscuro activado", "success");
@@ -724,6 +741,8 @@ if (localStorage.getItem("theme") === "dark") {
     html.setAttribute("data-theme", "dark");
     window.requestAnimationFrame(syncHeaderHeight);
 }
+
+syncNewsThemeLinks();
 
 
 // =========================

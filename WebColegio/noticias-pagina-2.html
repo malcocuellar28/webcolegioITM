@@ -9,14 +9,24 @@
     <script>
         document.documentElement.classList.add('js');
         try {
-            if (localStorage.getItem('theme') === 'dark') {
+            const urlTheme = new URLSearchParams(window.location.search).get('theme');
+            const storedTheme = localStorage.getItem('theme');
+            const activeTheme = urlTheme === 'dark' || urlTheme === 'light' ? urlTheme : storedTheme;
+
+            if (activeTheme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+
+            if (urlTheme === 'dark' || urlTheme === 'light') {
+                localStorage.setItem('theme', urlTheme);
             }
         } catch (error) {}
     </script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="news-center-page">
 <main>
     <section class="page-hero">
         <div class="page-hero-inner">
@@ -41,7 +51,7 @@
             <article class="news-entry is-featured is-open">
                 <div class="news-entry-summary">
                     <div class="news-entry-media">
-                        <img src="img/galeria-1.jpg" alt="Jornada cultural institucional" loading="lazy">
+                        <img src="img/gallery/galeria-1.jpg" alt="Jornada cultural institucional" loading="lazy">
                     </div>
                     <div class="news-entry-copy">
                         <div class="noticia-meta">
@@ -65,7 +75,7 @@
             <article class="news-entry">
                 <div class="news-entry-summary">
                     <div class="news-entry-media">
-                        <img src="img/galeria-2.jpg" alt="Reunión de padres de familia" loading="lazy">
+                        <img src="img/gallery/galeria-2.jpg" alt="Reunión de padres de familia" loading="lazy">
                     </div>
                     <div class="news-entry-copy">
                         <div class="noticia-meta">
@@ -147,12 +157,14 @@
     </section>
 </main>
 
-<footer class="footer">
+<footer class="footer footer-news">
+    <img src="img/frame/frame.svg" alt="" class="footer-frame" aria-hidden="true">
     <div class="footer-content">
         <div class="footer-section">
             <div class="footer-brand">
                 <div class="footer-brand-copy">
                     <img src="img/LogoITM.png" alt="Logo ITM" class="footer-logo">
+                    <p class="footer-brand-name">Instituto Técnico Morazán</p>
                     <p class="footer-lema">Excelencia Educativa Técnica Empresarial</p>
                 </div>
             </div>

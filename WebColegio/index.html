@@ -143,7 +143,7 @@
             </div>
             <div class="hero-support-card">
                 <!-- Esta card secundaria es fija. Su imagen y texto se editan manualmente aqui en index.html. -->
-                <img src="img/noticia-2.jpg" alt="Espacio visual para promociones y actividades institucionales" loading="lazy">
+                <img src="img/news/noticia-2.jpg" alt="Espacio visual para promociones y actividades institucionales" loading="lazy">
                 <div class="hero-support-content">
                     <span class="hero-support-label">Semana Santa 2026</span>
                     <strong>Una temporada para reflexionar, renovarte y proyectar tu futuro académico</strong>
@@ -188,7 +188,7 @@
         <div class="about-text">
             <h2 class="section-title-with-icon"><img src="img/icons/sobreNosotros.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Sobre Nosotros</span></h2>
             <!-- En esta sección puedes reemplazar descripcion, misión y visión por el texto oficial del colegio. -->
-            <p>El Instituto Técnico Morazán es una institución educativa comprometida con la formación integral de sus estudiantes. Trabajamos para ofrecer una experiencia académica sólida, acompañada de valores, disciplina y oportunidades que fortalezcan el desarrollo personal, académico y profesional de cada joven.</p>
+            <p>En el Instituto Técnico Morazán formamos jóvenes con metas grandes y preparación real para alcanzarlas. Nuestra propuesta combina tercer ciclo, educación media técnica, acompañamiento cercano, orientación estudiantil, docentes en constante capacitación y espacios de aprendizaje que impulsan disciplina, liderazgo, valores y proyección universitaria o laboral.</p>
             <div class="about-block">
                 <h3>Misión</h3>
                 <p>Brindar una educación integral y de calidad que forme estudiantes con competencias académicas, técnicas y humanas, capaces de desenvolverse con responsabilidad, liderazgo y compromiso en la sociedad.</p>
@@ -225,7 +225,7 @@
                 <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer">
-                <p>Contamos con niveles educativos desde preescolar hasta secundaria, además de carreras de bachillerato técnico como Informática, Contaduría y Finanzas, y Ciencias y Humanidades.</p>
+                <p>Ofrecemos tercer ciclo de educación básica y educación media en modalidades de bachillerato técnico, con una propuesta enfocada en formación académica, valores y proyección al siguiente nivel.</p>
             </div>
         </div>
         <div class="faq-item">
@@ -280,37 +280,44 @@
 <section id="niveles" class="section fade-in">
     <h2 class="section-title-with-icon"><img src="img/icons/nivelesEducativos.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Niveles Educativos</span></h2>
     <div class="grid">
-        <!-- Duplica una card para agregar otro nivel educativo -->
-        <article class="card nivel-card">
+        <article class="card nivel-card nivel-card-grouped">
             <div class="card-image image-rounded">
-                <img src="img/preescolar.jpg" alt="Preescolar" loading="lazy">
+                <img src="img/secundaria.jpg" alt="Estudiantes de tercer ciclo" loading="lazy">
             </div>
             <div class="card-content">
-                <span class="nivel-badge">Etapa inicial</span>
-                <h3>Preescolar</h3>
-                <p>Aprendizaje inicial mediante actividades lúdicas y desarrollo integral del niño.</p>
+                <span class="nivel-badge">Educación básica</span>
+                <h3>Tercer Ciclo</h3>
+                <p>El colegio ofrece tercer ciclo de educación básica, una etapa clave para consolidar bases académicas, fortalecer hábitos de estudio y preparar a los estudiantes para la educación media.</p>
+                <div class="nivel-subgrid" aria-label="Grados de tercer ciclo">
+                    <article class="nivel-mini-card">
+                        <span class="nivel-mini-label">Grado</span>
+                        <strong>7mo</strong>
+                    </article>
+                    <article class="nivel-mini-card">
+                        <span class="nivel-mini-label">Grado</span>
+                        <strong>8vo</strong>
+                    </article>
+                    <article class="nivel-mini-card">
+                        <span class="nivel-mini-label">Grado</span>
+                        <strong>9no</strong>
+                    </article>
+                </div>
             </div>
         </article>
 
         <article class="card nivel-card">
             <div class="card-image image-rounded">
-                <img src="img/primaria.jpg" alt="Primaria" loading="lazy">
+                <img src="img/primaria.jpg" alt="Estudiantes de educación media" loading="lazy">
             </div>
             <div class="card-content">
-                <span class="nivel-badge">Base formativa</span>
-                <h3>Primaria</h3>
-                <p>Base académica sólida y formación en valores para un desarrollo completo.</p>
-            </div>
-        </article>
-
-        <article class="card nivel-card">
-            <div class="card-image image-rounded">
-                <img src="img/secundaria.jpg" alt="Secundaria" loading="lazy">
-            </div>
-            <div class="card-content">
-                <span class="nivel-badge">Proyección futura</span>
-                <h3>Secundaria</h3>
-                <p>Preparación académica y orientación vocacional para su futuro.</p>
+                <span class="nivel-badge">Educación media</span>
+                <h3>Bachillerato</h3>
+                <p>La educación media acompaña la transición hacia una formación más especializada. En esta etapa los estudiantes cursan décimo, undécimo y, según la modalidad, también duodécimo, con una preparación orientada a su siguiente nivel académico.</p>
+                <div class="nivel-highlight-list" aria-label="Trayecto de educación media">
+                    <span>10mo grado</span>
+                    <span>11vo grado</span>
+                    <span>12vo grado según modalidad</span>
+                </div>
             </div>
         </article>
     </div>
@@ -325,23 +332,50 @@
             <div class="career-icon"><img src="img/icons/informatica.svg" alt="" aria-hidden="true"></div>
             <span class="career-badge">Área tecnológica</span>
             <h3>Bachiller Técnico en Informática</h3>
-            <p>Formación en desarrollo de software, redes, soporte técnico y bases de datos. Prepara a los estudiantes para el mundo tecnológico actual.</p>
+            <p>Convierte tu interés por la tecnología en una preparación real para la universidad, el trabajo y los retos del mundo digital.</p>
+            <ul class="career-points">
+                <li>Comienzas con una base académica fuerte y avanzas hacia formación técnica especializada.</li>
+                <li>Desarrollas habilidades prácticas en entornos tecnológicos actuales y de alta demanda.</li>
+                <li>Aprendes en laboratorios climatizados con acompañamiento docente constante.</li>
+            </ul>
+            <p class="career-highlight">Si sueñas con destacar en el área digital, esta carrera te abre puertas desde el aula hacia oportunidades reales.</p>
             <span class="career-duration">3 años</span>
         </div>
         <div class="career-card">
             <div class="career-icon"><img src="img/icons/contaduriaFinanzas.svg" alt="" aria-hidden="true"></div>
             <span class="career-badge">Área administrativa</span>
             <h3>Bachiller Técnico en Contaduría y Finanzas</h3>
-            <p>Aprende contabilidad, finanzas, auditoría y administración empresarial. Ideal para quienes buscan emprendimiento o trabajo corporativo.</p>
+            <p>Prepárate para comprender cómo funcionan las empresas, las finanzas y la administración con una formación útil, práctica y con visión de crecimiento.</p>
+            <ul class="career-points">
+                <li>Fortaleces disciplina, criterio profesional y organización desde una base común sólida.</li>
+                <li>Te preparas para desenvolverte en áreas contables, financieras y administrativas.</li>
+                <li>Impulsa tanto la continuidad universitaria como la visión emprendedora.</li>
+            </ul>
+            <p class="career-highlight">Es una carrera para quienes quieren avanzar con seguridad hacia el mundo empresarial y tomar decisiones con visión.</p>
             <span class="career-duration">3 años</span>
         </div>
         <div class="career-card">
             <div class="career-icon"><img src="img/icons/cienciasHumanidades.svg" alt="" aria-hidden="true"></div>
             <span class="career-badge">Formación general</span>
             <h3>Bachiller Técnico en Ciencias y Humanidades</h3>
-            <p>Combinación de ciencias naturales, matemáticas y estudios sociales. Puertas abiertas para carreras universitarias.</p>
+            <p>Construye una base académica de alto valor para avanzar con confianza hacia la universidad y proyectarte en distintas áreas del conocimiento.</p>
+            <ul class="career-points">
+                <li>Refuerza pensamiento lógico, análisis crítico y comprensión científica del entorno.</li>
+                <li>Desarrolla una base integral para continuar estudios superiores con mejores herramientas.</li>
+                <li>Incluye acompañamiento para orientar decisiones vocacionales y metas futuras.</li>
+            </ul>
+            <p class="career-highlight">Si buscas una formación que te impulse hacia la universidad con bases firmes, esta es una de las mejores decisiones para tu futuro.</p>
             <span class="career-duration">2 años</span>
         </div>
+    </div>
+    <div class="careers-cta-bubble" aria-label="Mensaje destacado de orientación">
+        <span class="careers-cta-bot-wrap">
+            <img src="img/icons/bot.svg" alt="Asistente virtual del Instituto Técnico Morazán" class="careers-cta-bot">
+        </span>
+        <p class="careers-cta">Estudia en una institución que te prepara para avanzar con seguridad, descubrir tu vocación y construir un futuro con más oportunidades desde hoy.</p>
+    </div>
+    <div class="careers-cta-actions">
+        <a href="#contacto-info" class="btn btn-primary">Solicitar información</a>
     </div>
 </section>
 
@@ -351,8 +385,8 @@
     <p class="gallery-intro">Momentos que reflejan la vida estudiantil, las actividades institucionales y el ambiente formativo del Instituto Técnico Morazán.</p>
     <div class="gallery-grid">
         <!-- Duplica un gallery-item para agregar otra imagen a la galería. Si quieres que una imagen sea la principal, colócala primero. -->
-        <button class="gallery-item" type="button" data-src="img/galeria-1.jpg" aria-label="Abrir imagen Evento escolar 1">
-            <img src="img/galeria-1.jpg" alt="Evento escolar 1" loading="lazy">
+        <button class="gallery-item gallery-item-featured" type="button" data-src="img/gallery/galeria-1.jpg" aria-label="Abrir imagen Evento escolar 1">
+            <img src="img/gallery/galeria-1.jpg" alt="Evento escolar 1" loading="lazy">
             <div class="gallery-overlay">
                 <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
                 <div class="gallery-overlay-copy">
@@ -361,8 +395,9 @@
                 </div>
             </div>
         </button>
-        <button class="gallery-item" type="button" data-src="img/galeria-2.jpg" aria-label="Abrir imagen Evento escolar 2">
-            <img src="img/galeria-2.jpg" alt="Evento escolar 2" loading="lazy">
+        <div class="gallery-secondary-grid">
+        <button class="gallery-item" type="button" data-src="img/gallery/galeria-2.jpg" aria-label="Abrir imagen Evento escolar 2">
+            <img src="img/gallery/galeria-2.jpg" alt="Evento escolar 2" loading="lazy">
             <div class="gallery-overlay">
                 <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
                 <div class="gallery-overlay-copy">
@@ -371,8 +406,8 @@
                 </div>
             </div>
         </button>
-        <button class="gallery-item" type="button" data-src="img/galeria-3.jpg" aria-label="Abrir imagen Evento escolar 3">
-            <img src="img/galeria-3.jpg" alt="Evento escolar 3" loading="lazy">
+        <button class="gallery-item" type="button" data-src="img/gallery/galeria-3.jpg" aria-label="Abrir imagen Evento escolar 3">
+            <img src="img/gallery/galeria-3.jpg" alt="Evento escolar 3" loading="lazy">
             <div class="gallery-overlay">
                 <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
                 <div class="gallery-overlay-copy">
@@ -381,8 +416,8 @@
                 </div>
             </div>
         </button>
-        <button class="gallery-item" type="button" data-src="img/galeria-4.jpg" aria-label="Abrir imagen Evento escolar 4">
-            <img src="img/galeria-4.jpg" alt="Evento escolar 4" loading="lazy">
+        <button class="gallery-item" type="button" data-src="img/gallery/galeria-4.jpg" aria-label="Abrir imagen Evento escolar 4">
+            <img src="img/gallery/galeria-4.jpg" alt="Evento escolar 4" loading="lazy">
             <div class="gallery-overlay">
                 <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
                 <div class="gallery-overlay-copy">
@@ -391,6 +426,37 @@
                 </div>
             </div>
         </button>
+        <button class="gallery-item" type="button" data-src="img/gallery/galeria-1.jpg" aria-label="Abrir imagen Evento escolar 5">
+            <img src="img/gallery/galeria-1.jpg" alt="Evento escolar 5" loading="lazy">
+            <div class="gallery-overlay">
+                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
+                <div class="gallery-overlay-copy">
+                    <span class="gallery-overlay-kicker">Actividades especiales</span>
+                    <span class="gallery-overlay-text">Nuevos recuerdos para la galería institucional</span>
+                </div>
+            </div>
+        </button>
+        <button class="gallery-item" type="button" data-src="img/gallery/galeria-2.jpg" aria-label="Abrir imagen Evento escolar 6">
+            <img src="img/gallery/galeria-2.jpg" alt="Evento escolar 6" loading="lazy">
+            <div class="gallery-overlay">
+                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
+                <div class="gallery-overlay-copy">
+                    <span class="gallery-overlay-kicker">Experiencia estudiantil</span>
+                    <span class="gallery-overlay-text">Ambientes que acompañan el aprendizaje diario</span>
+                </div>
+            </div>
+        </button>
+        <button class="gallery-item" type="button" data-src="img/gallery/galeria-3.jpg" aria-label="Abrir imagen Evento escolar 7">
+            <img src="img/gallery/galeria-3.jpg" alt="Evento escolar 7" loading="lazy">
+            <div class="gallery-overlay">
+                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
+                <div class="gallery-overlay-copy">
+                    <span class="gallery-overlay-kicker">Vida colegial</span>
+                    <span class="gallery-overlay-text">Más escenas del día a día en nuestra comunidad</span>
+                </div>
+            </div>
+        </button>
+        </div>
     </div>
 </section>
 
@@ -585,7 +651,7 @@
         <article class="card noticia-card noticia-card-featured">
             <span class="badge-new">Nuevo</span>
             <div class="card-image image-rounded">
-                <img src="img/noticia-1.jpg" alt="Evento deportivo" loading="lazy">
+                <img src="img/news/noticia-1.jpg" alt="Evento deportivo" loading="lazy">
             </div>
             <div class="card-content">
                 <div class="noticia-meta">
@@ -600,7 +666,7 @@
 
         <article class="card noticia-card">
             <div class="card-image image-rounded">
-                <img src="img/noticia-2.jpg" alt="Feria académica" loading="lazy">
+                <img src="img/news/noticia-2.jpg" alt="Feria académica" loading="lazy">
             </div>
             <div class="card-content">
                 <div class="noticia-meta">
@@ -616,7 +682,7 @@
         <article class="card noticia-card">
             <span class="badge-new">Nuevo</span>
             <div class="card-image image-rounded">
-                <img src="img/noticia-3.jpg" alt="Graduación" loading="lazy">
+                <img src="img/news/noticia-3.jpg" alt="Graduación" loading="lazy">
             </div>
             <div class="card-content">
                 <div class="noticia-meta">
@@ -625,6 +691,36 @@
                 </div>
                 <h3>Ceremonia de graduación</h3>
                 <p>Celebración de la promoción 2026 con familiares y maestros.</p>
+                <a href="noticias.html" class="news-link"><span>Leer más</span><img src="img/icons/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a>
+            </div>
+        </article>
+
+        <article class="card noticia-card">
+            <div class="card-image image-rounded">
+                <img src="img/news/noticia-1.jpg" alt="Jornada de orientación estudiantil" loading="lazy">
+            </div>
+            <div class="card-content">
+                <div class="noticia-meta">
+                    <span class="noticia-tag">Comunidad</span>
+                    <span class="noticia-fecha">12 Mar 2026</span>
+                </div>
+                <h3>Jornada de orientación para familias</h3>
+                <p>Espacio informativo para resolver dudas sobre admisiones, horarios, acompañamiento docente y vida estudiantil.</p>
+                <a href="noticias.html" class="news-link"><span>Leer más</span><img src="img/icons/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a>
+            </div>
+        </article>
+
+        <article class="card noticia-card">
+            <div class="card-image image-rounded">
+                <img src="img/news/noticia-2.jpg" alt="Muestra de proyectos técnicos" loading="lazy">
+            </div>
+            <div class="card-content">
+                <div class="noticia-meta">
+                    <span class="noticia-tag">Proyectos</span>
+                    <span class="noticia-fecha">08 Abr 2026</span>
+                </div>
+                <h3>Muestra interna de proyectos técnicos</h3>
+                <p>Estudiantes presentaron propuestas prácticas en informática, contaduría y áreas de formación integral.</p>
                 <a href="noticias.html" class="news-link"><span>Leer más</span><img src="img/icons/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a>
             </div>
         </article>
@@ -658,19 +754,19 @@
                 <span class="status-text">Cargando...</span>
             </div>
             <div class="contact-item">
-                <strong>Dirección:</strong>
+                <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Dirección:</span></strong>
                 <p>Bo Guamilito, 2 ave., 5-6 cll.,<br>21102 San Pedro Sula, Cortés, Honduras</p>
             </div>
             <div class="contact-item">
-                <strong>Horario:</strong>
+                <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg><span>Horario:</span></strong>
                 <p>Lunes a Viernes: 7:00 AM - 4:00 PM<br>Sábados: 7:00 AM - 12:00 PM</p>
             </div>
             <div class="contact-item">
-                <strong>Teléfono:</strong>
+                <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v2a1 1 0 0 1-1.09 1A19.86 19.86 0 0 1 3.08 3.09A1 1 0 0 1 4.06 2h2a1 1 0 0 1 1 .75l.64 2.57a1 1 0 0 1-.27.98l-1.2 1.2a16 16 0 0 0 7.27 7.27l1.2-1.2a1 1 0 0 1 .98-.27l2.57.64a1 1 0 0 1 .75 1Z"/></svg><span>Teléfono:</span></strong>
                 <p>2557-2360</p>
             </div>
             <div class="contact-item">
-                <strong>Email:</strong>
+                <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7l8 6l8-6"/></svg><span>Email:</span></strong>
                 <p>info@tecmorazan.edu.hn</p>
             </div>
             <div class="contact-social">
@@ -756,6 +852,7 @@
             <div class="footer-brand">
                 <div class="footer-brand-copy">
                     <img src="img/LogoITM.png" alt="Logo ITM" class="footer-logo">
+                    <p class="footer-brand-name">Instituto Técnico Morazán</p>
                     <p class="footer-lema">Excelencia Educativa Técnica Empresarial</p>
                 </div>
             </div>
