@@ -535,17 +535,18 @@ let shouldAnimateHeroStudent = false;
 let heroStudentCurrentProgress = 0;
 let heroStudentTargetProgress = 0;
 let heroStudentAnimationFrame = null;
+let heroStudentIsInRange = true;
 
 function animateHeroStudentProgress() {
     heroStudentAnimationFrame = null;
 
-    if (!heroSection || !shouldAnimateHeroStudent) {
+    if (!heroSection || !shouldAnimateHeroStudent || !heroStudentIsInRange) {
         return;
     }
 
-    heroStudentCurrentProgress += (heroStudentTargetProgress - heroStudentCurrentProgress) * 0.14;
+    heroStudentCurrentProgress += (heroStudentTargetProgress - heroStudentCurrentProgress) * 0.22;
 
-    if (Math.abs(heroStudentTargetProgress - heroStudentCurrentProgress) < 0.0015) {
+    if (Math.abs(heroStudentTargetProgress - heroStudentCurrentProgress) < 0.003) {
         heroStudentCurrentProgress = heroStudentTargetProgress;
     }
 
@@ -575,6 +576,19 @@ function syncHeroStudentProgress(force = false) {
     }
 
     heroStudentTargetProgress = Math.min(Math.max(latestScrollY / heroRevealDistance, 0), 1);
+    heroStudentIsInRange = latestScrollY <= heroRevealDistance + 40;
+
+    if (!heroStudentIsInRange) {
+        heroStudentCurrentProgress = heroStudentTargetProgress;
+        heroSection.style.setProperty("--hero-student-progress", heroStudentCurrentProgress.toFixed(3));
+
+        if (heroStudentAnimationFrame) {
+            window.cancelAnimationFrame(heroStudentAnimationFrame);
+            heroStudentAnimationFrame = null;
+        }
+
+        return;
+    }
 
     if (force) {
         heroStudentCurrentProgress = heroStudentTargetProgress;
@@ -656,6 +670,7 @@ scrollTopBtn.addEventListener("click", () => {
 blurAfterTouchInteraction(scrollTopBtn);
 
 document.querySelectorAll(".has-tooltip").forEach(blurAfterTouchInteraction);
+document.querySelectorAll(".footer-section nav a").forEach(blurAfterTouchInteraction);
 
 
 // =========================
@@ -847,6 +862,8 @@ document.querySelectorAll(".gallery-item").forEach(item => {
 
     item.addEventListener("mouseenter", animateGalleryOverlayIcon);
     item.addEventListener("focus", animateGalleryOverlayIcon);
+    item.addEventListener("pointerdown", animateGalleryOverlayIcon);
+    item.addEventListener("touchstart", animateGalleryOverlayIcon, { passive: true });
 
     item.addEventListener("click", () => {
         const imgSrc = item.querySelector("img").src;
