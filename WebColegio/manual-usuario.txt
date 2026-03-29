@@ -1,0 +1,139 @@
+MANUAL DE USUARIO - WEB COLEGIO
+
+Este documento resume como editar contenido frecuente del sitio sin entrar a cambios tecnicos complejos.
+
+1. TIPOGRAFIAS Y PARA QUE SE USAN
+
+- Noto Sans
+  Texto general del sitio. Usala cuando quieras claridad y lectura comoda.
+
+- Merriweather Sans
+  Titulos institucionales. Ideal para encabezados sobrios y formales.
+
+- Fraunces
+  Titulos llamativos y elegantes. Funciona mejor cuando buscas una sensacion mas premium que agresiva.
+
+- Plus Jakarta Sans
+  Texto de apoyo para publicidad, botones, labels y mensajes de interfaz. Combina muy bien con Fraunces.
+
+- Space Grotesk
+  Titulos publicitarios modernos, juveniles y de mayor impacto visual. Es la opcion recomendada si quieres campañas mas llamativas.
+
+- Inter News
+  Texto del centro de noticias.
+
+- Playfair Display News
+  Titulos editoriales del centro de noticias.
+
+
+2. COLORES INSTITUCIONALES
+
+- Azul principal
+  #3663BF
+
+- Azul oscuro institucional
+  #274A97
+
+- Azul claro de apoyo
+  #5C84D8
+
+- Amarillo institucional
+  #F2E41D
+
+- Amarillo profundo
+  #D8CB18
+
+- Verde de apoyo
+  #56A681
+
+Uso recomendado:
+
+- Azul principal / oscuro: titulos, botones, elementos institucionales.
+- Amarillo: acentos, puntos de lista, indicadores y detalles destacados.
+- Verde: estados positivos o mensajes de apoyo.
+
+
+3. PUBLICIDAD / MODAL PROMOCIONAL
+
+El sitio ya tiene una ventana promocional reutilizable.
+
+Donde se configura:
+
+- js/script.js
+- bloque: PROMO_MODAL_CONFIG
+
+Que puedes cambiar en cada campaña:
+
+- activar o desactivar
+- fechas de inicio y fin
+- tiempo de espera antes de aparecer
+- titulo
+- texto
+- lista de puntos destacados
+- imagen
+- texto del boton principal
+- enlace del boton principal
+- texto del boton secundario
+
+Recomendacion visual para campañas:
+
+- Titulo: Fraunces
+- Texto y botones: Plus Jakarta Sans
+- Usa azul institucional como base y amarillo solo como acento.
+
+
+4. CUANDO USAR PUBLICIDAD
+
+Usala solo en temporadas importantes, por ejemplo:
+
+- admisiones
+- matricula
+- semana tecnica
+- eventos institucionales
+- comunicados especiales
+
+Evita mantenerla activa todo el tiempo para no cansar al visitante.
+
+
+5. CONTACTO Y FORMULARIO
+
+Puedes editar:
+
+- Direccion
+- Horario
+- Telefono
+- Correo
+- Textos del formulario
+
+Los iconos ya estan colocados y no hace falta tocar el estilo para cambiar solo los textos.
+
+
+6. NOTICIAS
+
+Home:
+- muestra noticias resumen.
+
+Centro de noticias:
+- muestra noticias completas expandibles.
+
+Si agregas nuevas noticias, usa imagenes dentro de img/news/.
+
+
+7. GALERIA
+
+Usa imagenes dentro de img/gallery/.
+
+La primera imagen es la destacada.
+Las demas se acomodan automaticamente en la subgrilla.
+
+
+8. REGLA PRACTICA
+
+Si solo vas a cambiar contenido:
+
+- cambia textos
+- cambia imagenes
+- cambia enlaces
+- evita tocar clases, ids o estructura HTML interna
+
+Si quieres cambiar una campaña, primero modifica PROMO_MODAL_CONFIG y luego prueba en movil y escritorio.

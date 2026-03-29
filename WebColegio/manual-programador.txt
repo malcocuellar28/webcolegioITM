@@ -47,6 +47,40 @@ Este manual resume la estructura actual del proyecto y que partes se editan con 
   Fuentes locales. El centro de noticias usa Inter-News y PlayfairDisplay-News.
 
 
+2.1 TIPOGRAFIAS DEL PROYECTO
+
+- Noto Sans
+  Texto general del sitio.
+
+- Merriweather Sans
+  Titulos institucionales y encabezados de seccion.
+
+- Fraunces
+  Hero y ahora tambien titulos promocionales del modal/publicidad.
+
+- Plus Jakarta Sans
+  Elementos UI, labels, botones y ahora texto de apoyo publicitario.
+
+- Space Grotesk
+  Contadores y bloques numericos.
+
+- Inter News / Playfair Display News
+  Uso exclusivo del centro de noticias.
+
+
+2.2 COLORES INSTITUCIONALES PRINCIPALES
+
+- Azul principal: --primary = #3663BF
+- Azul institucional oscuro: --primary-dark = #274A97
+- Azul institucional claro: --primary-light = #5C84D8
+- Amarillo acento: --accent = #F2E41D
+- Amarillo profundo: --accent-dark = #D8CB18
+- Verde de apoyo: --success = #56A681
+- Rojo de alerta: --danger = #D64848
+
+Estos colores viven en :root dentro de css/styles.css.
+
+
 3. REGLA GENERAL PARA EDITAR
 
 - Duplica bloques existentes en lugar de inventar nueva estructura.
@@ -256,7 +290,35 @@ Campos clave:
 - secondaryLabel
 - points
 
+- secondaryLabel
+
+Tipografia recomendada para publicidad local:
+
+- Titulos promocionales: --font-promo-title = Fraunces
+- Texto de apoyo y botones: --font-promo-body = Plus Jakarta Sans
+
+Estas variables viven en :root dentro de css/styles.css y se usan en:
+
+- .promo-modal-copy h3
+- .promo-modal-copy p
+- .promo-modal-points
+- .promo-modal-actions
+
 points acepta una lista de frases cortas para mostrar beneficios o destacados dentro del modal.
+
+Para editar una campaña normalmente cambias solo:
+
+- enabled
+- version
+- startDate / endDate
+- kicker
+- title
+- text
+- points
+- image
+- primaryLabel
+- primaryHref
+- secondaryLabel
 
 El modal se cierra con:
 

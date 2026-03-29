@@ -1166,6 +1166,8 @@ const promoModalPoints = document.getElementById("promoModalPoints");
 const promoModalImage = document.getElementById("promoModalImage");
 const promoModalPrimaryAction = document.getElementById("promoModalPrimaryAction");
 
+// Este objeto controla la campaña promocional activa.
+// Puedes reutilizar el mismo modal cambiando texto, imagen, fechas y botones.
 const PROMO_MODAL_CONFIG = {
     enabled: true,
     storageKey: "webcolegio-promo-modal",

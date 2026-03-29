@@ -100,6 +100,8 @@
     --font-hero: "Fraunces", "Merriweather Sans", serif;
     --font-ui: "Plus Jakarta Sans", "Noto Sans", sans-serif;
     --font-countdown: "Space Grotesk", "Plus Jakarta Sans", sans-serif;
+    --font-promo-title: "Fraunces", "Merriweather Sans", serif;
+    --font-promo-body: "Plus Jakarta Sans", "Noto Sans", sans-serif;
     --header-height: 70px;
     --theme-icon-filter: brightness(0) saturate(100%) invert(31%) sepia(72%) saturate(1054%) hue-rotate(200deg) brightness(91%) contrast(92%);
     --theme-icon-filter-hover: brightness(0) saturate(100%) invert(23%) sepia(52%) saturate(1220%) hue-rotate(204deg) brightness(90%) contrast(97%);
@@ -3437,8 +3439,19 @@ textarea.error:focus {
 }
 
 [data-theme="dark"] .promo-modal-dialog {
-    background: rgba(18, 28, 44, 0.96);
+    background: linear-gradient(135deg, rgba(18, 28, 44, 0.97), rgba(12, 20, 32, 0.97));
     border-color: rgba(127, 158, 241, 0.14);
+}
+
+[data-theme="dark"] .promo-modal-dialog::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../img/background/confetti-doodles.svg") center/cover no-repeat;
+    opacity: 0.14;
+    filter: hue-rotate(175deg) saturate(0.55) brightness(0.62);
+    mix-blend-mode: screen;
+    pointer-events: none;
 }
 
 [data-theme="dark"] .promo-modal-kicker {
@@ -3458,8 +3471,9 @@ textarea.error:focus {
 }
 
 [data-theme="dark"] .promo-modal-actions {
-    background: rgba(18, 28, 44, 0.98);
-    border-top-color: rgba(127, 158, 241, 0.08);
+    background: transparent;
+    border-top-color: rgba(127, 158, 241, 0.05);
+    box-shadow: none;
 }
 
 [data-theme="dark"] .promo-modal-points {
@@ -4743,9 +4757,16 @@ body.modal-open {
     grid-template-columns: minmax(260px, 0.95fr) minmax(0, 1.05fr);
     border-radius: 28px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.96);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(246, 249, 255, 0.96)),
+        url("../img/background/confetti-doodles.svg") center/cover no-repeat;
     border: 1px solid rgba(54, 99, 191, 0.12);
     box-shadow: 0 28px 54px rgba(8, 18, 34, 0.18);
+}
+
+.promo-modal-dialog > * {
+    position: relative;
+    z-index: 1;
 }
 
 .promo-modal-media {
@@ -4778,6 +4799,7 @@ body.modal-open {
 }
 
 .promo-modal-kicker {
+    font-family: var(--font-ui);
     display: inline-flex;
     width: fit-content;
     padding: 6px 10px;
@@ -4791,7 +4813,7 @@ body.modal-open {
 }
 
 .promo-modal-copy h3 {
-    font-family: var(--font-heading);
+    font-family: var(--font-promo-title);
     color: var(--primary-dark);
     font-size: clamp(1.7rem, 3vw, 2.35rem);
     line-height: 1.08;
@@ -4799,11 +4821,13 @@ body.modal-open {
 }
 
 .promo-modal-copy p {
+    font-family: var(--font-promo-body);
     color: var(--text-light);
     line-height: 1.78;
 }
 
 .promo-modal-points {
+    font-family: var(--font-promo-body);
     display: grid;
     gap: 8px;
     margin: 2px 0 0;
@@ -4824,6 +4848,9 @@ body.modal-open {
 }
 
 .promo-modal-actions {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-promo-body);
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
@@ -4913,6 +4940,12 @@ body.modal-open {
         overflow: hidden;
     }
 
+    .promo-modal-copy::before {
+        background-size: 220px auto;
+        background-position: right 18px top 10px;
+        opacity: 0.14;
+    }
+
     .promo-modal-body {
         padding: 0 22px 18px;
         overflow-y: auto;
@@ -4925,7 +4958,8 @@ body.modal-open {
         flex-direction: column;
         padding: 16px 22px 22px;
         border-top: 1px solid rgba(54, 99, 191, 0.08);
-        background: rgba(255, 255, 255, 0.98);
+        background: transparent;
+        box-shadow: none;
     }
 
     .promo-modal-close {
