@@ -217,7 +217,63 @@ Si editas esta seccion normalmente solo cambias:
 - enlace de Google Maps
 
 
-16. FOOTER
+16. MODAL PROMOCIONAL CONFIGURABLE
+
+Ubicacion HTML: index.html
+Ubicacion logica: js/script.js
+
+El modal promocional ya esta preparado pero apagado por defecto.
+
+Busca esta configuracion:
+
+const PROMO_MODAL_CONFIG = {
+
+Campos clave:
+
+- enabled
+  true = mostrar modal
+  false = no mostrar modal
+
+- version
+  Cambia este valor cuando quieras forzar una nueva campaña aunque el usuario ya haya visto la anterior.
+
+- delayMs
+  Tiempo de espera antes de mostrarlo.
+
+- showOnceEveryDays
+  Cada cuantos dias puede volver a mostrarse al mismo usuario.
+
+- startDate / endDate
+  Ventana de fechas en la que la promoción debe estar activa.
+
+- kicker
+- title
+- text
+- image
+- imageAlt
+- primaryLabel
+- primaryHref
+- secondaryLabel
+- points
+
+points acepta una lista de frases cortas para mostrar beneficios o destacados dentro del modal.
+
+El modal se cierra con:
+
+- boton X
+- boton secundario
+- clic fuera del cuadro
+- tecla Escape
+
+Si quieres activarlo en una campaña futura, normalmente basta con:
+
+1. poner enabled en true
+2. ajustar fechas
+3. actualizar version
+4. cambiar texto, imagen y enlace principal
+
+
+17. FOOTER
 
 Ubicacion: index.html, noticias.html, noticias-pagina-2.html
 
@@ -231,7 +287,7 @@ Elementos clave:
 El footer de Home y Noticias ya esta alineado visualmente. Si cambias uno, conviene replicar el cambio en los tres HTML.
 
 
-17. ARCHIVOS Y RECURSOS QUE SI ESTAN EN USO
+18. ARCHIVOS Y RECURSOS QUE SI ESTAN EN USO
 
 - img/news/*
 - img/gallery/*
@@ -244,14 +300,14 @@ El footer de Home y Noticias ya esta alineado visualmente. Si cambias uno, convi
 - fonts/PlayfairDisplay-News.woff2
 
 
-18. LIMPIEZA Y ORDEN
+19. LIMPIEZA Y ORDEN
 
 - Antes de borrar un archivo, comprueba si aparece referenciado en HTML, CSS o JS.
 - No borres imagenes como primaria.jpg, secundaria.jpg o preescolar.jpg sin revisar noticias y niveles.
 - Si agregas nuevos recursos, intenta guardarlos en la carpeta tematica correcta.
 
 
-19. RECOMENDACION FINAL
+20. RECOMENDACION FINAL
 
 Si solo vas a editar contenido:
 

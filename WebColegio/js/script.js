@@ -908,6 +908,10 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal.classList.contains("active")) {
         closeModal();
     }
+
+    if (event.key === "Escape" && promoModal?.classList.contains("active")) {
+        closePromoModal();
+    }
 });
 
 
@@ -1147,6 +1151,145 @@ if (document.readyState === "loading") {
 }
 
 window.addEventListener("load", hideLoader, { once: true });
+
+
+// =========================
+// MODAL PROMOCIONAL
+// =========================
+const promoModal = document.getElementById("promoModal");
+const promoModalClose = document.getElementById("promoModalClose");
+const promoModalSecondaryAction = document.getElementById("promoModalSecondaryAction");
+const promoModalTitle = document.getElementById("promoModalTitle");
+const promoModalKicker = document.getElementById("promoModalKicker");
+const promoModalText = document.getElementById("promoModalText");
+const promoModalPoints = document.getElementById("promoModalPoints");
+const promoModalImage = document.getElementById("promoModalImage");
+const promoModalPrimaryAction = document.getElementById("promoModalPrimaryAction");
+
+const PROMO_MODAL_CONFIG = {
+    enabled: true,
+    storageKey: "webcolegio-promo-modal",
+    version: "promo-demo-2026-01",
+    delayMs: 1400,
+    showOnceEveryDays: 0,
+    startDate: "2026-01-01T00:00:00",
+    endDate: "2026-12-31T23:59:59",
+    kicker: "Campaña destacada",
+    title: "Tu próximo paso académico puede comenzar hoy",
+    text: "Explora una propuesta educativa que combina formación integral, acompañamiento cercano y modalidades técnicas pensadas para abrirte más oportunidades.",
+    points: [
+        "Tercer ciclo y educación media con visión de futuro.",
+        "Ambiente formativo con identidad institucional y orientación estudiantil.",
+        "Información disponible para matrícula, horarios y modalidades."
+    ],
+    image: "img/hero-slides/slide-2.jpg",
+    imageAlt: "Campaña institucional del Instituto Técnico Morazán",
+    primaryLabel: "Solicitar información",
+    primaryHref: "#contacto-info",
+    secondaryLabel: "Continuar navegando"
+};
+
+function isPromoModalActiveWindow() {
+    const now = Date.now();
+    const startDate = Date.parse(PROMO_MODAL_CONFIG.startDate);
+    const endDate = Date.parse(PROMO_MODAL_CONFIG.endDate);
+
+    if (Number.isNaN(startDate) || Number.isNaN(endDate)) {
+        return false;
+    }
+
+    return now >= startDate && now <= endDate;
+}
+
+function shouldShowPromoModal() {
+    if (!promoModal || !PROMO_MODAL_CONFIG.enabled || prefersReducedMotion()) {
+        return false;
+    }
+
+    if (!isPromoModalActiveWindow()) {
+        return false;
+    }
+
+    try {
+        const stored = JSON.parse(localStorage.getItem(PROMO_MODAL_CONFIG.storageKey) || "null");
+
+        if (!stored || stored.version !== PROMO_MODAL_CONFIG.version) {
+            return true;
+        }
+
+        const cooldownMs = PROMO_MODAL_CONFIG.showOnceEveryDays * 24 * 60 * 60 * 1000;
+        return Date.now() - stored.closedAt >= cooldownMs;
+    } catch (error) {
+        return true;
+    }
+}
+
+function rememberPromoModalDismiss() {
+    try {
+        localStorage.setItem(PROMO_MODAL_CONFIG.storageKey, JSON.stringify({
+            version: PROMO_MODAL_CONFIG.version,
+            closedAt: Date.now()
+        }));
+    } catch (error) {}
+}
+
+function closePromoModal() {
+    if (!promoModal) {
+        return;
+    }
+
+    promoModal.classList.remove("active");
+    promoModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    rememberPromoModalDismiss();
+}
+
+function openPromoModal() {
+    if (!promoModal || !shouldShowPromoModal()) {
+        return;
+    }
+
+    promoModalKicker.textContent = PROMO_MODAL_CONFIG.kicker;
+    promoModalTitle.textContent = PROMO_MODAL_CONFIG.title;
+    promoModalText.textContent = PROMO_MODAL_CONFIG.text;
+    promoModalPoints.innerHTML = "";
+
+    if (Array.isArray(PROMO_MODAL_CONFIG.points)) {
+        PROMO_MODAL_CONFIG.points.forEach((point) => {
+            const item = document.createElement("li");
+            item.textContent = point;
+            promoModalPoints.appendChild(item);
+        });
+    }
+
+    promoModalImage.src = PROMO_MODAL_CONFIG.image;
+    promoModalImage.alt = PROMO_MODAL_CONFIG.imageAlt;
+    promoModalPrimaryAction.textContent = PROMO_MODAL_CONFIG.primaryLabel;
+    promoModalPrimaryAction.setAttribute("href", PROMO_MODAL_CONFIG.primaryHref);
+    promoModalSecondaryAction.textContent = PROMO_MODAL_CONFIG.secondaryLabel;
+
+    window.setTimeout(() => {
+        promoModal.classList.add("active");
+        promoModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+    }, PROMO_MODAL_CONFIG.delayMs);
+}
+
+if (promoModal && promoModalClose && promoModalSecondaryAction) {
+    promoModalClose.addEventListener("click", closePromoModal);
+    promoModalSecondaryAction.addEventListener("click", closePromoModal);
+    promoModal.addEventListener("click", (event) => {
+        if (event.target === promoModal) {
+            closePromoModal();
+        }
+    });
+
+    promoModalPrimaryAction.addEventListener("click", () => {
+        closePromoModal();
+    });
+
+    window.addEventListener("load", openPromoModal, { once: true });
+}
 
 
 // =========================

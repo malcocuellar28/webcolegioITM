@@ -744,7 +744,7 @@
     <div class="contact-container" id="contacto-info">
         <div class="contact-info">
             <div class="contact-info-intro">
-                <h3>Información de contacto</h3>
+                <h3><img src="img/icons/informacionContacto.svg" alt="" aria-hidden="true" class="contact-title-icon"><span>Información de contacto</span></h3>
                 <p>Comunícate con nosotros, programa tu visita o solicita orientación sobre admisiones, horarios y programas académicos.</p>
             </div>
             <div class="horario-status" id="horarioStatus">
@@ -790,26 +790,26 @@
         </div>
         <form id="contact-form" class="contact-form-card" novalidate>
             <div class="form-intro">
-                <h3>Solicita información</h3>
+                <h3><img src="img/icons/solicitaInformacion.svg" alt="" aria-hidden="true" class="contact-title-icon"><span>Solicita información</span></h3>
                 <p>Completa el formulario y nos pondremos en contacto contigo para brindarte más detalles sobre admisiones, carreras y matrícula.</p>
             </div>
             <div class="form-group">
-                <label for="nombre">Nombre</label>
+                <label for="nombre"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg><span>Nombre</span></label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ej. María López" required>
                 <span class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="telefono">Celular</label>
+                <label for="telefono"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v2a1 1 0 0 1-1.09 1A19.86 19.86 0 0 1 3.08 3.09A1 1 0 0 1 4.06 2h2a1 1 0 0 1 1 .75l.64 2.57a1 1 0 0 1-.27.98l-1.2 1.2a16 16 0 0 0 7.27 7.27l1.2-1.2a1 1 0 0 1 .98-.27l2.57.64a1 1 0 0 1 .75 1Z"/></svg><span>Celular</span></label>
                 <input type="tel" id="telefono" name="telefono" inputmode="tel" placeholder="Ej. 9876-5432" required>
                 <span class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="email">Correo</label>
+                <label for="email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7l8 6l8-6"/></svg><span>Correo</span></label>
                 <input type="email" id="email" name="email" placeholder="Ej. nombre@correo.com" required>
                 <span class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="mensaje">Mensaje</label>
+                <label for="mensaje"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg><span>Mensaje</span></label>
                 <textarea id="mensaje" name="mensaje" rows="4" placeholder="Ej. Deseo recibir información sobre matrícula, horarios o carreras disponibles."></textarea>
                 <span class="error" aria-live="polite"></span>
             </div>
@@ -842,6 +842,30 @@
 
 <!-- TOAST CONTAINER -->
 <div class="toast-container" id="toastContainer"></div>
+
+<!-- MODAL PROMOCIONAL CONFIGURABLE -->
+<div class="promo-modal" id="promoModal" aria-hidden="true">
+    <div class="promo-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="promoModalTitle">
+        <button class="promo-modal-close has-tooltip tooltip-bottom tooltip-shift-left" type="button" aria-label="Cerrar promoción" data-tooltip="Cerrar promoción" id="promoModalClose">
+            <img src="img/icons/cerrar.svg" alt="" aria-hidden="true">
+        </button>
+        <div class="promo-modal-media">
+            <img src="img/hero-slides/slide-1.jpg" alt="Promoción institucional del Instituto Técnico Morazán" id="promoModalImage" loading="lazy">
+        </div>
+        <div class="promo-modal-copy">
+            <div class="promo-modal-body">
+                <span class="promo-modal-kicker" id="promoModalKicker">Promoción especial</span>
+                <h3 id="promoModalTitle">Admisiones abiertas 2026</h3>
+                <p id="promoModalText">Descubre nuestra propuesta académica y solicita información para conocer tercer ciclo, educación media y nuestras modalidades técnicas.</p>
+                <ul class="promo-modal-points" id="promoModalPoints"></ul>
+            </div>
+            <div class="promo-modal-actions">
+                <a href="#contacto-info" class="btn btn-primary" id="promoModalPrimaryAction">Solicitar información</a>
+                <button type="button" class="btn btn-secondary promo-modal-secondary" id="promoModalSecondaryAction">Ahora no</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer class="footer">
     <img src="img/frame/frame.svg" alt="" class="footer-frame" aria-hidden="true">
