@@ -19,6 +19,9 @@ Este manual resume la estructura actual del proyecto y que partes se editan con 
 - js/script.js
   Logica de la pagina principal: menu, tema, hero, breadcrumb, scroll, FAQ, modal de galeria, testimonios, toasts, loader, formulario, contador y botones compartir.
 
+- js/content-config.js
+  Fuente central de contenido editable para Home. Desde aqui se cambian textos, imagenes, listas, cards, CTA y promocion sin tocar la estructura base de index.html.
+
 - js/news-center.js
   Logica del centro de noticias: abrir/cerrar noticias, sincronizar alturas y mantener enlaces con el tema actual.
 
@@ -31,17 +34,32 @@ Este manual resume la estructura actual del proyecto y que partes se editan con 
 - img/gallery/
   Imagenes usadas en galeria.
 
-- img/hero-slides/
+- img/hero/
+  Recursos propios del hero.
+
+- img/hero/slides/
   Imagenes del slider principal del hero.
 
-- img/icons/
-  Iconos SVG del proyecto.
+- img/levels/
+  Imagenes usadas en niveles educativos y algunos apoyos visuales del centro de noticias.
+
+- img/branding/
+  Recursos de marca: logo, favicon y elementos institucionales como Morazan en el footer.
+
+- img/icons/social/
+  Iconos de redes sociales.
+
+- img/icons/ui/
+  Iconos de interfaz, utilitarios, feedback y elementos embebidos.
+
+- img/icons/sections/
+  Iconos de navegación, secciones y apartados institucionales.
 
 - img/background/
   Fondos decorativos.
 
-- img/frame/
-  Recursos decorativos del footer.
+- img/shape-dividers/
+  Recursos decorativos estructurales como frames y separadores.
 
 - fonts/
   Fuentes locales. El centro de noticias usa Inter-News y PlayfairDisplay-News.
@@ -81,43 +99,139 @@ Este manual resume la estructura actual del proyecto y que partes se editan con 
 Estos colores viven en :root dentro de css/styles.css.
 
 
+2.3 REGLAS DE COLOR POR CATEGORIA
+
+Para evitar mezclar colores nuevos cada vez que crezca el proyecto, el sistema ahora usa familias semanticas.
+
+Base de tarjetas informativas normales:
+
+- --category-info
+- --category-info-soft
+
+Categorias agrupadas:
+
+- Institucional / general informativo
+  --category-institutional
+  --category-institutional-soft
+
+- Academico / formativo
+  --category-academic
+  --category-academic-soft
+
+- Calendario / agenda
+  --category-calendar
+  --category-calendar-soft
+
+- Ceremonia / actos especiales
+  --category-ceremony
+  --category-ceremony-soft
+
+- Urgente / comunicado prioritario
+  --category-urgent
+  --category-urgent-soft
+
+- Tecnologico
+  --category-tech
+  --category-tech-soft
+
+- Administrativo / financiero
+  --category-finance
+  --category-finance-soft
+
+- Cientifico / humanistico
+  --category-science
+  --category-science-soft
+
+Regla practica:
+
+- Si el contenido no es urgente ni especial, usa la familia institucional o info.
+- No inventes un color nuevo por cada categoria nueva.
+- Agrupa nuevas categorias dentro de una familia semantica existente cuando sea posible.
+- Tema claro y oscuro no son independientes: el dark redefine las mismas variables base para conservar coherencia.
+
+
+2.4 REGLAS DE BOTONES
+
+El sitio debe usar dos familias semanticas principales:
+
+- btn-action
+  Para acciones principales como:
+  Solicitar informacion, Ver en Google Maps, Enviar solicitud y CTAs destacados.
+
+- btn-section
+  Para CTAs internos de secciones como Conocer modalidades, Conocer nuestras actividades o Ver novedades.
+
+- btn-glass
+  Para acciones transparentes o de apoyo visual, como botones del hero sobre fondo intenso y elementos con efecto cristal.
+
+Evita decidir botones solo por color. Primero decide su funcion y luego usa la familia correcta.
+
+
 3. REGLA GENERAL PARA EDITAR
 
 - Duplica bloques existentes en lugar de inventar nueva estructura.
 - Cambia solo texto, imagen, icono, fecha o etiqueta cuando sea posible.
 - No elimines clases como card, gallery-item, news-entry, faq-item, career-card, etc.
 - Si cambias rutas de imagen, asegúrate de que el archivo exista de verdad.
+- Para Home, prioriza editar js/content-config.js antes que index.html.
 
 
 4. HERO
 
-Ubicacion: index.html + js/script.js + css/styles.css
+Ubicacion: js/content-config.js + index.html + js/script.js + css/styles.css
 
-- Las imagenes y textos rotativos del hero se configuran en HERO_MAIN_SLIDES dentro de js/script.js.
-- La card secundaria del hero se edita manualmente en index.html.
+- Las imagenes y textos rotativos del hero se configuran en js/content-config.js.
+- La card secundaria del hero se configura en js/content-config.js.
+- La imagen del estudiante del hero tambien se configura en js/content-config.js.
+- La primera imagen y nota visible del slider toman como base el primer elemento de hero.slides en js/content-config.js.
+- Los textos auxiliares del hero como aria-label de highlights, aria-label de dots y aria-label de botones CTA se configuran tambien en js/content-config.js.
 - El slider del hero usa dos imagenes internas para el deslizamiento. No cambies ids como heroMainImage, heroMainImageNext o heroMainDots.
+- La imagen decorativa general del fondo del hero usa siempre este archivo:
+  img/hero/hero-background-default.png
+  Si quieres cambiar esa imagen, reemplaza el archivo conservando el mismo nombre.
+- La imagen de la card secundaria del hero usa este archivo:
+  img/hero/hero-support-default.jpg
+  Si quieres cambiar esa imagen, reemplaza ese archivo conservando el mismo nombre.
+- El fondo sun-tornado.svg sigue siendo una capa aparte del hero. No depende de esa imagen decorativa.
+- La imagen por defecto del modal promocional usa este archivo:
+  img/hero/promo-modal-default.jpg
+  Si quieres cambiar la imagen de una campaña rapida, reemplaza ese archivo conservando el mismo nombre.
 
 
 5. SOBRE NOSOTROS
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js
 
-- El texto introductorio, mision y vision se editan directo en HTML.
-- El video institucional se cambia actualizando el src del iframe.
+- El texto introductorio, mision, vision y video institucional se editan desde js/content-config.js.
+- Tambien puedes editar mini destacados con about.highlights.
+- El video admite title configurable con about.videoTitle.
+- Si deseas usar imagen en lugar de video, activa about.videoPoster.enabled.
+- La imagen por defecto del poster alternativo de Sobre Nosotros usa:
+  img/about/about-video-poster-default.jpg
+  Si quieres cambiarla, reemplaza ese archivo conservando el mismo nombre.
 
 
 6. PREGUNTAS FRECUENTES
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js
 
-- Duplica un bloque completo .faq-item para agregar otra pregunta.
 - La logica del acordeon ya esta resuelta en js/script.js.
-- No cambies la estructura interna de faq-question y faq-answer.
+- Las preguntas y respuestas se editan desde js/content-config.js.
+- Puedes agregar faqIntro para mostrar un texto introductorio arriba del acordeon.
+- Cada pregunta puede incluir category para mostrar un badge.
+- Cada pregunta puede incluir open: true si quieres que inicie abierta.
+- El orden del arreglo faq define la prioridad y el orden visual.
+
+Pendiente opcional para futuro:
+
+- icono por categoria
+- separacion visual por grupos tematicos
+- enlaces internos dentro de respuestas
 
 
 7. NIVELES EDUCATIVOS
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js
 
 La oferta actual mostrada es:
 
@@ -128,18 +242,28 @@ La oferta actual mostrada es:
   Card general para educacion media sin entrar al detalle de carreras.
 
 Importante:
-- La card de Tercer Ciclo usa .nivel-card-grouped, .nivel-subgrid y .nivel-mini-card.
-- Si cambias ese bloque, respeta esa estructura para no romper el layout.
+- levelsIntro agrega un texto introductorio debajo del titulo.
+- levelsCta agrega un boton pequeno debajo de la seccion.
+- Cada nivel ahora usa type para definir el render:
+  - grouped
+  - chips
+- type grouped admite:
+  - groupAriaLabel
+  - miniCardLabel
+  - miniCards
+- type chips admite:
+  - chipsAriaLabel
+  - chips
 
 
 8. CARRERAS TECNICAS
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js
 
 Cada carrera usa esta estructura base:
 
 <div class="career-card">
-    <div class="career-icon"><img src="img/icons/tu-icono.svg" alt="" aria-hidden="true"></div>
+    <div class="career-icon"><img src="img/icons/sections/tu-icono.svg" alt="" aria-hidden="true"></div>
     <span class="career-badge">Area</span>
     <h3>Nombre de la carrera</h3>
     <p>Texto comercial principal.</p>
@@ -147,7 +271,7 @@ Cada carrera usa esta estructura base:
         <li>Punto destacado</li>
     </ul>
     <p class="career-highlight">Cierre comercial.</p>
-    <span class="career-duration">2 anos o 3 anos</span>
+    <span class="career-duration">Duracion: 2 anos o 3 anos</span>
 </div>
 
 Debajo de la grilla existe un CTA con:
@@ -156,50 +280,153 @@ Debajo de la grilla existe un CTA con:
 - .careers-cta
 - .careers-cta-actions
 
-El bot del CTA usa img/icons/bot.svg.
+El bot del CTA usa img/icons/ui/bot.svg.
+
+Ahora cada card puede incluir adicionalmente:
+
+- theme
+- featuredBadge
+- durationLabel
+- durationValue
+
+Y el CTA final puede configurarse dentro de:
+
+- careers.cta.ariaLabel
+- careers.cta.botAlt
+- careers.cta.text
+- careers.cta.button.label
+- careers.cta.button.href
 
 
 9. GALERIA
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js
 
-- La primera imagen usa .gallery-item-featured.
-- Las demas van dentro de .gallery-secondary-grid.
 - Todas las imagenes usan rutas desde img/gallery/.
-- El modal y la interaccion se controlan desde js/script.js.
+- La galeria ahora usa type por item:
+  - featured
+  - default
+- Cada item puede incluir:
+  - ariaLabel
+  - kicker
+  - text
+  - description
+- gallery.cta controla el boton debajo de la seccion.
+- gallery.modal.showCopy define si el modal muestra texto adicional.
+- La imagen destacada por defecto usa:
+  img/gallery/gallery-featured-default.jpg
+  Si quieres cambiar esa imagen principal rapidamente, reemplaza ese archivo conservando el mismo nombre.
 
 
 10. CONTADOR REGRESIVO
 
-Ubicacion: index.html + js/script.js
+Ubicacion: js/content-config.js + index.html + js/script.js
 
-- La configuracion esta en COUNTDOWN_EVENTS dentro de js/script.js.
-- Cambia subtitle, message y fecha segun el evento.
-- La seccion admite mas de un evento y rota automaticamente.
+- La configuracion vive en home.countdown dentro de js/content-config.js.
+- Puedes cambiar:
+  - kicker
+  - title
+  - expiredMessage
+  - onExpire
+  - events
+- Cada evento admite modos de fecha como:
+  - fixed
+  - nextMondayFromBase
+- El sistema siempre toma el proximo evento vigente segun fecha.
+
+
+10.1 NUESTRO COLEGIO EN CIFRAS
+
+Ubicacion: js/content-config.js
+
+Campos editables:
+
+- home.sectionTitles.stats
+- home.statsIntro
+- home.stats
+
+Cada item de home.stats admite:
+
+- icon
+- target
+- label
+- foundation
+- prefix
+- suffix
+
+Usa foundation solo cuando la cifra deba calcularse automaticamente por fecha.
+Usa prefix o suffix para casos como porcentajes o simbolos.
+
+Pendiente opcional para futuro:
+
+- duracion distinta por card
+- color especial por card
+- animacion distinta por card
 
 
 11. AVISOS Y EVENTOS
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js
 
-- Avisos: duplica .aviso-item
-- Eventos: duplica .event-item
+- Avisos:
+  - noticesIntro
+  - home.sectionTitles.notices
+  - home.notices
 
-Solo cambia fecha, etiqueta, titulo y descripcion.
+Cada aviso puede incluir:
+
+- type
+- date
+- tag
+- tagStyle
+- text
+
+Tipos visuales actuales para avisos:
+
+- urgent
+- institutional
+- calendar
+
+Estilos actuales para badge/tag:
+
+- urgent
+- primary
+- success
+
+- Eventos:
+  - home.sectionTitles.events
+  - home.events
+
+Para eventos ahora puedes usar:
+
+- eventsIntro
+- type
+- fullDate
+- day
+- month
+- tag
+- title
+- text
 
 
 12. TESTIMONIOS
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js
 
 - El carrusel muestra testimonios dentro de .testimonial-card.
-- El icono de comillas usa img/icons/quote-double.svg.
+- El icono de comillas usa img/icons/ui/quote-double.svg.
 - El fondo decorativo usa img/background/spectrum-gradient.svg.
+- Puedes configurar:
+  - carouselAriaLabel
+  - dotsAriaLabel
+  - initialSlide
+  - autoplayMs
+- Cada testimonio puede incluir type para cambiar el acento visual superior.
 
 
 13. NOTICIAS EN HOME
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js
 
 - Las noticias resumen usan .noticia-card.
 - Las imagenes usan rutas desde img/news/.
@@ -230,7 +457,7 @@ Tema:
 
 15. CONTACTO
 
-Ubicacion: index.html
+Ubicacion: js/content-config.js + index.html
 
 Bloques importantes:
 
@@ -239,6 +466,16 @@ Bloques importantes:
 - contact-form
 
 Los iconos de Direccion, Horario, Telefono y Email estan embebidos directamente en index.html.
+Los iconos de titulo del bloque de contacto usan img/icons/ui/.
+Los titulos del bloque de contacto, el label Compartir, el texto del boton del mapa y el boton Enviar solicitud se editan desde js/content-config.js.
+Tambien se editan desde js/content-config.js:
+
+- mapTitle
+- social[].ariaLabel
+- formFields
+- validationMessages
+- whatsappTooltip
+- floatingButtons.scrollTop
 
 Si editas esta seccion normalmente solo cambias:
 
@@ -253,14 +490,15 @@ Si editas esta seccion normalmente solo cambias:
 
 16. MODAL PROMOCIONAL CONFIGURABLE
 
+Ubicacion contenido: js/content-config.js
 Ubicacion HTML: index.html
 Ubicacion logica: js/script.js
 
 El modal promocional ya esta preparado pero apagado por defecto.
 
-Busca esta configuracion:
+Busca esta configuracion dentro de js/content-config.js:
 
-const PROMO_MODAL_CONFIG = {
+promoModal: {
 
 Campos clave:
 
@@ -320,6 +558,12 @@ Para editar una campaña normalmente cambias solo:
 - primaryHref
 - secondaryLabel
 
+Si no quieres tocar la ruta de la imagen, deja el campo image apuntando a:
+
+- img/hero/promo-modal-default.jpg
+
+Y solo reemplaza ese archivo por la nueva creatividad.
+
 El modal se cierra con:
 
 - boton X
@@ -353,11 +597,18 @@ El footer de Home y Noticias ya esta alineado visualmente. Si cambias uno, convi
 
 - img/news/*
 - img/gallery/*
-- img/hero-slides/*
-- img/icons/bot.svg
-- img/icons/quote-double.svg
-- img/icons/calendario.svg
-- img/frame/frame.svg
+- img/hero/slides/*
+- img/hero/estudiante.png
+- img/levels/*
+- img/branding/LogoITM.png
+- img/branding/favicon.svg
+- img/branding/imagenMorazan.png
+- img/icons/ui/bot.svg
+- img/icons/ui/quote-double.svg
+- img/icons/ui/calendario.svg
+- img/icons/social/*
+- img/icons/sections/*
+- img/shape-dividers/frame.svg
 - fonts/Inter-News.woff2
 - fonts/PlayfairDisplay-News.woff2
 

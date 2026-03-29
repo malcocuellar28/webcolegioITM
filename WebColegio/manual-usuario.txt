@@ -53,14 +53,67 @@ Uso recomendado:
 - Verde: estados positivos o mensajes de apoyo.
 
 
+2.1 REGLAS PRACTICAS DE COLOR
+
+Para mantener orden visual en el sitio, no se debe crear un color nuevo para cada categoria nueva.
+
+Grupos recomendados:
+
+- Informativo / institucional
+  Azul
+
+- Academico / formativo
+  Verde
+
+- Calendario / agenda
+  Verde
+
+- Ceremonia / actos especiales
+  Violeta
+
+- Urgente / comunicado importante
+  Rojo
+
+- Tecnologico
+  Azul electrico
+
+- Administrativo / financiero
+  Verde administrativo
+
+- Cientifico / humanistico
+  Violeta
+
+Si aparece una nueva categoria, lo ideal es agruparla con una familia parecida en lugar de inventar otro color.
+
+
+2.2 REGLA PRACTICA PARA BOTONES
+
+Usa solo dos familias principales:
+
+- Boton de accion principal
+  Para enviar, solicitar, confirmar, ver mapas o avanzar a una accion importante.
+
+- Boton de seccion
+  Para enlaces internos de apoyo dentro de secciones como modalidades, actividades o novedades.
+
+- Boton cristal / transparente
+  Para acciones secundarias o botones sobre fondos visuales intensos.
+
+No mezcles estilos nuevos de botones si no es necesario. Primero decide si el boton es principal o secundario.
+
+
 3. PUBLICIDAD / MODAL PROMOCIONAL
 
 El sitio ya tiene una ventana promocional reutilizable.
 
 Donde se configura:
 
-- js/script.js
-- bloque: PROMO_MODAL_CONFIG
+- js/content-config.js
+- bloque: promoModal
+
+En general, el contenido principal de Home ahora se edita desde:
+
+- js/content-config.js
 
 Que puedes cambiar en cada campaña:
 
@@ -95,6 +148,56 @@ Usala solo en temporadas importantes, por ejemplo:
 Evita mantenerla activa todo el tiempo para no cansar al visitante.
 
 
+4. IMAGEN DECORATIVA DEL HERO
+
+El hero tiene una imagen decorativa general que puede cambiarse sin tocar codigo.
+
+Archivo actual:
+
+- img/hero/hero-background-default.png
+
+Si quieres cambiar esa imagen:
+
+- coloca la nueva imagen con ese mismo nombre
+- reemplaza el archivo anterior
+
+Ese recurso funciona tanto en tema claro como en tema oscuro.
+El fondo sun-tornado.svg sigue aparte y no se reemplaza con este cambio.
+
+La imagen de la card secundaria del hero usa este archivo:
+
+- img/hero/hero-support-default.jpg
+
+Si quieres cambiar esa imagen, solo reemplaza el archivo conservando el mismo nombre.
+
+
+4.1 IMAGEN DEL MODAL PROMOCIONAL
+
+El modal promocional tambien puede cambiar de imagen sin tocar codigo si mantienes este archivo:
+
+- img/hero/promo-modal-default.jpg
+
+Si quieres cambiar la imagen de una campaña:
+
+- reemplaza ese archivo por la nueva imagen
+- conserva el mismo nombre
+
+Asi el modal seguira funcionando sin que necesites editar rutas.
+
+
+4.2 IMAGEN ALTERNATIVA DE SOBRE NOSOTROS
+
+Si en lugar del video quieres mostrar una imagen en la sección Sobre Nosotros, usa este archivo:
+
+- img/about/about-video-poster-default.jpg
+
+Luego en la configuración activa:
+
+- home.about.videoPoster.enabled = true
+
+Si solo quieres cambiar la imagen, reemplaza ese archivo conservando el mismo nombre.
+
+
 5. CONTACTO Y FORMULARIO
 
 Puedes editar:
@@ -108,7 +211,37 @@ Puedes editar:
 Los iconos ya estan colocados y no hace falta tocar el estilo para cambiar solo los textos.
 
 
-6. NOTICIAS
+6. ORDEN RECOMENDADO DE IMAGENES
+
+- img/hero/
+  Recursos del hero y de campañas visuales ligadas al hero.
+
+- img/hero/slides/
+  Imagenes que rotan en el slider principal.
+
+- img/gallery/
+  Imagenes de galeria.
+
+- img/news/
+  Imagenes de noticias.
+
+- img/levels/
+  Imagenes relacionadas con niveles educativos.
+
+- img/branding/
+  Recursos institucionales decorativos, como la imagen de Morazan del footer.
+
+- img/icons/sections/
+  Iconos de secciones y navegación.
+
+- img/icons/ui/
+  Iconos de interfaz, botones y recursos visuales internos.
+
+- img/icons/social/
+  Iconos de redes sociales.
+
+
+7. NOTICIAS
 
 Home:
 - muestra noticias resumen.
@@ -119,7 +252,7 @@ Centro de noticias:
 Si agregas nuevas noticias, usa imagenes dentro de img/news/.
 
 
-7. GALERIA
+8. GALERIA
 
 Usa imagenes dentro de img/gallery/.
 
@@ -127,7 +260,7 @@ La primera imagen es la destacada.
 Las demas se acomodan automaticamente en la subgrilla.
 
 
-8. REGLA PRACTICA
+9. REGLA PRACTICA
 
 Si solo vas a cambiar contenido:
 

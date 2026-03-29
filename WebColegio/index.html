@@ -19,14 +19,14 @@
     <meta property="og:url" content="https://www.tecmorazan.edu.hn/">
     <meta property="og:site_name" content="Instituto Técnico Morazán">
     <meta property="og:locale" content="es_HN">
-    <meta property="og:image" content="https://www.tecmorazan.edu.hn/img/LogoITM.png">
+    <meta property="og:image" content="https://www.tecmorazan.edu.hn/img/branding/LogoITM.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Instituto Técnico Morazán | Formación integral y excelencia educativa">
     <meta name="twitter:description" content="Programas académicos, formación integral y actividades extracurriculares para impulsar el potencial de cada estudiante.">
-    <meta name="twitter:image" content="https://www.tecmorazan.edu.hn/img/LogoITM.png">
+    <meta name="twitter:image" content="https://www.tecmorazan.edu.hn/img/branding/LogoITM.png">
 
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="img/branding/favicon.svg">
     <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="css/styles.css">
 
@@ -37,7 +37,7 @@
         "name": "Instituto Técnico Morazán",
         "description": "Institución comprometida con la formación integral de sus estudiantes, con programas académicos y actividades extracurriculares en San Pedro Sula, Honduras.",
         "url": "https://www.tecmorazan.edu.hn",
-        "logo": "https://www.tecmorazan.edu.hn/img/LogoITM.png",
+        "logo": "https://www.tecmorazan.edu.hn/img/branding/LogoITM.png",
         "telephone": "+5042557-2360",
         "email": "info@tecmorazan.edu.hn",
         "address": {
@@ -63,14 +63,14 @@
 <!-- LOADER -->
 <div class="loader" id="loader">
     <div class="loader-content">
-        <img src="img/LogoITM.png" alt="ITM" class="loader-logo">
-        <img src="img/icons/spinner.svg" alt="" class="loader-spinner" aria-hidden="true">
+        <img src="img/branding/LogoITM.png" alt="ITM" class="loader-logo">
+        <img src="img/icons/ui/spinner.svg" alt="" class="loader-spinner" aria-hidden="true">
     </div>
 </div>
 
 <header class="header">
     <div class="logo">
-        <img src="img/LogoITM.png" alt="Instituto Técnico Morazán" class="logo-img">
+        <img src="img/branding/LogoITM.png" alt="Instituto Técnico Morazán" class="logo-img">
         <div class="logo-text">
             <span class="logo-nombre">Instituto Técnico Morazán</span>
             <span class="logo-lema">Excelencia Educativa Técnica Empresarial</span>
@@ -91,20 +91,20 @@
     </button>
 
     <nav class="nav" aria-label="Menú principal">
-        <a href="#inicio"><img src="img/icons/inicio.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Inicio</span></a>
-        <a href="#nosotros"><img src="img/icons/nosotros.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Nosotros</span></a>
-        <a href="#niveles"><img src="img/icons/niveles.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Niveles</span></a>
-        <a href="#galeria"><img src="img/icons/galeria.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Galería</span></a>
-        <a href="#avisos"><img src="img/icons/avisos.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Avisos</span></a>
-        <a href="#noticias"><img src="img/icons/noticias.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Noticias</span></a>
-        <a href="#contacto-info"><img src="img/icons/contactos.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Contacto</span></a>
+        <a href="#inicio"><img src="img/icons/sections/inicio.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Inicio</span></a>
+        <a href="#nosotros"><img src="img/icons/sections/nosotros.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Nosotros</span></a>
+        <a href="#niveles"><img src="img/icons/sections/niveles.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Niveles</span></a>
+        <a href="#galeria"><img src="img/icons/sections/galeria.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Galería</span></a>
+        <a href="#avisos"><img src="img/icons/sections/avisos.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Avisos</span></a>
+        <a href="#noticias"><img src="img/icons/sections/noticias.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Noticias</span></a>
+        <a href="#contacto-info"><img src="img/icons/sections/contactos.svg" alt="" class="nav-link-icon" aria-hidden="true"><span>Contacto</span></a>
     </nav>
 </header>
 
 <!-- BREADCRUMB -->
 <nav class="breadcrumb" aria-label="Breadcrumb">
     <div class="breadcrumb-content">
-        <a href="#inicio" class="breadcrumb-home"><img src="img/icons/inicio.svg" alt="" class="breadcrumb-icon" aria-hidden="true"><span>Inicio</span></a>
+        <a href="#inicio" class="breadcrumb-home"><img src="img/icons/sections/inicio.svg" alt="" class="breadcrumb-icon" aria-hidden="true"><span>Inicio</span></a>
         <span class="breadcrumb-separator">/</span>
         <span id="breadcrumb-current">Principal</span>
     </div>
@@ -116,38 +116,31 @@
 <section id="inicio" class="hero fade-in">
     <div class="hero-inner">
         <div class="hero-copy">
-            <img src="img/estudiante.png" alt="" class="hero-student-figure" aria-hidden="true">
-            <!-- Este texto superior cambia automaticamente con el slider principal del hero desde HERO_MAIN_SLIDES en js/script.js. -->
+            <img src="img/hero/estudiante.png" alt="" class="hero-student-figure" aria-hidden="true" id="heroStudentFigureImage">
+            <!-- Texto superior del hero. Su contenido visible se toma desde js/content-config.js. -->
             <p class="hero-seasonal-note"><span id="heroSeasonalNote">Formación integral con identidad institucional, acompañamiento cercano y visión de futuro para cada estudiante.</span></p>
-            <p class="hero-kicker">Instituto Técnico Morazán</p>
+            <p class="hero-kicker" id="heroKicker">Instituto Técnico Morazán</p>
             <h1 class="hero-title-intro" id="heroTitleIntro">Educación integral que impulsa el talento, los valores y el futuro de cada estudiante.</h1>
-            <p class="hero-lema">Excelencia Educativa Técnica Empresarial</p>
-            <p class="hero-subtitle">Explore nuestros programas académicos y actividades extracurriculares dentro de un entorno de aprendizaje sólido, cercano y comprometido con el máximo potencial de cada estudiante.</p>
-            <div class="hero-actions">
-                <a href="#contacto-info" class="btn btn-primary" draggable="false">Solicitar información</a>
-                <a href="#niveles" class="btn btn-secondary" draggable="false">Ver programas</a>
-            </div>
-            <div class="hero-highlights" aria-label="Aspectos destacados">
-                <span>Formación integral</span>
-                <span>Programas técnicos</span>
-                <span>Actividades extracurriculares</span>
-            </div>
+            <p class="hero-lema" id="heroLema">Excelencia Educativa Técnica Empresarial</p>
+            <p class="hero-subtitle" id="heroSubtitle">Explore nuestros programas académicos y actividades extracurriculares dentro de un entorno de aprendizaje sólido, cercano y comprometido con el máximo potencial de cada estudiante.</p>
+            <div class="hero-actions" id="heroActions"></div>
+            <div class="hero-highlights" id="heroHighlights" aria-label="Aspectos destacados"></div>
         </div>
         <div class="hero-media">
-            <!-- La imagen principal del hero rota automaticamente. Se configura desde HERO_MAIN_SLIDES en js/script.js. -->
+            <!-- Slider principal del hero. Su contenido se configura desde js/content-config.js. -->
             <div class="hero-image-frame">
                 <!-- Slider visual principal del hero. -->
                 <div class="hero-support-dots hero-image-dots" id="heroMainDots" aria-label="Imágenes destacadas del hero"></div>
-                <img src="img/hero-slides/imagenColegioPrin.jpg" alt="Vista principal del Instituto Técnico Morazán" loading="eager" fetchpriority="high" id="heroMainImage">
-                <img src="img/hero-slides/imagenColegioPrin.jpg" alt="" aria-hidden="true" id="heroMainImageNext">
+                <img src="img/hero/slides/imagenColegioPrin.jpg" alt="Vista principal del Instituto Técnico Morazán" loading="eager" fetchpriority="high" id="heroMainImage">
+                <img src="img/hero/slides/imagenColegioPrin.jpg" alt="" aria-hidden="true" id="heroMainImageNext">
             </div>
             <div class="hero-support-card">
-                <!-- Card secundaria fija del hero. Su contenido se edita directamente aqui. -->
-                <img src="img/news/noticia-2.jpg" alt="Espacio visual para promociones y actividades institucionales" loading="lazy">
+                <!-- Card secundaria fija del hero. Reemplaza img/hero/hero-support-default.jpg para cambiar su imagen sin tocar la estructura. -->
+                <img src="img/hero/hero-support-default.jpg" alt="Espacio visual para promociones y actividades institucionales" loading="lazy" id="heroSupportImage">
                 <div class="hero-support-content">
-                    <span class="hero-support-label">Semana Santa 2026</span>
-                    <strong>Una temporada para reflexionar, renovarte y proyectar tu futuro académico</strong>
-                    <p>Conoce nuestras actividades institucionales, orientación para estudiantes y novedades para el próximo período académico.</p>
+                    <span class="hero-support-label" id="heroSupportLabel">Semana Santa 2026</span>
+                    <strong id="heroSupportTitle">Una temporada para reflexionar, renovarte y proyectar tu futuro académico</strong>
+                    <p id="heroSupportText">Conoce nuestras actividades institucionales, orientación para estudiantes y novedades para el próximo período académico.</p>
                 </div>
             </div>
         </div>
@@ -156,305 +149,78 @@
 
 <!-- ESTADÍSTICAS -->
 <section class="section stats-section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/colegioCifras.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Nuestro Colegio en Cifras</span></h2>
-    <div class="stats-grid">
-        <!-- Actualiza solo el numero de data-target en cada cifra -->
-        <div class="stat-card">
-            <div class="stat-icon"><img src="img/icons/estudiantes.svg" alt="" aria-hidden="true"></div>
-            <div class="stat-number" data-target="500">0</div>
-            <div class="stat-label">Estudiantes</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon"><img src="img/icons/aniosExperiencia.svg" alt="" aria-hidden="true"></div>
-            <div class="stat-number" data-target="0" data-foundation="1990-02-05">0</div>
-            <div class="stat-label">Años de Experiencia</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon"><img src="img/icons/carreras.svg" alt="" aria-hidden="true"></div>
-            <div class="stat-number" data-target="8">0</div>
-            <div class="stat-label">Carreras Técnicas</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon"><img src="img/icons/egresadosExitosos.svg" alt="" aria-hidden="true"></div>
-            <div class="stat-number" data-target="95">0</div>
-            <div class="stat-label">% de Egresados Exitosos</div>
-        </div>
-    </div>
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/colegioCifras.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="statsSectionTitle">Nuestro Colegio en Cifras</span></h2>
+    <p class="section-intro" id="statsSectionIntro"></p>
+    <div class="stats-grid" id="statsGrid"></div>
+    <div class="section-cta" id="statsCtaWrap"><a href="#nosotros" class="btn btn-action" id="statsCtaButton">Conocer nuestra historia</a></div>
 </section>
 
 <!-- SOBRE NOSOTROS -->
 <section id="nosotros" class="section about-section fade-in">
     <div class="about-content">
         <div class="about-text">
-            <h2 class="section-title-with-icon"><img src="img/icons/sobreNosotros.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Sobre Nosotros</span></h2>
-            <!-- En esta sección puedes reemplazar descripcion, misión y visión por el texto oficial del colegio. -->
-            <p>En el Instituto Técnico Morazán formamos jóvenes con metas grandes y preparación real para alcanzarlas. Nuestra propuesta combina tercer ciclo, educación media técnica, acompañamiento cercano, orientación estudiantil, docentes en constante capacitación y espacios de aprendizaje que impulsan disciplina, liderazgo, valores y proyección universitaria o laboral.</p>
+            <h2 class="section-title-with-icon"><img src="img/icons/sections/sobreNosotros.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="aboutSectionTitle">Sobre Nosotros</span></h2>
+            <div class="about-highlights" id="aboutHighlights"></div>
+            <p id="aboutIntro">En el Instituto Técnico Morazán formamos jóvenes con metas grandes y preparación real para alcanzarlas. Nuestra propuesta combina tercer ciclo, educación media técnica, acompañamiento cercano, orientación estudiantil, docentes en constante capacitación y espacios de aprendizaje que impulsan disciplina, liderazgo, valores y proyección universitaria o laboral.</p>
             <div class="about-block">
-                <h3>Misión</h3>
-                <p>Brindar una educación integral y de calidad que forme estudiantes con competencias académicas, técnicas y humanas, capaces de desenvolverse con responsabilidad, liderazgo y compromiso en la sociedad.</p>
+                <h3 id="aboutMissionLabel">Misión</h3>
+                <p id="aboutMission">Brindar una educación integral y de calidad que forme estudiantes con competencias académicas, técnicas y humanas, capaces de desenvolverse con responsabilidad, liderazgo y compromiso en la sociedad.</p>
             </div>
             <div class="about-block">
-                <h3>Visión</h3>
-                <p>Ser una institución educativa reconocida por su excelencia formativa, innovación y compromiso con el desarrollo de estudiantes preparados para alcanzar su máximo potencial en el ámbito académico, personal y profesional.</p>
+                <h3 id="aboutVisionLabel">Visión</h3>
+                <p id="aboutVision">Ser una institución educativa reconocida por su excelencia formativa, innovación y compromiso con el desarrollo de estudiantes preparados para alcanzar su máximo potencial en el ámbito académico, personal y profesional.</p>
             </div>
         </div>
         <div class="about-video">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Institucional" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <a href="#" class="about-video-poster" id="aboutVideoPosterLink" hidden>
+                    <img src="" alt="" id="aboutVideoPosterImage">
+                </a>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Institucional" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" id="aboutVideo"></iframe>
             </div>
         </div>
     </div>
+    <div class="section-cta" id="aboutCtaWrap"><a href="#niveles" class="btn btn-action" id="aboutCtaButton">Explorar niveles</a></div>
 </section>
 
 <!-- FAQ -->
 <section class="section faq-section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/preguntasFrecuentes.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Preguntas Frecuentes</span></h2>
-    <div class="faq-container">
-        <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-                <span>¿Cuáles son los requisitos de matrícula?</span>
-                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-                <p>Generalmente se solicita partida de nacimiento, certificados de estudios anteriores, fotografías tamaño carnet y el pago correspondiente al proceso de inscripción. Para confirmar los requisitos actualizados puedes escribirnos o visitarnos directamente.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-                <span>¿Qué niveles y carreras ofrecen?</span>
-                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-                <p>Ofrecemos tercer ciclo de educación básica y educación media en modalidades de bachillerato técnico, con una propuesta enfocada en formación académica, valores y proyección al siguiente nivel.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-                <span>¿Cuál es el horario de atención del instituto?</span>
-                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-                <p>Atendemos de lunes a viernes de 7:00 AM a 4:00 PM y los sábados de 7:00 AM a 12:00 PM. Si deseas información rápida, también puedes escribirnos por WhatsApp.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-                <span>¿Cómo puedo solicitar información o iniciar el proceso de admisión?</span>
-                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-                <p>Puedes llenar el formulario de contacto, escribirnos por WhatsApp, llamarnos o visitarnos presencialmente. Con gusto te orientaremos sobre matrícula, requisitos y disponibilidad de cupos.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-                <span>¿Dónde están ubicados?</span>
-                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-                <p>Nos encontramos en Bo Guamilito, 2 ave., 5-6 cll., 21102 San Pedro Sula, Cortés, Honduras. En la sección de contacto puedes ver el mapa y abrir la ubicación directamente en Google Maps.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-                <span>¿Realizan actividades académicas y eventos institucionales?</span>
-                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-                <p>Sí. Durante el año se desarrollan reuniones, ferias académicas, actividades institucionales y eventos especiales que fortalecen la formación integral de nuestros estudiantes.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-                <span>¿La formación prepara a los estudiantes para la universidad o el trabajo?</span>
-                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-                <p>Sí. Nuestra propuesta combina formación académica, valores y preparación técnica para que los estudiantes puedan continuar estudios universitarios o integrarse con mejores bases al entorno laboral.</p>
-            </div>
-        </div>
-    </div>
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/preguntasFrecuentes.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="faqSectionTitle">Preguntas Frecuentes</span></h2>
+    <p class="section-intro faq-intro" id="faqIntro"></p>
+    <div class="faq-container" id="faqContainer"></div>
+    <div class="section-cta" id="faqCtaWrap"><a href="#contacto-info" class="btn btn-action" id="faqCtaButton">Resolver otra consulta</a></div>
 </section>
 
 <!-- NIVELES -->
 <section id="niveles" class="section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/nivelesEducativos.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Niveles Educativos</span></h2>
-    <div class="grid">
-        <article class="card nivel-card nivel-card-grouped">
-            <div class="card-image image-rounded">
-                <img src="img/secundaria.jpg" alt="Estudiantes de tercer ciclo" loading="lazy">
-            </div>
-            <div class="card-content">
-                <span class="nivel-badge">Educación básica</span>
-                <h3>Tercer Ciclo</h3>
-                <p>El colegio ofrece tercer ciclo de educación básica, una etapa clave para consolidar bases académicas, fortalecer hábitos de estudio y preparar a los estudiantes para la educación media.</p>
-                <div class="nivel-subgrid" aria-label="Grados de tercer ciclo">
-                    <article class="nivel-mini-card">
-                        <span class="nivel-mini-label">Grado</span>
-                        <strong>7mo</strong>
-                    </article>
-                    <article class="nivel-mini-card">
-                        <span class="nivel-mini-label">Grado</span>
-                        <strong>8vo</strong>
-                    </article>
-                    <article class="nivel-mini-card">
-                        <span class="nivel-mini-label">Grado</span>
-                        <strong>9no</strong>
-                    </article>
-                </div>
-            </div>
-        </article>
-
-        <article class="card nivel-card">
-            <div class="card-image image-rounded">
-                <img src="img/primaria.jpg" alt="Estudiantes de educación media" loading="lazy">
-            </div>
-            <div class="card-content">
-                <span class="nivel-badge">Educación media</span>
-                <h3>Bachillerato</h3>
-                <p>La educación media acompaña la transición hacia una formación más especializada. En esta etapa los estudiantes cursan décimo, undécimo y, según la modalidad, también duodécimo, con una preparación orientada a su siguiente nivel académico.</p>
-                <div class="nivel-highlight-list" aria-label="Trayecto de educación media">
-                    <span>10mo grado</span>
-                    <span>11vo grado</span>
-                    <span>12vo grado según modalidad</span>
-                </div>
-            </div>
-        </article>
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/nivelesEducativos.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="levelsSectionTitle">Niveles Educativos</span></h2>
+    <p class="section-intro" id="levelsIntro"></p>
+    <div class="grid" id="levelsGrid"></div>
+    <div class="section-cta" id="levelsCtaWrap">
+        <a href="#carreras" class="btn btn-section levels-cta-button" id="levelsCtaButton">Conocer modalidades</a>
     </div>
 </section>
 
 <!-- CARRERAS TÉCNICAS -->
-<section class="section careers-section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/carreras.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Carreras Técnicas</span></h2>
-    <div class="careers-grid">
-        <!-- Duplica una career-card para agregar otra carrera técnica. -->
-        <div class="career-card">
-            <div class="career-icon"><img src="img/icons/informatica.svg" alt="" aria-hidden="true"></div>
-            <span class="career-badge">Área tecnológica</span>
-            <h3>Bachiller Técnico en Informática</h3>
-            <p>Convierte tu interés por la tecnología en una preparación real para la universidad, el trabajo y los retos del mundo digital.</p>
-            <ul class="career-points">
-                <li>Comienzas con una base académica fuerte y avanzas hacia formación técnica especializada.</li>
-                <li>Desarrollas habilidades prácticas en entornos tecnológicos actuales y de alta demanda.</li>
-                <li>Aprendes en laboratorios climatizados con acompañamiento docente constante.</li>
-            </ul>
-            <p class="career-highlight">Si sueñas con destacar en el área digital, esta carrera te abre puertas desde el aula hacia oportunidades reales.</p>
-            <span class="career-duration">3 años</span>
-        </div>
-        <div class="career-card">
-            <div class="career-icon"><img src="img/icons/contaduriaFinanzas.svg" alt="" aria-hidden="true"></div>
-            <span class="career-badge">Área administrativa</span>
-            <h3>Bachiller Técnico en Contaduría y Finanzas</h3>
-            <p>Prepárate para comprender cómo funcionan las empresas, las finanzas y la administración con una formación útil, práctica y con visión de crecimiento.</p>
-            <ul class="career-points">
-                <li>Fortaleces disciplina, criterio profesional y organización desde una base común sólida.</li>
-                <li>Te preparas para desenvolverte en áreas contables, financieras y administrativas.</li>
-                <li>Impulsa tanto la continuidad universitaria como la visión emprendedora.</li>
-            </ul>
-            <p class="career-highlight">Es una carrera para quienes quieren avanzar con seguridad hacia el mundo empresarial y tomar decisiones con visión.</p>
-            <span class="career-duration">3 años</span>
-        </div>
-        <div class="career-card">
-            <div class="career-icon"><img src="img/icons/cienciasHumanidades.svg" alt="" aria-hidden="true"></div>
-            <span class="career-badge">Formación general</span>
-            <h3>Bachiller Técnico en Ciencias y Humanidades</h3>
-            <p>Construye una base académica de alto valor para avanzar con confianza hacia la universidad y proyectarte en distintas áreas del conocimiento.</p>
-            <ul class="career-points">
-                <li>Refuerza pensamiento lógico, análisis crítico y comprensión científica del entorno.</li>
-                <li>Desarrolla una base integral para continuar estudios superiores con mejores herramientas.</li>
-                <li>Incluye acompañamiento para orientar decisiones vocacionales y metas futuras.</li>
-            </ul>
-            <p class="career-highlight">Si buscas una formación que te impulse hacia la universidad con bases firmes, esta es una de las mejores decisiones para tu futuro.</p>
-            <span class="career-duration">2 años</span>
-        </div>
-    </div>
-    <div class="careers-cta-bubble" aria-label="Mensaje destacado de orientación">
-        <img src="img/icons/bot.svg" alt="Asistente virtual del Instituto Técnico Morazán" class="careers-cta-bot">
-        <p class="careers-cta">Estudia en una institución que te prepara para avanzar con seguridad, descubrir tu vocación y construir un futuro con más oportunidades desde hoy.</p>
+<section id="carreras" class="section careers-section fade-in">
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/carreras.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="careersSectionTitle">Carreras Técnicas</span></h2>
+    <div class="careers-grid" id="careersGrid"></div>
+    <div class="careers-cta-bubble" aria-label="Mensaje destacado de orientación" id="careersCtaBubble">
+        <img src="img/icons/ui/bot.svg" alt="Asistente virtual del Instituto Técnico Morazán" class="careers-cta-bot" id="careersCtaBot">
+        <p class="careers-cta" id="careersCtaText">Estudia en una institución que te prepara para avanzar con seguridad, descubrir tu vocación y construir un futuro con más oportunidades desde hoy.</p>
     </div>
     <div class="careers-cta-actions">
-        <a href="#contacto-info" class="btn btn-primary">Solicitar información</a>
+        <a href="#contacto-info" class="btn btn-primary" id="careersCtaButton">Solicitar información</a>
     </div>
 </section>
 
 <!-- GALERÍA -->
 <section id="galeria" class="section gallery-section fade-in">
-    <h2 class="section-title-with-icon section-title-padding"><img src="img/icons/galeriaFotos.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Galería de Fotos</span></h2>
-    <p class="gallery-intro">Momentos que reflejan la vida estudiantil, las actividades institucionales y el ambiente formativo del Instituto Técnico Morazán.</p>
-    <div class="gallery-grid">
-        <!-- Duplica un gallery-item para agregar otra imagen a la galería. Si quieres que una imagen sea la principal, colócala primero. -->
-        <button class="gallery-item gallery-item-featured" type="button" data-src="img/gallery/galeria-1.jpg" aria-label="Abrir imagen Evento escolar 1">
-            <img src="img/gallery/galeria-1.jpg" alt="Evento escolar 1" loading="lazy">
-            <div class="gallery-overlay">
-                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
-                <div class="gallery-overlay-copy">
-                    <span class="gallery-overlay-kicker">Vida institucional</span>
-                    <span class="gallery-overlay-text">Momentos destacados del colegio</span>
-                </div>
-            </div>
-        </button>
-        <div class="gallery-secondary-grid">
-        <button class="gallery-item" type="button" data-src="img/gallery/galeria-2.jpg" aria-label="Abrir imagen Evento escolar 2">
-            <img src="img/gallery/galeria-2.jpg" alt="Evento escolar 2" loading="lazy">
-            <div class="gallery-overlay">
-                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
-                <div class="gallery-overlay-copy">
-                    <span class="gallery-overlay-kicker">Actividades académicas</span>
-                    <span class="gallery-overlay-text">Experiencias que fortalecen el aprendizaje</span>
-                </div>
-            </div>
-        </button>
-        <button class="gallery-item" type="button" data-src="img/gallery/galeria-3.jpg" aria-label="Abrir imagen Evento escolar 3">
-            <img src="img/gallery/galeria-3.jpg" alt="Evento escolar 3" loading="lazy">
-            <div class="gallery-overlay">
-                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
-                <div class="gallery-overlay-copy">
-                    <span class="gallery-overlay-kicker">Comunidad educativa</span>
-                    <span class="gallery-overlay-text">Espacios de convivencia y participación</span>
-                </div>
-            </div>
-        </button>
-        <button class="gallery-item" type="button" data-src="img/gallery/galeria-4.jpg" aria-label="Abrir imagen Evento escolar 4">
-            <img src="img/gallery/galeria-4.jpg" alt="Evento escolar 4" loading="lazy">
-            <div class="gallery-overlay">
-                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
-                <div class="gallery-overlay-copy">
-                    <span class="gallery-overlay-kicker">Instantes institucionales</span>
-                    <span class="gallery-overlay-text">Galería de experiencias y logros</span>
-                </div>
-            </div>
-        </button>
-        <button class="gallery-item" type="button" data-src="img/gallery/galeria-1.jpg" aria-label="Abrir imagen Evento escolar 5">
-            <img src="img/gallery/galeria-1.jpg" alt="Evento escolar 5" loading="lazy">
-            <div class="gallery-overlay">
-                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
-                <div class="gallery-overlay-copy">
-                    <span class="gallery-overlay-kicker">Actividades especiales</span>
-                    <span class="gallery-overlay-text">Nuevos recuerdos para la galería institucional</span>
-                </div>
-            </div>
-        </button>
-        <button class="gallery-item" type="button" data-src="img/gallery/galeria-2.jpg" aria-label="Abrir imagen Evento escolar 6">
-            <img src="img/gallery/galeria-2.jpg" alt="Evento escolar 6" loading="lazy">
-            <div class="gallery-overlay">
-                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
-                <div class="gallery-overlay-copy">
-                    <span class="gallery-overlay-kicker">Experiencia estudiantil</span>
-                    <span class="gallery-overlay-text">Ambientes que acompañan el aprendizaje diario</span>
-                </div>
-            </div>
-        </button>
-        <button class="gallery-item" type="button" data-src="img/gallery/galeria-3.jpg" aria-label="Abrir imagen Evento escolar 7">
-            <img src="img/gallery/galeria-3.jpg" alt="Evento escolar 7" loading="lazy">
-            <div class="gallery-overlay">
-                <svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.4s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.2s" to="0"/></path></g></svg>
-                <div class="gallery-overlay-copy">
-                    <span class="gallery-overlay-kicker">Vida colegial</span>
-                    <span class="gallery-overlay-text">Más escenas del día a día en nuestra comunidad</span>
-                </div>
-            </div>
-        </button>
-        </div>
+    <h2 class="section-title-with-icon section-title-padding"><img src="img/icons/sections/galeriaFotos.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="gallerySectionTitle">Galería de Fotos</span></h2>
+    <p class="gallery-intro" id="galleryIntro">Momentos que reflejan la vida estudiantil, las actividades institucionales y el ambiente formativo del Instituto Técnico Morazán.</p>
+    <div class="gallery-grid" id="galleryGridContent"></div>
+    <div class="section-cta" id="galleryCtaWrap">
+        <a href="#contacto-info" class="btn btn-section levels-cta-button" id="galleryCtaButton">Conocer nuestras actividades</a>
     </div>
 </section>
 
@@ -462,8 +228,8 @@
 <section class="countdown-section fade-in">
     <div class="countdown-container">
         <div class="countdown-surface">
-            <p class="countdown-kicker">Próximo evento institucional</p>
-            <h2>Faltan</h2>
+            <p class="countdown-kicker" id="countdown-kicker">Próximo evento institucional</p>
+            <h2 id="countdown-title">Faltan</h2>
             <p class="countdown-subtitle" id="countdown-subtitle">para Graduación</p>
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
@@ -490,91 +256,26 @@
 
 <!-- AVISOS -->
 <section id="avisos" class="section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/avisosImportantes.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Avisos Importantes</span></h2>
-    <ul class="avisos">
-        <!-- Duplica un aviso-item para agregar otro aviso. Cambia la fecha y el texto segun lo necesites. -->
-        <li class="aviso-item">
-            <span class="aviso-fecha"><span class="aviso-punto"></span><span>[Fecha]</span></span>
-            <div class="aviso-content">
-                <span class="aviso-tag">Comunicado</span>
-                <span class="aviso-texto">Matrículas abiertas para el ciclo 2026</span>
-            </div>
-        </li>
-        <li class="aviso-item">
-            <span class="aviso-fecha"><span class="aviso-punto"></span><span>[Fecha]</span></span>
-            <div class="aviso-content">
-                <span class="aviso-tag">Institucional</span>
-                <span class="aviso-texto">Reunión de padres de familia</span>
-            </div>
-        </li>
-        <li class="aviso-item">
-            <span class="aviso-fecha"><span class="aviso-punto"></span><span>[Fecha]</span></span>
-            <div class="aviso-content">
-                <span class="aviso-tag">Calendario</span>
-                <span class="aviso-texto">Inicio de clases próximo mes</span>
-            </div>
-        </li>
-    </ul>
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/avisosImportantes.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="noticesSectionTitle">Avisos Importantes</span></h2>
+    <p class="section-intro notices-intro" id="noticesIntro"></p>
+    <ul class="avisos" id="noticesList"></ul>
+    <div class="section-cta" id="noticesCtaWrap"><a href="#noticias" class="btn btn-action" id="noticesCtaButton">Ver novedades</a></div>
 </section>
 
 <!-- PRÓXIMOS EVENTOS -->
 <section class="section events-section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/proximosEventos.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Próximos Eventos</span></h2>
-    <div class="events-timeline">
-        <!-- Duplica un event-item para agregar otro evento. Cambia dia, mes, titulo y descripcion segun lo necesites. -->
-        <div class="event-item">
-            <div class="event-date">
-                <span class="event-day">15</span>
-                <span class="event-month">Ene</span>
-            </div>
-            <div class="event-content">
-                <span class="event-tag">Admisiones</span>
-                <h3>Inscripciones ciclo 2026</h3>
-                <p>Período de inscripciones abierto para el nuevo ciclo escolar.</p>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-date">
-                <span class="event-day">20</span>
-                <span class="event-month">Feb</span>
-            </div>
-            <div class="event-content">
-                <span class="event-tag">Institucional</span>
-                <h3>Reunión de padres</h3>
-                <p>Asamblea general con padres de familia para informar sobre el inicio de clases.</p>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-date">
-                <span class="event-day">10</span>
-                <span class="event-month">Mar</span>
-            </div>
-            <div class="event-content">
-                <span class="event-tag">Académico</span>
-                <h3>Feria académica</h3>
-                <p>Exposición de proyectos estudiantiles de las carreras técnicas.</p>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-date">
-                <span class="event-day">30</span>
-                <span class="event-month">Nov</span>
-            </div>
-            <div class="event-content">
-                <span class="event-tag">Ceremonia</span>
-                <h3>Ceremonia de graduación</h3>
-                <p>Acto de graduación de la promoción 2026.</p>
-            </div>
-        </div>
-    </div>
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/proximosEventos.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="eventsSectionTitle">Próximos Eventos</span></h2>
+    <p class="section-intro events-intro" id="eventsIntro"></p>
+    <div class="events-timeline" id="eventsTimeline"></div>
+    <div class="section-cta" id="eventsCtaWrap"><a href="#contacto-info" class="btn btn-action" id="eventsCtaButton">Consultar participación</a></div>
 </section>
 
 <!-- TESTIMONIOS -->
 <section class="section testimonials-section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/dicenEgresados.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Lo que dicen nuestros egresados</span></h2>
-    <div class="testimonials-carousel">
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/dicenEgresados.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="testimonialsSectionTitle">Lo que dicen nuestros egresados</span></h2>
+    <div class="testimonials-carousel" id="testimonialsCarousel">
         <div class="testimonials-header">
-            <p class="testimonials-intro">Historias reales de egresados que hoy avanzan con seguridad en la universidad, el mundo profesional y nuevos proyectos de vida.</p>
+            <p class="testimonials-intro" id="testimonialsIntro">Historias reales de egresados que hoy avanzan con seguridad en la universidad, el mundo profesional y nuevos proyectos de vida.</p>
             <div class="testimonials-nav">
                 <button class="testimonial-btn prev has-tooltip" type="button" aria-label="Testimonio anterior" data-tooltip="Anterior">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -586,148 +287,22 @@
             </div>
         </div>
         <div class="testimonials-viewport">
-            <div class="testimonials-track" id="testimonialsTrack">
-                <!-- Duplica un testimonial-card para agregar otro testimonio. Cambia texto, iniciales, nombre y detalle del egresado. -->
-                <article class="testimonial-card">
-                    <span class="testimonial-kicker">Egresado destacado</span>
-                    <div class="testimonial-quote-mark" aria-hidden="true"><img src="img/icons/quote-double.svg" alt=""></div>
-                <p class="testimonial-text">El Instituto Técnico Morazán me dio las herramientas necesarias para insertarme en el mundo laboral. Hoy trabajo como contador en una empresa importante y sigo aplicando lo aprendido cada día.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">CM</div>
-                    <div class="author-info">
-                        <strong>Carlos Mendoza</strong>
-                        <span>Egresado 2018 - Contabilidad</span>
-                    </div>
-                </div>
-                </article>
-                <article class="testimonial-card">
-                <span class="testimonial-kicker">Trayectoria emprendedora</span>
-                <div class="testimonial-quote-mark" aria-hidden="true"><img src="img/icons/quote-double.svg" alt=""></div>
-                <p class="testimonial-text">Gracias a la formación técnica en informática, pude crear mi propia empresa de desarrollo de software. Los profesores marcaron una etapa clave y me dieron la seguridad para emprender.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">ML</div>
-                    <div class="author-info">
-                        <strong>María López</strong>
-                        <span>Egresada 2020 - Informática</span>
-                    </div>
-                </div>
-                </article>
-                <article class="testimonial-card">
-                <span class="testimonial-kicker">Formación integral</span>
-                <div class="testimonial-quote-mark" aria-hidden="true"><img src="img/icons/quote-double.svg" alt=""></div>
-                <p class="testimonial-text">La formación en valores y técnicas que recibí me abrió las puertas de muchas oportunidades. Siempre destaco la disciplina, el nivel humano y la preparación técnica de la institución.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">JR</div>
-                    <div class="author-info">
-                        <strong>Juan Rodríguez</strong>
-                        <span>Egresado 2019 - Electrónica</span>
-                    </div>
-                </div>
-                </article>
-                <article class="testimonial-card">
-                <span class="testimonial-kicker">Proyección académica</span>
-                <div class="testimonial-quote-mark" aria-hidden="true"><img src="img/icons/quote-double.svg" alt=""></div>
-                <p class="testimonial-text">Más que una carrera, encontré una base sólida para seguir creciendo. El acompañamiento docente y el enfoque técnico me prepararon para destacar desde el inicio en mis siguientes retos.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">AL</div>
-                    <div class="author-info">
-                        <strong>Ana Lucía Torres</strong>
-                        <span>Egresada 2021 - Ciencias y Humanidades</span>
-                    </div>
-                </div>
-                </article>
-            </div>
+            <div class="testimonials-track" id="testimonialsTrack"></div>
         </div>
     </div>
+    <div class="section-cta" id="testimonialsCtaWrap"><a href="#carreras" class="btn btn-action" id="testimonialsCtaButton">Conocer nuestra propuesta</a></div>
 </section>
 
 <!-- NOTICIAS -->
 <section id="noticias" class="section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/noticias.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Noticias</span></h2>
-    <div class="grid news-grid">
-        <!-- Duplica una noticia-card para agregar otra noticia resumen en Home. -->
-        <article class="card noticia-card noticia-card-featured">
-            <span class="badge-new">Nuevo</span>
-            <div class="card-image image-rounded">
-                <img src="img/news/noticia-1.jpg" alt="Evento deportivo" loading="lazy">
-            </div>
-            <div class="card-content">
-                <div class="noticia-meta">
-                    <span class="noticia-tag">Institucional</span>
-                    <span class="noticia-fecha">15 Ene 2026</span>
-                </div>
-                <h3>Evento deportivo escolar</h3>
-                <p>Participación estudiantil en actividades deportivas intercolegiales que fortalecen el trabajo en equipo, la disciplina y el orgullo institucional.</p>
-                <a href="noticias.html" class="news-link"><span>Leer más</span><img src="img/icons/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a>
-            </div>
-        </article>
-
-        <article class="card noticia-card">
-            <div class="card-image image-rounded">
-                <img src="img/news/noticia-2.jpg" alt="Feria académica" loading="lazy">
-            </div>
-            <div class="card-content">
-                <div class="noticia-meta">
-                    <span class="noticia-tag">Académico</span>
-                    <span class="noticia-fecha">28 Feb 2026</span>
-                </div>
-                <h3>Feria académica anual</h3>
-                <p>Exposición de proyectos estudiantiles de las diferentes carreras.</p>
-                <a href="noticias.html" class="news-link"><span>Leer más</span><img src="img/icons/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a>
-            </div>
-        </article>
-
-        <article class="card noticia-card">
-            <span class="badge-new">Nuevo</span>
-            <div class="card-image image-rounded">
-                <img src="img/news/noticia-3.jpg" alt="Graduación" loading="lazy">
-            </div>
-            <div class="card-content">
-                <div class="noticia-meta">
-                    <span class="noticia-tag">Eventos</span>
-                    <span class="noticia-fecha">30 Nov 2026</span>
-                </div>
-                <h3>Ceremonia de graduación</h3>
-                <p>Celebración de la promoción 2026 con familiares y maestros.</p>
-                <a href="noticias.html" class="news-link"><span>Leer más</span><img src="img/icons/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a>
-            </div>
-        </article>
-
-        <article class="card noticia-card">
-            <div class="card-image image-rounded">
-                <img src="img/news/noticia-1.jpg" alt="Jornada de orientación estudiantil" loading="lazy">
-            </div>
-            <div class="card-content">
-                <div class="noticia-meta">
-                    <span class="noticia-tag">Comunidad</span>
-                    <span class="noticia-fecha">12 Mar 2026</span>
-                </div>
-                <h3>Jornada de orientación para familias</h3>
-                <p>Espacio informativo para resolver dudas sobre admisiones, horarios, acompañamiento docente y vida estudiantil.</p>
-                <a href="noticias.html" class="news-link"><span>Leer más</span><img src="img/icons/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a>
-            </div>
-        </article>
-
-        <article class="card noticia-card">
-            <div class="card-image image-rounded">
-                <img src="img/news/noticia-2.jpg" alt="Muestra de proyectos técnicos" loading="lazy">
-            </div>
-            <div class="card-content">
-                <div class="noticia-meta">
-                    <span class="noticia-tag">Proyectos</span>
-                    <span class="noticia-fecha">08 Abr 2026</span>
-                </div>
-                <h3>Muestra interna de proyectos técnicos</h3>
-                <p>Estudiantes presentaron propuestas prácticas en informática, contaduría y áreas de formación integral.</p>
-                <a href="noticias.html" class="news-link"><span>Leer más</span><img src="img/icons/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a>
-            </div>
-        </article>
-    </div>
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/noticias.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="newsSectionTitle">Noticias</span></h2>
+    <div class="grid news-grid" id="homeNewsGrid"></div>
+    <div class="section-cta" id="newsCtaWrap"><a href="noticias.html" class="btn btn-action" id="newsCtaButton">Ir al centro de noticias</a></div>
 </section>
 
 <!-- CONTACTO -->
 <section id="contacto" class="section fade-in">
-    <h2 class="section-title-with-icon"><img src="img/icons/contactanos.svg" alt="" class="section-title-icon" aria-hidden="true"><span>Contáctanos</span></h2>
+    <h2 class="section-title-with-icon"><img src="img/icons/sections/contactanos.svg" alt="" class="section-title-icon" aria-hidden="true"><span id="contactSectionTitle">Contáctanos</span></h2>
     <!-- En esta sección normalmente solo editas textos, enlaces, placeholders y datos de contacto. -->
     <div class="mapa-shell">
         <div class="mapa-head">
@@ -735,16 +310,16 @@
             <p>Encuentra fácilmente nuestras instalaciones y accede a la ubicación oficial del Instituto Técnico Morazán en Google Maps.</p>
         </div>
         <div class="mapa-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d961.1344862604587!2d-88.023348!3d15.5092664!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f665b4677a360b5%3A0xf6d8330bb50a873b!2sInstituto%20T%C3%A9cnico%20Moraz%C3%A1n!5e0!3m2!1ses!2shn!4v1774144720718!5m2!1ses!2shn" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d961.1344862604587!2d-88.023348!3d15.5092664!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f665b4677a360b5%3A0xf6d8330bb50a873b!2sInstituto%20T%C3%A9cnico%20Moraz%C3%A1n!5e0!3m2!1ses!2shn!4v1774144720718!5m2!1ses!2shn" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="contactMapFrame" title="Mapa de ubicación del Instituto Técnico Morazán"></iframe>
             <div class="mapa-actions">
-                <a href="https://www.google.com/maps/search/?api=1&query=Instituto+T%C3%A9cnico+Moraz%C3%A1n%2C+San+Pedro+Sula%2C+Honduras" class="btn btn-primary mapa-link" target="_blank" rel="noopener">Ver en Google Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Instituto+T%C3%A9cnico+Moraz%C3%A1n%2C+San+Pedro+Sula%2C+Honduras" class="btn btn-primary mapa-link" target="_blank" rel="noopener" id="mapLinkButton">Ver en Google Maps</a>
             </div>
         </div>
     </div>
     <div class="contact-container" id="contacto-info">
         <div class="contact-info">
             <div class="contact-info-intro">
-                <h3><img src="img/icons/informacionContacto.svg" alt="" aria-hidden="true" class="contact-title-icon"><span>Información de contacto</span></h3>
+                <h3><img src="img/icons/ui/informacionContacto.svg" alt="" aria-hidden="true" class="contact-title-icon"><span id="contactInfoTitle">Información de contacto</span></h3>
                 <p>Comunícate con nosotros, programa tu visita o solicita orientación sobre admisiones, horarios y programas académicos.</p>
             </div>
             <div class="horario-status" id="horarioStatus">
@@ -768,15 +343,15 @@
                 <p>info@tecmorazan.edu.hn</p>
             </div>
             <div class="contact-social">
-                <a href="https://www.facebook.com/tecnicomorazanhn/" target="_blank" rel="noopener" aria-label="Facebook" class="has-tooltip" data-tooltip="Facebook">
-                    <img src="img/icons/facebook.svg" alt="" aria-hidden="true">
+                <a href="https://www.facebook.com/tecnicomorazanhn/" target="_blank" rel="noopener" aria-label="Facebook" class="has-tooltip" data-tooltip="Facebook" id="contactSocialFacebook">
+                    <img src="img/icons/social/facebook.svg" alt="" aria-hidden="true">
                 </a>
-                <a href="https://www.instagram.com/tecnicomorazan/" target="_blank" rel="noopener" aria-label="Instagram" class="has-tooltip" data-tooltip="Instagram">
-                    <img src="img/icons/instagram.svg" alt="" aria-hidden="true">
+                <a href="https://www.instagram.com/tecnicomorazan/" target="_blank" rel="noopener" aria-label="Instagram" class="has-tooltip" data-tooltip="Instagram" id="contactSocialInstagram">
+                    <img src="img/icons/social/instagram.svg" alt="" aria-hidden="true">
                 </a>
             </div>
             <div class="share-buttons">
-                <span class="share-label">Compartir:</span>
+                <span class="share-label" id="shareLabel">Compartir:</span>
                 <button class="share-btn has-tooltip" onclick="sharePage('facebook')" aria-label="Compartir en Facebook" data-tooltip="Compartir en Facebook">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 </button>
@@ -790,30 +365,30 @@
         </div>
         <form id="contact-form" class="contact-form-card" novalidate>
             <div class="form-intro">
-                <h3><img src="img/icons/solicitaInformacion.svg" alt="" aria-hidden="true" class="contact-title-icon"><span>Solicita información</span></h3>
+                <h3><img src="img/icons/ui/solicitaInformacion.svg" alt="" aria-hidden="true" class="contact-title-icon"><span id="contactFormTitle">Solicita información</span></h3>
                 <p>Completa el formulario y nos pondremos en contacto contigo para brindarte más detalles sobre admisiones, carreras y matrícula.</p>
             </div>
             <div class="form-group">
-                <label for="nombre"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg><span>Nombre</span></label>
+                <label for="nombre"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg><span id="contactNameLabel">Nombre</span></label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ej. María López" required>
                 <span class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="telefono"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v2a1 1 0 0 1-1.09 1A19.86 19.86 0 0 1 3.08 3.09A1 1 0 0 1 4.06 2h2a1 1 0 0 1 1 .75l.64 2.57a1 1 0 0 1-.27.98l-1.2 1.2a16 16 0 0 0 7.27 7.27l1.2-1.2a1 1 0 0 1 .98-.27l2.57.64a1 1 0 0 1 .75 1Z"/></svg><span>Celular</span></label>
+                <label for="telefono"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v2a1 1 0 0 1-1.09 1A19.86 19.86 0 0 1 3.08 3.09A1 1 0 0 1 4.06 2h2a1 1 0 0 1 1 .75l.64 2.57a1 1 0 0 1-.27.98l-1.2 1.2a16 16 0 0 0 7.27 7.27l1.2-1.2a1 1 0 0 1 .98-.27l2.57.64a1 1 0 0 1 .75 1Z"/></svg><span id="contactPhoneLabel">Celular</span></label>
                 <input type="tel" id="telefono" name="telefono" inputmode="tel" placeholder="Ej. 9876-5432" required>
                 <span class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7l8 6l8-6"/></svg><span>Correo</span></label>
+                <label for="email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7l8 6l8-6"/></svg><span id="contactEmailLabel">Correo</span></label>
                 <input type="email" id="email" name="email" placeholder="Ej. nombre@correo.com" required>
                 <span class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="mensaje"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg><span>Mensaje</span></label>
+                <label for="mensaje"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg><span id="contactMessageLabel">Mensaje</span></label>
                 <textarea id="mensaje" name="mensaje" rows="4" placeholder="Ej. Deseo recibir información sobre matrícula, horarios o carreras disponibles."></textarea>
                 <span class="error" aria-live="polite"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+            <button type="submit" class="btn btn-primary" id="contactSubmitButton">Enviar solicitud</button>
         </form>
     </div>
 </section>
@@ -825,8 +400,8 @@
     <button class="btn-scroll-top has-tooltip tooltip-left" aria-label="Volver arriba" data-tooltip="Volver arriba" id="scrollTop">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
-    <a href="https://wa.me/50425572360?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20el%20Instituto%20Técnico%20Morazán" class="btn-whatsapp has-tooltip tooltip-left" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" data-tooltip="Contactar por WhatsApp">
-        <img src="img/icons/whatsapp.svg" alt="" aria-hidden="true">
+    <a href="https://wa.me/50425572360?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20el%20Instituto%20Técnico%20Morazán" class="btn-whatsapp has-tooltip tooltip-left" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" data-tooltip="Contactar por WhatsApp" id="whatsappButton">
+        <img src="img/icons/social/whatsapp.svg" alt="" aria-hidden="true">
     </a>
 </div>
 
@@ -834,8 +409,12 @@
 <div class="modal" id="galleryModal">
     <div class="modal-content">
         <button class="modal-close has-tooltip tooltip-bottom" aria-label="Cerrar" data-tooltip="Cerrar imagen">
-            <img src="img/icons/cerrar.svg" alt="" aria-hidden="true">
+            <img src="img/icons/ui/cerrar.svg" alt="" aria-hidden="true">
         </button>
+        <div class="modal-copy" id="galleryModalCopy" hidden>
+            <span class="modal-kicker" id="galleryModalKicker"></span>
+            <p class="modal-description" id="galleryModalDescription"></p>
+        </div>
         <img src="" alt="" id="modalImage">
     </div>
 </div>
@@ -847,10 +426,10 @@
 <div class="promo-modal" id="promoModal" aria-hidden="true">
     <div class="promo-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="promoModalTitle">
         <button class="promo-modal-close has-tooltip tooltip-bottom tooltip-shift-left" type="button" aria-label="Cerrar promoción" data-tooltip="Cerrar promoción" id="promoModalClose">
-            <img src="img/icons/cerrar.svg" alt="" aria-hidden="true">
+            <img src="img/icons/ui/cerrar.svg" alt="" aria-hidden="true">
         </button>
         <div class="promo-modal-media">
-            <img src="img/hero-slides/slide-1.jpg" alt="Promoción institucional del Instituto Técnico Morazán" id="promoModalImage" loading="lazy">
+            <img src="img/hero/slides/slide-1.jpg" alt="Promoción institucional del Instituto Técnico Morazán" id="promoModalImage" loading="lazy">
         </div>
         <div class="promo-modal-copy">
             <div class="promo-modal-body">
@@ -868,12 +447,12 @@
 </div>
 
 <footer class="footer">
-    <img src="img/frame/frame.svg" alt="" class="footer-frame" aria-hidden="true">
+    <img src="img/shape-dividers/frame.svg" alt="" class="footer-frame" aria-hidden="true">
     <div class="footer-content">
         <div class="footer-section">
             <div class="footer-brand">
                 <div class="footer-brand-copy">
-                    <img src="img/LogoITM.png" alt="Logo ITM" class="footer-logo">
+                    <img src="img/branding/LogoITM.png" alt="Logo ITM" class="footer-logo">
                     <p class="footer-brand-name">Instituto Técnico Morazán</p>
                     <p class="footer-lema">Excelencia Educativa Técnica Empresarial</p>
                 </div>
@@ -889,27 +468,28 @@
         <div class="footer-section">
             <h4>Enlaces</h4>
             <nav aria-label="Enlaces del footer">
-                <a href="#inicio"><img src="img/icons/inicio.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Inicio</span></a>
-                <a href="#nosotros"><img src="img/icons/nosotros.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Nosotros</span></a>
-                <a href="#niveles"><img src="img/icons/niveles.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Niveles</span></a>
-                <a href="#galeria"><img src="img/icons/galeria.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Galería</span></a>
-                <a href="#avisos"><img src="img/icons/avisos.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Avisos</span></a>
-                <a href="#noticias"><img src="img/icons/noticias.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Noticias</span></a>
-                <a href="#contacto-info"><img src="img/icons/contactos.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Contacto</span></a>
+                <a href="#inicio"><img src="img/icons/sections/inicio.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Inicio</span></a>
+                <a href="#nosotros"><img src="img/icons/sections/nosotros.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Nosotros</span></a>
+                <a href="#niveles"><img src="img/icons/sections/niveles.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Niveles</span></a>
+                <a href="#galeria"><img src="img/icons/sections/galeria.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Galería</span></a>
+                <a href="#avisos"><img src="img/icons/sections/avisos.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Avisos</span></a>
+                <a href="#noticias"><img src="img/icons/sections/noticias.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Noticias</span></a>
+                <a href="#contacto-info"><img src="img/icons/sections/contactos.svg" alt="" class="footer-link-icon" aria-hidden="true"><span>Contacto</span></a>
             </nav>
         </div>
         <div class="footer-section">
             <h4>Síguenos</h4>
             <div class="footer-social">
-                <a href="https://www.facebook.com/tecnicomorazanhn/" target="_blank" rel="noopener" aria-label="Facebook"><img src="img/icons/facebook.svg" alt="" class="footer-social-icon" aria-hidden="true"><span>Facebook</span></a>
-                <a href="https://www.instagram.com/tecnicomorazan/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/icons/instagram.svg" alt="" class="footer-social-icon" aria-hidden="true"><span>Instagram</span></a>
+                <a href="https://www.facebook.com/tecnicomorazanhn/" target="_blank" rel="noopener" aria-label="Facebook"><img src="img/icons/social/facebook.svg" alt="" class="footer-social-icon" aria-hidden="true"><span>Facebook</span></a>
+                <a href="https://www.instagram.com/tecnicomorazan/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/icons/social/instagram.svg" alt="" class="footer-social-icon" aria-hidden="true"><span>Instagram</span></a>
             </div>
         </div>
     </div>
-    <img src="img/imagenMorazan.png" alt="" class="footer-morazan" aria-hidden="true">
+    <img src="img/branding/imagenMorazan.png" alt="" class="footer-morazan" aria-hidden="true">
     <p class="footer-copy">© 2026 Instituto Técnico Morazán. Todos los derechos reservados.</p>
 </footer>
 
+<script src="js/content-config.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

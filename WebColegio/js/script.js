@@ -1,6 +1,352 @@
 // =========================
 // MENÚ HAMBURGUESA
 // =========================
+const HOME_CONTENT = window.SITE_CONTENT?.home || {};
+
+function getFaqChevronIcon() {
+    return '<svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+}
+
+function getGalleryOverlayIcon() {
+    return '<svg class="gallery-overlay-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#fff" stroke-dasharray="70" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17h-10v-14h20v14Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.36s" values="70;0"/></path><path fill="#fff" d="M10 16h4v0h-4Z"><animate fill="freeze" attributeName="d" begin="0.36s" dur="0.14s" to="M10 16h4v6h-4Z"/></path><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 21h3M12 21h-3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.22s" to="0"/></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M6 7h2M6 7v2M18 13h-2M18 13v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.62s" dur="0.14s" to="0"/></path></g></svg>';
+}
+
+function getContactInlineIcon(type) {
+    const icons = {
+        location: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+        clock: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg>',
+        phone: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v2a1 1 0 0 1-1.09 1A19.86 19.86 0 0 1 3.08 3.09A1 1 0 0 1 4.06 2h2a1 1 0 0 1 1 .75l.64 2.57a1 1 0 0 1-.27.98l-1.2 1.2a16 16 0 0 0 7.27 7.27l1.2-1.2a1 1 0 0 1 .98-.27l2.57.64a1 1 0 0 1 .75 1Z"/></svg>',
+        mail: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7l8 6l8-6"/></svg>'
+    };
+
+    return icons[type] || icons.mail;
+}
+
+function applySectionCta(sectionKey) {
+    const cta = HOME_CONTENT.sectionCtas?.[sectionKey];
+    const wrap = document.getElementById(`${sectionKey}CtaWrap`);
+    const button = document.getElementById(`${sectionKey}CtaButton`);
+
+    if (!wrap || !button || !cta) {
+        return;
+    }
+
+    wrap.hidden = !cta.enabled;
+    button.textContent = cta.label;
+    button.href = cta.href;
+    button.className = cta.className;
+}
+
+function renderHomeContent() {
+    if (!HOME_CONTENT || !document.body || !document.querySelector("main")) {
+        return;
+    }
+
+    const { hero, stats, about, faq, levels, careers, gallery, notices, events, testimonials, homeNews, contact, footer } = HOME_CONTENT;
+
+    const heroKicker = document.getElementById("heroKicker");
+    const heroTitle = document.getElementById("heroTitleIntro");
+    const heroLema = document.getElementById("heroLema");
+    const heroSubtitle = document.getElementById("heroSubtitle");
+    const heroActions = document.getElementById("heroActions");
+    const heroHighlights = document.getElementById("heroHighlights");
+    const heroMainDotsNode = document.getElementById("heroMainDots");
+    const heroStudentFigureImage = document.getElementById("heroStudentFigureImage");
+    const heroSeasonalNote = document.getElementById("heroSeasonalNote");
+    const heroMainImageNode = document.getElementById("heroMainImage");
+    const heroMainImageNextNode = document.getElementById("heroMainImageNext");
+    const heroSupportImage = document.getElementById("heroSupportImage");
+    const heroSupportLabel = document.getElementById("heroSupportLabel");
+    const heroSupportTitle = document.getElementById("heroSupportTitle");
+    const heroSupportText = document.getElementById("heroSupportText");
+
+    if (heroKicker && hero) heroKicker.textContent = hero.kicker;
+    if (heroTitle && hero) heroTitle.textContent = hero.title;
+    if (heroLema && hero) heroLema.textContent = hero.lema;
+    if (heroSubtitle && hero) heroSubtitle.textContent = hero.subtitle;
+    if (heroActions && hero) {
+        heroActions.innerHTML = hero.actions.map((action) => `<a href="${action.href}" class="${action.className}" draggable="false"${action.ariaLabel ? ` aria-label="${action.ariaLabel}"` : ""}>${action.label}</a>`).join("");
+    }
+    if (heroHighlights && hero) {
+        if (hero.highlightsAriaLabel) {
+            heroHighlights.setAttribute("aria-label", hero.highlightsAriaLabel);
+        }
+        heroHighlights.innerHTML = hero.highlights.map((item) => `<span>${item}</span>`).join("");
+    }
+    if (heroMainDotsNode && hero?.dotsAriaLabel) {
+        heroMainDotsNode.setAttribute("aria-label", hero.dotsAriaLabel);
+    }
+    if (heroStudentFigureImage && hero?.studentFigure) {
+        heroStudentFigureImage.src = hero.studentFigure.image;
+        heroStudentFigureImage.alt = hero.studentFigure.alt;
+    }
+    if (heroSupportImage && hero?.supportCard) {
+        heroSupportImage.src = hero.supportCard.image;
+        heroSupportImage.alt = hero.supportCard.alt;
+        heroSupportLabel.textContent = hero.supportCard.label;
+        heroSupportTitle.textContent = hero.supportCard.title;
+        heroSupportText.textContent = hero.supportCard.text;
+    }
+    if (hero?.slides?.length) {
+        const firstSlide = hero.slides[0];
+        if (heroSeasonalNote) heroSeasonalNote.textContent = firstSlide.note;
+        if (heroMainImageNode) {
+            heroMainImageNode.src = firstSlide.image;
+            heroMainImageNode.alt = firstSlide.alt;
+        }
+        if (heroMainImageNextNode) {
+            heroMainImageNextNode.src = firstSlide.image;
+        }
+    }
+
+    const statsGrid = document.getElementById("statsGrid");
+    const statsSectionTitle = document.getElementById("statsSectionTitle");
+    const statsSectionIntro = document.getElementById("statsSectionIntro");
+    if (statsGrid && stats) {
+        statsGrid.innerHTML = stats.map((item) => `<div class="stat-card"><div class="stat-icon"><img src="${item.icon}" alt="" aria-hidden="true"></div><div class="stat-number" data-target="${item.target}"${item.foundation ? ` data-foundation="${item.foundation}"` : ""}${item.prefix ? ` data-prefix="${item.prefix}"` : ""}${item.suffix ? ` data-suffix="${item.suffix}"` : ""}>0</div><div class="stat-label">${item.label}</div></div>`).join("");
+    }
+    if (statsSectionTitle && HOME_CONTENT.sectionTitles?.stats) statsSectionTitle.textContent = HOME_CONTENT.sectionTitles.stats;
+    if (statsSectionIntro && HOME_CONTENT.statsIntro) statsSectionIntro.textContent = HOME_CONTENT.statsIntro;
+    applySectionCta("stats");
+
+    if (about) {
+        const aboutSectionTitle = document.getElementById("aboutSectionTitle");
+        const aboutHighlights = document.getElementById("aboutHighlights");
+        const aboutIntro = document.getElementById("aboutIntro");
+        const aboutMissionLabel = document.getElementById("aboutMissionLabel");
+        const aboutMission = document.getElementById("aboutMission");
+        const aboutVisionLabel = document.getElementById("aboutVisionLabel");
+        const aboutVision = document.getElementById("aboutVision");
+        const aboutVideo = document.getElementById("aboutVideo");
+        const aboutVideoPosterLink = document.getElementById("aboutVideoPosterLink");
+        const aboutVideoPosterImage = document.getElementById("aboutVideoPosterImage");
+        if (aboutSectionTitle) aboutSectionTitle.textContent = about.sectionTitle || HOME_CONTENT.sectionTitles?.about || "Sobre Nosotros";
+        if (aboutHighlights) {
+            aboutHighlights.innerHTML = (about.highlights || []).map((item) => `<span>${item}</span>`).join("");
+        }
+        if (aboutIntro) aboutIntro.textContent = about.intro;
+        if (aboutMissionLabel) aboutMissionLabel.textContent = about.missionLabel;
+        if (aboutMission) aboutMission.textContent = about.mission;
+        if (aboutVisionLabel) aboutVisionLabel.textContent = about.visionLabel;
+        if (aboutVision) aboutVision.textContent = about.vision;
+        if (aboutVideo) {
+            aboutVideo.src = about.videoUrl;
+            aboutVideo.title = about.videoTitle || "Video Institucional";
+        }
+        if (aboutVideoPosterLink && aboutVideoPosterImage && about.videoPoster) {
+            const posterEnabled = Boolean(about.videoPoster.enabled);
+            aboutVideoPosterLink.hidden = !posterEnabled;
+            aboutVideo.hidden = posterEnabled;
+            if (posterEnabled) {
+                aboutVideoPosterLink.href = about.videoPoster.href;
+                aboutVideoPosterImage.src = about.videoPoster.image;
+                aboutVideoPosterImage.alt = about.videoPoster.alt;
+            }
+        }
+    }
+    applySectionCta("about");
+
+    const faqContainer = document.getElementById("faqContainer");
+    const faqSectionTitle = document.getElementById("faqSectionTitle");
+    const faqIntro = document.getElementById("faqIntro");
+    if (faqContainer && faq) {
+        faqContainer.innerHTML = faq.map((item) => `<div class="faq-item${item.open ? ' active' : ''}"><button class="faq-question" aria-expanded="${item.open ? 'true' : 'false'}">${item.category ? `<span class="faq-category">${item.category}</span>` : ''}<span>${item.q}</span>${getFaqChevronIcon()}</button><div class="faq-answer"${item.open ? ' style="max-height: 500px;"' : ''}><p>${item.a}</p></div></div>`).join("");
+    }
+    if (faqSectionTitle && HOME_CONTENT.sectionTitles?.faq) faqSectionTitle.textContent = HOME_CONTENT.sectionTitles.faq;
+    if (faqIntro && HOME_CONTENT.faqIntro) faqIntro.textContent = HOME_CONTENT.faqIntro;
+    applySectionCta("faq");
+
+    const levelsGrid = document.getElementById("levelsGrid");
+    const levelsSectionTitle = document.getElementById("levelsSectionTitle");
+    const levelsIntro = document.getElementById("levelsIntro");
+    const levelsCtaWrap = document.getElementById("levelsCtaWrap");
+    const levelsCtaButton = document.getElementById("levelsCtaButton");
+    if (levelsGrid && levels) {
+        levelsGrid.innerHTML = levels.map((item) => item.type === "grouped"
+            ? `<article class="card nivel-card nivel-card-grouped"><div class="card-image image-rounded"><img src="${item.image}" alt="${item.alt}" loading="lazy"></div><div class="card-content"><span class="nivel-badge">${item.badge}</span><h3>${item.title}</h3><p>${item.text}</p><div class="nivel-subgrid" aria-label="${item.groupAriaLabel || `Grados de ${item.title.toLowerCase()}`}">${item.miniCards.map((mini) => `<article class="nivel-mini-card"><span class="nivel-mini-label">${item.miniCardLabel || "Grado"}</span><strong>${mini}</strong></article>`).join("")}</div></div></article>`
+            : `<article class="card nivel-card"><div class="card-image image-rounded"><img src="${item.image}" alt="${item.alt}" loading="lazy"></div><div class="card-content"><span class="nivel-badge">${item.badge}</span><h3>${item.title}</h3><p>${item.text}</p><div class="nivel-highlight-list" aria-label="${item.chipsAriaLabel || `Trayecto de ${item.title.toLowerCase()}`}">${item.chips.map((chip) => `<span>${chip}</span>`).join("")}</div></div></article>`).join("");
+    }
+    if (levelsSectionTitle && HOME_CONTENT.sectionTitles?.levels) levelsSectionTitle.textContent = HOME_CONTENT.sectionTitles.levels;
+    if (levelsIntro && HOME_CONTENT.levelsIntro) levelsIntro.textContent = HOME_CONTENT.levelsIntro;
+    if (levelsCtaWrap && levelsCtaButton && HOME_CONTENT.levelsCta) {
+        levelsCtaButton.textContent = HOME_CONTENT.levelsCta.label;
+        levelsCtaButton.href = HOME_CONTENT.levelsCta.href;
+        if (HOME_CONTENT.levelsCta.className) levelsCtaButton.className = HOME_CONTENT.levelsCta.className;
+    }
+
+    const careersGrid = document.getElementById("careersGrid");
+    const careersSectionTitle = document.getElementById("careersSectionTitle");
+    const careersCtaBubble = document.getElementById("careersCtaBubble");
+    const careersCtaBot = document.getElementById("careersCtaBot");
+    const careersCtaText = document.getElementById("careersCtaText");
+    const careersCtaButton = document.getElementById("careersCtaButton");
+    if (careersGrid && careers) {
+        careersGrid.innerHTML = careers.items.map((item) => `<div class="career-card${item.theme ? ` career-card-${item.theme}` : ""}">${item.featuredBadge ? `<span class="career-featured-badge">${item.featuredBadge}</span>` : ''}<div class="career-icon"><img src="${item.icon}" alt="" aria-hidden="true"></div><span class="career-badge">${item.badge}</span><h3>${item.title}</h3><p>${item.text}</p><ul class="career-points">${item.points.map((point) => `<li>${point}</li>`).join("")}</ul><p class="career-highlight">${item.highlight}</p><span class="career-duration">${item.durationLabel ? `${item.durationLabel}: ` : ""}${item.durationValue || item.duration || ""}</span></div>`).join("");
+        if (careers.cta) {
+            careersCtaBubble?.setAttribute("aria-label", careers.cta.ariaLabel || "Mensaje destacado de orientación");
+            if (careersCtaBot) careersCtaBot.alt = careers.cta.botAlt || careersCtaBot.alt;
+            careersCtaText.textContent = careers.cta.text;
+            careersCtaButton.textContent = careers.cta.button.label;
+            careersCtaButton.href = careers.cta.button.href;
+            if (careers.cta.button.className) careersCtaButton.className = careers.cta.button.className;
+        }
+    }
+    if (careersSectionTitle && HOME_CONTENT.sectionTitles?.careers) careersSectionTitle.textContent = HOME_CONTENT.sectionTitles.careers;
+
+    const galleryIntro = document.getElementById("galleryIntro");
+    const gallerySectionTitle = document.getElementById("gallerySectionTitle");
+    const galleryGridContent = document.getElementById("galleryGridContent");
+    const galleryCtaWrap = document.getElementById("galleryCtaWrap");
+    const galleryCtaButton = document.getElementById("galleryCtaButton");
+    if (galleryIntro && gallery) galleryIntro.textContent = gallery.intro;
+    if (galleryGridContent && gallery) {
+        const featured = gallery.items.find((item) => item.type === "featured");
+        const secondary = gallery.items.filter((item) => item.type !== "featured");
+        const renderGalleryItem = (item, index, featuredClass = "") => `<button class="gallery-item ${featuredClass}" type="button" data-src="${item.src}" data-kicker="${item.kicker || ""}" data-description="${item.description || ""}" aria-label="${item.ariaLabel || `Abrir imagen ${item.alt}`}"><img src="${item.src}" alt="${item.alt}" loading="lazy"><div class="gallery-overlay">${getGalleryOverlayIcon()}<div class="gallery-overlay-copy"><span class="gallery-overlay-kicker">${item.kicker}</span><span class="gallery-overlay-text">${item.text}</span></div></div></button>`;
+        galleryGridContent.innerHTML = `${renderGalleryItem(featured, 0, "gallery-item-featured")}<div class="gallery-secondary-grid">${secondary.map((item, index) => renderGalleryItem(item, index + 1)).join("")}</div>`;
+    }
+    if (gallerySectionTitle && HOME_CONTENT.sectionTitles?.gallery) gallerySectionTitle.textContent = HOME_CONTENT.sectionTitles.gallery;
+    if (galleryCtaWrap && galleryCtaButton && gallery?.cta) {
+        galleryCtaButton.textContent = gallery.cta.label;
+        galleryCtaButton.href = gallery.cta.href;
+        if (gallery.cta.className) galleryCtaButton.className = gallery.cta.className;
+    }
+
+    const noticesList = document.getElementById("noticesList");
+    const noticesSectionTitle = document.getElementById("noticesSectionTitle");
+    const noticesIntro = document.getElementById("noticesIntro");
+    if (noticesList && notices) {
+        noticesList.innerHTML = notices.map((item) => `<li class="aviso-item${item.type ? ` ${item.type}` : ''}"><span class="aviso-fecha"><span class="aviso-punto"></span><span>${item.date}</span></span><div class="aviso-content"><span class="aviso-tag${item.tagStyle ? ` aviso-tag-${item.tagStyle}` : ''}">${item.tag}</span><span class="aviso-texto">${item.text}</span></div></li>`).join("");
+    }
+    if (noticesSectionTitle && HOME_CONTENT.sectionTitles?.notices) noticesSectionTitle.textContent = HOME_CONTENT.sectionTitles.notices;
+    if (noticesIntro && HOME_CONTENT.noticesIntro) noticesIntro.textContent = HOME_CONTENT.noticesIntro;
+    applySectionCta("notices");
+
+    const eventsTimeline = document.getElementById("eventsTimeline");
+    const eventsSectionTitle = document.getElementById("eventsSectionTitle");
+    const eventsIntro = document.getElementById("eventsIntro");
+    if (eventsTimeline && events) {
+        eventsTimeline.innerHTML = events.map((item) => `<div class="event-item${item.type ? ` event-item-${item.type}` : ''}"><div class="event-date"${item.fullDate ? ` title="${item.fullDate}" aria-label="${item.fullDate}"` : ''}><span class="event-day">${item.day}</span><span class="event-month">${item.month}</span></div><div class="event-content"><span class="event-tag">${item.tag}</span>${item.fullDate ? `<span class="event-full-date">${item.fullDate}</span>` : ''}<h3>${item.title}</h3><p>${item.text}</p></div></div>`).join("");
+    }
+    if (eventsSectionTitle && HOME_CONTENT.sectionTitles?.events) eventsSectionTitle.textContent = HOME_CONTENT.sectionTitles.events;
+    if (eventsIntro && HOME_CONTENT.eventsIntro) eventsIntro.textContent = HOME_CONTENT.eventsIntro;
+    applySectionCta("events");
+
+    const testimonialsIntro = document.getElementById("testimonialsIntro");
+    const testimonialsSectionTitle = document.getElementById("testimonialsSectionTitle");
+    const testimonialsCarousel = document.getElementById("testimonialsCarousel");
+    const testimonialDots = document.getElementById("testimonialDots");
+    const testimonialsTrack = document.getElementById("testimonialsTrack");
+    if (testimonialsIntro && testimonials) testimonialsIntro.textContent = testimonials.intro;
+    if (testimonialsTrack && testimonials) {
+        testimonialsTrack.innerHTML = testimonials.items.map((item) => `<article class="testimonial-card${item.type ? ` testimonial-card-${item.type}` : ''}"><span class="testimonial-kicker">${item.kicker}</span><div class="testimonial-quote-mark" aria-hidden="true"><img src="img/icons/ui/quote-double.svg" alt=""></div><p class="testimonial-text">${item.text}</p><div class="testimonial-author"><div class="author-avatar">${item.initials}</div><div class="author-info"><strong>${item.name}</strong><span>${item.detail}</span></div></div></article>`).join("");
+    }
+    if (testimonialsSectionTitle && HOME_CONTENT.sectionTitles?.testimonials) testimonialsSectionTitle.textContent = HOME_CONTENT.sectionTitles.testimonials;
+    if (testimonialsCarousel && testimonials?.carouselAriaLabel) testimonialsCarousel.setAttribute("aria-label", testimonials.carouselAriaLabel);
+    if (testimonialDots && testimonials?.dotsAriaLabel) testimonialDots.setAttribute("aria-label", testimonials.dotsAriaLabel);
+    applySectionCta("testimonials");
+
+    const homeNewsGrid = document.getElementById("homeNewsGrid");
+    const newsSectionTitle = document.getElementById("newsSectionTitle");
+    if (homeNewsGrid && homeNews) {
+        homeNewsGrid.innerHTML = homeNews.map((item) => `<article class="card noticia-card${item.featured ? ' noticia-card-featured' : ''}">${item.isNew ? '<span class="badge-new">Nuevo</span>' : ''}<div class="card-image image-rounded"><img src="${item.image}" alt="${item.alt}" loading="lazy"></div><div class="card-content"><div class="noticia-meta"><span class="noticia-tag">${item.tag}</span><span class="noticia-fecha">${item.date}</span></div><h3>${item.title}</h3><p>${item.text}</p><a href="${item.href}" class="news-link"><span>Leer más</span><img src="img/icons/ui/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a></div></article>`).join("");
+    }
+    if (newsSectionTitle && HOME_CONTENT.sectionTitles?.news) newsSectionTitle.textContent = HOME_CONTENT.sectionTitles.news;
+    applySectionCta("news");
+
+    if (contact) {
+        const contactSectionTitle = document.getElementById("contactSectionTitle");
+        const mapaHead = document.querySelector(".mapa-head");
+        const mapaIframe = document.getElementById("contactMapFrame");
+        const mapaLink = document.querySelector(".mapa-link");
+        const mapLinkButton = document.getElementById("mapLinkButton");
+        const contactInfoTitle = document.getElementById("contactInfoTitle");
+        const contactInfoIntro = document.querySelector(".contact-info-intro p");
+        const contactItems = document.querySelectorAll(".contact-item");
+        const contactSocial = document.querySelector(".contact-social");
+        const contactSocialFacebook = document.getElementById("contactSocialFacebook");
+        const contactSocialInstagram = document.getElementById("contactSocialInstagram");
+        const shareLabel = document.getElementById("shareLabel");
+        const contactFormTitle = document.getElementById("contactFormTitle");
+        const formIntro = document.querySelector(".form-intro p");
+        const contactNameLabel = document.getElementById("contactNameLabel");
+        const contactPhoneLabel = document.getElementById("contactPhoneLabel");
+        const contactEmailLabel = document.getElementById("contactEmailLabel");
+        const contactMessageLabel = document.getElementById("contactMessageLabel");
+        const nameInput = document.getElementById("nombre");
+        const phoneInput = document.getElementById("telefono");
+        const emailInput = document.getElementById("email");
+        const messageInput = document.getElementById("mensaje");
+        const contactSubmitButton = document.getElementById("contactSubmitButton");
+        const whatsappButton = document.getElementById("whatsappButton");
+        if (mapaHead) mapaHead.innerHTML = `<span class="mapa-kicker">${contact.mapKicker}</span><p>${contact.mapText}</p>`;
+        if (contactSectionTitle && HOME_CONTENT.sectionTitles?.contact) contactSectionTitle.textContent = HOME_CONTENT.sectionTitles.contact;
+        if (mapaIframe) mapaIframe.src = contact.mapEmbed;
+        if (mapaIframe) mapaIframe.title = contact.mapTitle;
+        if (mapaLink) {
+            mapaLink.href = contact.mapLink;
+            mapaLink.textContent = contact.mapButtonLabel;
+            if (contact.mapButtonClassName) mapaLink.className = contact.mapButtonClassName;
+        }
+        if (mapLinkButton) mapLinkButton.textContent = contact.mapButtonLabel;
+        if (contactInfoTitle) contactInfoTitle.textContent = contact.infoTitle;
+        if (contactInfoIntro) contactInfoIntro.textContent = contact.infoText;
+        if (contactItems.length === contact.items.length) {
+            contactItems.forEach((itemNode, index) => {
+                const item = contact.items[index];
+                itemNode.innerHTML = `<strong>${getContactInlineIcon(item.icon)}<span>${item.label}</span></strong><p>${item.value}</p>`;
+            });
+        }
+        if (contactSocial) {
+            contactSocial.innerHTML = contact.social.map((item) => `<a href="${item.href}" target="_blank" rel="noopener" aria-label="${item.ariaLabel || item.label}" class="has-tooltip" data-tooltip="${item.label}"><img src="${item.icon}" alt="" aria-hidden="true"></a>`).join("");
+        }
+        if (contactSocialFacebook && contact.social[0]) contactSocialFacebook.setAttribute("aria-label", contact.social[0].ariaLabel || contact.social[0].label);
+        if (contactSocialInstagram && contact.social[1]) contactSocialInstagram.setAttribute("aria-label", contact.social[1].ariaLabel || contact.social[1].label);
+        if (shareLabel) shareLabel.textContent = contact.shareLabel;
+        if (contactFormTitle) contactFormTitle.textContent = contact.formTitle;
+        if (formIntro) formIntro.textContent = contact.formText;
+        if (contactNameLabel) contactNameLabel.textContent = contact.formFields.nameLabel;
+        if (contactPhoneLabel) contactPhoneLabel.textContent = contact.formFields.phoneLabel;
+        if (contactEmailLabel) contactEmailLabel.textContent = contact.formFields.emailLabel;
+        if (contactMessageLabel) contactMessageLabel.textContent = contact.formFields.messageLabel;
+        if (nameInput) nameInput.placeholder = contact.formFields.namePlaceholder;
+        if (phoneInput) phoneInput.placeholder = contact.formFields.phonePlaceholder;
+        if (emailInput) emailInput.placeholder = contact.formFields.emailPlaceholder;
+        if (messageInput) messageInput.placeholder = contact.formFields.messagePlaceholder;
+        if (contactSubmitButton) contactSubmitButton.textContent = contact.submitLabel;
+        if (contactSubmitButton && contact.submitClassName) contactSubmitButton.className = contact.submitClassName;
+        if (whatsappButton) {
+            whatsappButton.href = contact.whatsappHref;
+            whatsappButton.setAttribute("aria-label", contact.whatsappTooltip);
+            whatsappButton.setAttribute("data-tooltip", contact.whatsappTooltip);
+        }
+    }
+
+    if (footer) {
+        const footerBrandName = document.querySelector(".footer-brand-name");
+        const footerLema = document.querySelector(".footer-lema");
+        const footerContact = document.querySelectorAll(".footer-section:nth-child(2) p");
+        const footerNav = document.querySelector(".footer-section:nth-child(3) nav");
+        const footerSocial = document.querySelector(".footer-social");
+        const footerCopy = document.querySelector(".footer-copy");
+        if (footerBrandName) footerBrandName.textContent = footer.brandName;
+        if (footerLema) footerLema.textContent = footer.lema;
+        if (footerContact.length === footer.contact.length) footerContact.forEach((node, index) => { node.textContent = footer.contact[index]; });
+        if (footerNav) footerNav.innerHTML = footer.links.map((item) => `<a href="${item.href}"><img src="${item.icon}" alt="" class="footer-link-icon" aria-hidden="true"><span>${item.label}</span></a>`).join("");
+        if (footerSocial) footerSocial.innerHTML = footer.social.map((item) => `<a href="${item.href}" target="_blank" rel="noopener" aria-label="${item.label}"><img src="${item.icon}" alt="" class="footer-social-icon" aria-hidden="true"><span>${item.label}</span></a>`).join("");
+        if (footerCopy) footerCopy.textContent = footer.copy;
+    }
+
+    const floatingButtons = HOME_CONTENT.floatingButtons || {};
+    const scrollTopButton = document.getElementById("scrollTop");
+    if (scrollTopButton && floatingButtons.scrollTop) {
+        scrollTopButton.setAttribute("aria-label", floatingButtons.scrollTop.ariaLabel);
+        scrollTopButton.setAttribute("data-tooltip", floatingButtons.scrollTop.tooltip);
+    }
+}
+
+renderHomeContent();
+
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 const header = document.querySelector(".header");
@@ -13,28 +359,7 @@ const heroSeasonalNote = document.getElementById("heroSeasonalNote");
 const heroCopy = document.querySelector(".hero-copy");
 const heroTitleIntro = document.getElementById("heroTitleIntro");
 
-const HERO_MAIN_SLIDES = [
-    {
-        image: "img/hero-slides/imagenColegioPrin.jpg",
-        alt: "Vista principal del Instituto Técnico Morazán",
-        note: "Formación integral con identidad institucional, acompañamiento cercano y visión de futuro para cada estudiante."
-    },
-    {
-        image: "img/hero-slides/slide-1.jpg",
-        alt: "Actividad institucional destacada del Instituto Técnico Morazán",
-        note: "Admisiones 2026: conoce nuestros programas y prepárate con tiempo para el próximo período académico."
-    },
-    {
-        image: "img/hero-slides/slide-2.jpg",
-        alt: "Vida estudiantil en el Instituto Técnico Morazán",
-        note: "Vida estudiantil: experiencias que fortalecen la convivencia, la identidad y el sentido de pertenencia institucional."
-    },
-    {
-        image: "img/hero-slides/slide-3.jpg",
-        alt: "Proyección académica del Instituto Técnico Morazán",
-        note: "Proyección académica: una formación que impulsa metas universitarias, técnicas y profesionales con bases sólidas."
-    }
-];
+const HERO_MAIN_SLIDES = HOME_CONTENT.hero?.slides || [];
 
 function prefersReducedMotion() {
     return reduceMotionQuery.matches;
@@ -83,6 +408,7 @@ if (heroMainFrame && heroMainImage && heroMainDots && heroSeasonalNote && heroCo
     let heroMainInitialTimeout;
     let heroMainTransitionTimeout;
     let heroMainTransitioning = false;
+    let heroMainLockedDotIndex = null;
     let pendingHeroMainSlideIndex = null;
     let heroMainTransitionCleanup = null;
     let heroTouchStartX = 0;
@@ -175,10 +501,22 @@ if (heroMainFrame && heroMainImage && heroMainDots && heroSeasonalNote && heroCo
             dot.type = "button";
             dot.className = "hero-support-dot";
             dot.classList.toggle("is-active", index === currentHeroMainSlide);
+            dot.classList.toggle("is-locked", index === heroMainLockedDotIndex);
             dot.setAttribute("aria-label", `Ver imagen destacada ${index + 1}`);
             dot.addEventListener("click", () => {
+                if (index === currentHeroMainSlide || index === heroMainLockedDotIndex) {
+                    return;
+                }
+
+                heroMainLockedDotIndex = index;
+                renderHeroMainDots();
                 goToHeroMainSlide(index, { animate: false });
                 restartHeroMainAutoplay();
+
+                window.setTimeout(() => {
+                    heroMainLockedDotIndex = null;
+                    renderHeroMainDots();
+                }, HERO_MAIN_SLIDE_INTERVAL);
             });
             heroMainDots.appendChild(dot);
         });
@@ -380,7 +718,7 @@ toggle.addEventListener("click", () => {
 // ANIMACIONES AL SCROLL
 // =========================
 const fadeElements = Array.from(document.querySelectorAll(".fade-in"));
-const staggerElements = Array.from(document.querySelectorAll(".card, .career-card, .gallery-item, .event-item, .stat-card, .faq-item, .aviso-item"));
+const staggerElements = Array.from(document.querySelectorAll(".card, .career-card, .gallery-item, .event-item, .stat-card, .faq-item, .aviso-item, .section-cta"));
 
 function assignStaggerIndices(elements) {
     const groups = new Map();
@@ -786,13 +1124,15 @@ statNumbers.forEach(element => {
 
 function animateStatNumber(element) {
     const target = parseInt(element.getAttribute("data-target"), 10);
+    const prefix = element.getAttribute("data-prefix") || "";
+    const suffix = element.getAttribute("data-suffix") || "";
 
     if (Number.isNaN(target)) {
         return;
     }
 
     if (prefersReducedMotion()) {
-        element.textContent = target;
+        element.textContent = `${prefix}${target}${suffix}`;
         return;
     }
 
@@ -805,7 +1145,7 @@ function animateStatNumber(element) {
         const easedProgress = 1 - Math.pow(1 - progress, 3);
         const currentValue = Math.round(target * easedProgress);
 
-        element.textContent = currentValue;
+        element.textContent = `${prefix}${currentValue}${suffix}`;
 
         if (progress < 1) {
             requestAnimationFrame(update);
@@ -870,6 +1210,9 @@ document.querySelectorAll(".faq-question").forEach(btn => {
 // =========================
 const modal = document.getElementById("galleryModal");
 const modalImage = document.getElementById("modalImage");
+const galleryModalCopy = document.getElementById("galleryModalCopy");
+const galleryModalKicker = document.getElementById("galleryModalKicker");
+const galleryModalDescription = document.getElementById("galleryModalDescription");
 const modalClose = document.querySelector(".modal-close");
 
 document.querySelectorAll(".gallery-item").forEach(item => {
@@ -887,8 +1230,16 @@ document.querySelectorAll(".gallery-item").forEach(item => {
     item.addEventListener("click", () => {
         const imgSrc = item.querySelector("img").src;
         const imgAlt = item.querySelector("img").alt;
+        const kicker = item.getAttribute("data-kicker") || "";
+        const description = item.getAttribute("data-description") || "";
         modalImage.src = imgSrc;
         modalImage.alt = imgAlt;
+        if (galleryModalCopy && galleryModalKicker && galleryModalDescription) {
+            const showCopy = Boolean(HOME_CONTENT.gallery?.modal?.showCopy) && (kicker || description);
+            galleryModalCopy.hidden = !showCopy;
+            galleryModalKicker.textContent = kicker;
+            galleryModalDescription.textContent = description;
+        }
         modal.classList.add("active");
         document.body.classList.add("modal-open");
     });
@@ -902,6 +1253,9 @@ modal.addEventListener("click", (e) => {
 function closeModal() {
     modal.classList.remove("active");
     document.body.classList.remove("modal-open");
+    if (galleryModalCopy) {
+        galleryModalCopy.hidden = true;
+    }
 }
 
 document.addEventListener("keydown", (event) => {
@@ -922,19 +1276,22 @@ const testimonialsTrack = document.getElementById("testimonialsTrack");
 const testimonialDotsContainer = document.getElementById("testimonialDots");
 const testimonialPrevBtn = document.querySelector(".testimonial-btn.prev");
 const testimonialNextBtn = document.querySelector(".testimonial-btn.next");
+const TESTIMONIALS_CONFIG = HOME_CONTENT.testimonials || {};
 
 if (testimonialsTrack && testimonialDotsContainer && testimonialPrevBtn && testimonialNextBtn) {
     const testimonialCards = Array.from(testimonialsTrack.querySelectorAll(".testimonial-card"));
-    let currentSlide = 0;
+    let currentSlide = Math.max(0, Math.min(TESTIMONIALS_CONFIG.initialSlide || 0, testimonialCards.length - 1));
     let isProgrammaticScroll = false;
     let scrollSettleTimer;
+    let testimonialAutoplay;
+    let testimonialPaused = false;
 
     testimonialCards.forEach((_, index) => {
         const dot = document.createElement("button");
         dot.type = "button";
         dot.className = "testimonial-dot";
         dot.setAttribute("aria-label", `Ir al testimonio ${index + 1}`);
-        dot.classList.toggle("active", index === 0);
+        dot.classList.toggle("active", index === currentSlide);
         dot.addEventListener("click", () => goToSlide(index));
         testimonialDotsContainer.appendChild(dot);
     });
@@ -962,7 +1319,7 @@ if (testimonialsTrack && testimonialDotsContainer && testimonialPrevBtn && testi
     }
 
     function goToSlide(index) {
-        const boundedIndex = Math.max(0, Math.min(index, testimonialCards.length - 1));
+        const boundedIndex = ((index % testimonialCards.length) + testimonialCards.length) % testimonialCards.length;
         const cardWidth = getTestimonialCardWidth();
 
         currentSlide = boundedIndex;
@@ -981,12 +1338,36 @@ if (testimonialsTrack && testimonialDotsContainer && testimonialPrevBtn && testi
         }, prefersReducedMotion() ? 0 : 420);
     }
 
+    function restartTestimonialAutoplay() {
+        window.clearInterval(testimonialAutoplay);
+
+        if (prefersReducedMotion() || !TESTIMONIALS_CONFIG.autoplayMs || testimonialPaused) {
+            return;
+        }
+
+        testimonialAutoplay = window.setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, TESTIMONIALS_CONFIG.autoplayMs);
+    }
+
+    function pauseTestimonialAutoplay() {
+        testimonialPaused = true;
+        window.clearInterval(testimonialAutoplay);
+    }
+
+    function resumeTestimonialAutoplay() {
+        testimonialPaused = false;
+        restartTestimonialAutoplay();
+    }
+
     testimonialPrevBtn.addEventListener("click", () => {
         goToSlide(currentSlide - 1);
+        restartTestimonialAutoplay();
     });
 
     testimonialNextBtn.addEventListener("click", () => {
         goToSlide(currentSlide + 1);
+        restartTestimonialAutoplay();
     });
 
     testimonialsTrack.addEventListener("scroll", () => {
@@ -1014,6 +1395,20 @@ if (testimonialsTrack && testimonialDotsContainer && testimonialPrevBtn && testi
     window.addEventListener("resize", () => {
         goToSlide(currentSlide);
     });
+
+    testimonialsTrack.addEventListener("mouseenter", pauseTestimonialAutoplay);
+    testimonialsTrack.addEventListener("mouseleave", resumeTestimonialAutoplay);
+    testimonialPrevBtn.addEventListener("mouseenter", pauseTestimonialAutoplay);
+    testimonialPrevBtn.addEventListener("mouseleave", resumeTestimonialAutoplay);
+    testimonialNextBtn.addEventListener("mouseenter", pauseTestimonialAutoplay);
+    testimonialNextBtn.addEventListener("mouseleave", resumeTestimonialAutoplay);
+
+    testimonialsTrack.addEventListener("touchstart", pauseTestimonialAutoplay, { passive: true });
+    testimonialsTrack.addEventListener("touchend", resumeTestimonialAutoplay, { passive: true });
+    testimonialsTrack.addEventListener("touchcancel", resumeTestimonialAutoplay, { passive: true });
+
+    goToSlide(currentSlide);
+    restartTestimonialAutoplay();
 }
 
 
@@ -1025,7 +1420,7 @@ const toastContainer = document.getElementById("toastContainer");
 function showToast(message, type = "success") {
     const toast = document.createElement("div");
     toast.className = `toast ${type}`;
-    const iconPath = type === "success" ? "img/icons/check.svg" : "img/icons/error.svg";
+    const iconPath = type === "success" ? "img/icons/ui/check.svg" : "img/icons/ui/error.svg";
     toast.innerHTML = `
         <span class="toast-icon">
             <img src="${iconPath}" alt="" aria-hidden="true">
@@ -1071,6 +1466,7 @@ function validatePhone(phone) {
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
+    const validation = HOME_CONTENT.contact?.validationMessages || {};
     
     let isValid = true;
     const nombre = form.querySelector("#nombre");
@@ -1084,28 +1480,28 @@ form.addEventListener("submit", function(e) {
     clearError(mensaje);
 
     if (!nombre.value.trim()) {
-        showError(nombre, "El nombre es requerido");
+        showError(nombre, validation.nameRequired || "El nombre es requerido");
         isValid = false;
     }
 
     if (!telefono.value.trim()) {
-        showError(telefono, "El celular es requerido");
+        showError(telefono, validation.phoneRequired || "El celular es requerido");
         isValid = false;
     } else if (!validatePhone(telefono.value)) {
-        showError(telefono, "Ingresa un celular válido");
+        showError(telefono, validation.phoneInvalid || "Ingresa un celular válido");
         isValid = false;
     }
 
     if (!email.value.trim()) {
-        showError(email, "El correo es requerido");
+        showError(email, validation.emailRequired || "El correo es requerido");
         isValid = false;
     } else if (!validateEmail(email.value)) {
-        showError(email, "Ingresa un correo válido");
+        showError(email, validation.emailInvalid || "Ingresa un correo válido");
         isValid = false;
     }
 
     if (!mensaje.value.trim()) {
-        showError(mensaje, "El mensaje es requerido");
+        showError(mensaje, validation.messageRequired || "El mensaje es requerido");
         isValid = false;
     }
 
@@ -1113,10 +1509,10 @@ form.addEventListener("submit", function(e) {
         const formData = new FormData(form);
         console.log("Datos enviados:", Object.fromEntries(formData));
         
-        showToast("¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.", "success");
+        showToast(validation.success || "¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.", "success");
         form.reset();
     } else {
-        showToast("Por favor completa todos los campos correctamente.", "error");
+        showToast(validation.error || "Por favor completa todos los campos correctamente.", "error");
     }
 });
 
@@ -1168,28 +1564,7 @@ const promoModalPrimaryAction = document.getElementById("promoModalPrimaryAction
 
 // Este objeto controla la campaña promocional activa.
 // Puedes reutilizar el mismo modal cambiando texto, imagen, fechas y botones.
-const PROMO_MODAL_CONFIG = {
-    enabled: true,
-    storageKey: "webcolegio-promo-modal",
-    version: "promo-demo-2026-01",
-    delayMs: 1400,
-    showOnceEveryDays: 0,
-    startDate: "2026-01-01T00:00:00",
-    endDate: "2026-12-31T23:59:59",
-    kicker: "Campaña destacada",
-    title: "Tu próximo paso académico puede comenzar hoy",
-    text: "Explora una propuesta educativa que combina formación integral, acompañamiento cercano y modalidades técnicas pensadas para abrirte más oportunidades.",
-    points: [
-        "Tercer ciclo y educación media con visión de futuro.",
-        "Ambiente formativo con identidad institucional y orientación estudiantil.",
-        "Información disponible para matrícula, horarios y modalidades."
-    ],
-    image: "img/hero-slides/slide-2.jpg",
-    imageAlt: "Campaña institucional del Instituto Técnico Morazán",
-    primaryLabel: "Solicitar información",
-    primaryHref: "#contacto-info",
-    secondaryLabel: "Continuar navegando"
-};
+const PROMO_MODAL_CONFIG = HOME_CONTENT.promoModal || {};
 
 function isPromoModalActiveWindow() {
     const now = Date.now();
@@ -1269,6 +1644,9 @@ function openPromoModal() {
     promoModalPrimaryAction.textContent = PROMO_MODAL_CONFIG.primaryLabel;
     promoModalPrimaryAction.setAttribute("href", PROMO_MODAL_CONFIG.primaryHref);
     promoModalSecondaryAction.textContent = PROMO_MODAL_CONFIG.secondaryLabel;
+    if (PROMO_MODAL_CONFIG.secondaryClassName) {
+        promoModalSecondaryAction.className = PROMO_MODAL_CONFIG.secondaryClassName;
+    }
 
     window.setTimeout(() => {
         promoModal.classList.add("active");
@@ -1349,35 +1727,12 @@ const countdownDays = document.getElementById("days");
 const countdownHours = document.getElementById("hours");
 const countdownMinutes = document.getElementById("minutes");
 const countdownSeconds = document.getElementById("seconds");
+const countdownKicker = document.getElementById("countdown-kicker");
+const countdownTitle = document.getElementById("countdown-title");
 const countdownSubtitle = document.getElementById("countdown-subtitle");
 const countdownMessage = document.getElementById("countdown-message");
-
-// Configura aqui los eventos del contador regresivo.
-// Ajusta subtitle y message para cambiar el texto visible.
-// Define la fecha objetivo dentro de getDate(year) para cada evento.
-const COUNTDOWN_EVENTS = [
-    {
-        key: "graduation",
-        subtitle: "para la próxima Graduación",
-        message: "Cuenta regresiva para nuestra ceremonia de graduación.",
-        // Recuerda: en JavaScript los meses van de 0 a 11.
-        // Graduacion actual: 30 de noviembre, 3:30 PM.
-        getDate(year) {
-            return new Date(year, 10, 30, 15, 30, 0, 0);
-        }
-    },
-    {
-        key: "classes",
-        subtitle: "para el próximo Inicio de Clases",
-        message: "Prepárate para el inicio de un nuevo ciclo académico.",
-        // Inicio de clases: calcula el siguiente lunes a partir del 10 de febrero a las 7:00 AM.
-        getDate(year) {
-            const date = getNextMonday(new Date(year, 1, 10));
-            date.setHours(7, 0, 0, 0);
-            return date;
-        }
-    }
-];
+const COUNTDOWN_CONFIG = HOME_CONTENT.countdown || {};
+const COUNTDOWN_EVENTS = COUNTDOWN_CONFIG.events || [];
 
 function getNextMonday(date) {
     const d = new Date(date);
@@ -1392,10 +1747,24 @@ function getTargetDate() {
 
     return COUNTDOWN_EVENTS
         .map(event => {
-            let date = event.getDate(now.getFullYear());
+            let date;
+
+            if (event.dateMode === "fixed") {
+                date = new Date(now.getFullYear(), event.month, event.day, event.hour || 0, event.minute || 0, 0, 0);
+            } else if (event.dateMode === "nextMondayFromBase") {
+                date = getNextMonday(new Date(now.getFullYear(), event.baseMonth, event.baseDay));
+                date.setHours(event.hour || 0, event.minute || 0, 0, 0);
+            } else {
+                date = new Date(now.getFullYear(), 11, 31, 23, 59, 0, 0);
+            }
 
             if (date <= now) {
-                date = event.getDate(now.getFullYear() + 1);
+                if (event.dateMode === "fixed") {
+                    date = new Date(now.getFullYear() + 1, event.month, event.day, event.hour || 0, event.minute || 0, 0, 0);
+                } else if (event.dateMode === "nextMondayFromBase") {
+                    date = getNextMonday(new Date(now.getFullYear() + 1, event.baseMonth, event.baseDay));
+                    date.setHours(event.hour || 0, event.minute || 0, 0, 0);
+                }
             }
 
             return {
@@ -1407,7 +1776,21 @@ function getTargetDate() {
 }
 
 function updateCountdown() {
+    if (countdownKicker && COUNTDOWN_CONFIG.kicker) countdownKicker.textContent = COUNTDOWN_CONFIG.kicker;
+    if (countdownTitle && COUNTDOWN_CONFIG.title) countdownTitle.textContent = COUNTDOWN_CONFIG.title;
+
     const target = getTargetDate();
+
+    if (!target) {
+        countdownDays.textContent = "00";
+        countdownHours.textContent = "00";
+        countdownMinutes.textContent = "00";
+        countdownSeconds.textContent = "00";
+        countdownSubtitle.textContent = "";
+        countdownMessage.textContent = COUNTDOWN_CONFIG.expiredMessage || "";
+        return;
+    }
+
     const now = new Date().getTime();
     const distance = target.date.getTime() - now;
 
@@ -1419,6 +1802,7 @@ function updateCountdown() {
         countdownHours.textContent = "00";
         countdownMinutes.textContent = "00";
         countdownSeconds.textContent = "00";
+        countdownMessage.textContent = COUNTDOWN_CONFIG.expiredMessage || target.message;
         return;
     }
 
