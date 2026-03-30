@@ -14,8 +14,8 @@ window.SITE_CONTENT = {
       highlightsAriaLabel: "Aspectos destacados del instituto",
       dotsAriaLabel: "Imágenes destacadas del hero",
       actions: [
-        { label: "Solicitar información", href: "#contacto-info", className: "btn btn-action", ariaLabel: "Solicitar información del Instituto Técnico Morazán" },
-        { label: "Ver programas", href: "#niveles", className: "btn btn-glass", ariaLabel: "Ver programas académicos del instituto" }
+        { label: "Solicitar información", href: "#contacto-info", className: "btn btn-primary", ariaLabel: "Solicitar información del Instituto Técnico Morazán" },
+        { label: "Ver programas", href: "#niveles", className: "btn btn-secondary", ariaLabel: "Ver programas académicos del instituto" }
       ],
       highlights: ["Formación integral", "Programas técnicos", "Actividades extracurriculares"],
       supportCard: {
@@ -63,15 +63,6 @@ window.SITE_CONTENT = {
       news: "Noticias",
       contact: "Contáctanos"
     },
-    sectionCtas: {
-      stats: { enabled: true, label: "Conocer nuestra historia", href: "#nosotros", className: "btn btn-section levels-cta-button" },
-      about: { enabled: true, label: "Explorar niveles", href: "#niveles", className: "btn btn-section levels-cta-button" },
-      faq: { enabled: true, label: "Resolver otra consulta", href: "#contacto-info", className: "btn btn-section levels-cta-button" },
-      notices: { enabled: true, label: "Ver novedades", href: "#noticias", className: "btn btn-section levels-cta-button" },
-      events: { enabled: true, label: "Consultar participación", href: "#contacto-info", className: "btn btn-section levels-cta-button" },
-      testimonials: { enabled: true, label: "Conocer nuestra propuesta", href: "#carreras", className: "btn btn-section levels-cta-button" },
-      news: { enabled: true, label: "Ir al centro de noticias", href: "noticias.html", className: "btn btn-section levels-cta-button" }
-    },
     // CIFRAS DESTACADAS
     // Puedes cambiar orden, icono, etiqueta, número, prefijo y sufijo.
     statsIntro: "Cifras que reflejan trayectoria, crecimiento institucional y el compromiso formativo del Instituto Técnico Morazán.",
@@ -116,8 +107,7 @@ window.SITE_CONTENT = {
     levelsIntro: "Conoce los niveles académicos que actualmente ofrece el instituto y la estructura formativa que prepara a los estudiantes para avanzar con bases sólidas.",
     levelsCta: {
       label: "Conocer modalidades",
-      href: "#carreras",
-      className: "btn btn-section levels-cta-button"
+      href: "#carreras"
     },
     levels: [
       {
@@ -196,7 +186,7 @@ window.SITE_CONTENT = {
         ariaLabel: "Mensaje destacado de orientación sobre carreras",
         botAlt: "Asistente virtual del Instituto Técnico Morazán",
         text: "Estudia en una institución que te prepara para avanzar con seguridad, descubrir tu vocación y construir un futuro con más oportunidades desde hoy.",
-        button: { label: "Solicitar información", href: "#contacto-info", className: "btn btn-action" }
+        button: { label: "Solicitar información", href: "#contacto-info" }
       }
     },
     // GALERIA
@@ -204,8 +194,7 @@ window.SITE_CONTENT = {
       intro: "Momentos que reflejan la vida estudiantil, las actividades institucionales y el ambiente formativo del Instituto Técnico Morazán.",
       cta: {
         label: "Conocer nuestras actividades",
-        href: "#contacto-info",
-        className: "btn btn-section levels-cta-button"
+        href: "#contacto-info"
       },
       modal: {
         showCopy: true
@@ -266,16 +255,12 @@ window.SITE_CONTENT = {
     ],
     // TESTIMONIOS
     testimonials: {
-      carouselAriaLabel: "Carrusel de testimonios de egresados",
-      dotsAriaLabel: "Paginación del carrusel de testimonios",
-      initialSlide: 0,
-      autoplayMs: 5200,
       intro: "Historias reales de egresados que hoy avanzan con seguridad en la universidad, el mundo profesional y nuevos proyectos de vida.",
       items: [
-        { type: "featured", kicker: "Egresado destacado", text: "El Instituto Técnico Morazán me dio las herramientas necesarias para insertarme en el mundo laboral. Hoy trabajo como contador en una empresa importante y sigo aplicando lo aprendido cada día.", initials: "CM", name: "Carlos Mendoza", detail: "Egresado 2018 - Contabilidad" },
-        { type: "entrepreneur", kicker: "Trayectoria emprendedora", text: "Gracias a la formación técnica en informática, pude crear mi propia empresa de desarrollo de software. Los profesores marcaron una etapa clave y me dieron la seguridad para emprender.", initials: "ML", name: "María López", detail: "Egresada 2020 - Informática" },
-        { type: "integral", kicker: "Formación integral", text: "La formación en valores y técnicas que recibí me abrió las puertas de muchas oportunidades. Siempre destaco la disciplina, el nivel humano y la preparación técnica de la institución.", initials: "JR", name: "Juan Rodríguez", detail: "Egresado 2019 - Electrónica" },
-        { type: "academic", kicker: "Proyección académica", text: "Más que una carrera, encontré una base sólida para seguir creciendo. El acompañamiento docente y el enfoque técnico me prepararon para destacar desde el inicio en mis siguientes retos.", initials: "AL", name: "Ana Lucía Torres", detail: "Egresada 2021 - Ciencias y Humanidades" }
+        { kicker: "Egresado destacado", text: "El Instituto Técnico Morazán me dio las herramientas necesarias para insertarme en el mundo laboral. Hoy trabajo como contador en una empresa importante y sigo aplicando lo aprendido cada día.", initials: "CM", name: "Carlos Mendoza", detail: "Egresado 2018 - Contabilidad" },
+        { kicker: "Trayectoria emprendedora", text: "Gracias a la formación técnica en informática, pude crear mi propia empresa de desarrollo de software. Los profesores marcaron una etapa clave y me dieron la seguridad para emprender.", initials: "ML", name: "María López", detail: "Egresada 2020 - Informática" },
+        { kicker: "Formación integral", text: "La formación en valores y técnicas que recibí me abrió las puertas de muchas oportunidades. Siempre destaco la disciplina, el nivel humano y la preparación técnica de la institución.", initials: "JR", name: "Juan Rodríguez", detail: "Egresado 2019 - Electrónica" },
+        { kicker: "Proyección académica", text: "Más que una carrera, encontré una base sólida para seguir creciendo. El acompañamiento docente y el enfoque técnico me prepararon para destacar desde el inicio en mis siguientes retos.", initials: "AL", name: "Ana Lucía Torres", detail: "Egresada 2021 - Ciencias y Humanidades" }
       ]
     },
     // NOTICIAS RESUMEN EN HOME
@@ -289,12 +274,10 @@ window.SITE_CONTENT = {
     // CONTACTO
     contact: {
       mapKicker: "Ubicación",
-      mapTitle: "Mapa de ubicación del Instituto Técnico Morazán",
       mapText: "Encuentra fácilmente nuestras instalaciones y accede a la ubicación oficial del Instituto Técnico Morazán en Google Maps.",
       mapEmbed: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d961.1344862604587!2d-88.023348!3d15.5092664!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f665b4677a360b5%3A0xf6d8330bb50a873b!2sInstituto%20T%C3%A9cnico%20Moraz%C3%A1n!5e0!3m2!1ses!2shn!4v1774144720718!5m2!1ses!2shn",
       mapLink: "https://www.google.com/maps/search/?api=1&query=Instituto+T%C3%A9cnico+Moraz%C3%A1n%2C+San+Pedro+Sula%2C+Honduras",
       mapButtonLabel: "Ver en Google Maps",
-      mapButtonClassName: "btn btn-action mapa-link",
       infoTitle: "Información de contacto",
       infoText: "Comunícate con nosotros, programa tu visita o solicita orientación sobre admisiones, horarios y programas académicos.",
       shareLabel: "Compartir:",
@@ -305,41 +288,13 @@ window.SITE_CONTENT = {
         { label: "Email:", value: "info@tecmorazan.edu.hn", icon: "mail" }
       ],
       social: [
-        { href: "https://www.facebook.com/tecnicomorazanhn/", label: "Facebook", ariaLabel: "Visitar Facebook del Instituto Técnico Morazán", icon: "img/icons/social/facebook.svg" },
-        { href: "https://www.instagram.com/tecnicomorazan/", label: "Instagram", ariaLabel: "Visitar Instagram del Instituto Técnico Morazán", icon: "img/icons/social/instagram.svg" }
+        { href: "https://www.facebook.com/tecnicomorazanhn/", label: "Facebook", icon: "img/icons/social/facebook.svg" },
+        { href: "https://www.instagram.com/tecnicomorazan/", label: "Instagram", icon: "img/icons/social/instagram.svg" }
       ],
       formTitle: "Solicita información",
       formText: "Completa el formulario y nos pondremos en contacto contigo para brindarte más detalles sobre admisiones, carreras y matrícula.",
-      formFields: {
-        nameLabel: "Nombre",
-        namePlaceholder: "Ej. María López",
-        phoneLabel: "Celular",
-        phonePlaceholder: "Ej. 9876-5432",
-        emailLabel: "Correo",
-        emailPlaceholder: "Ej. nombre@correo.com",
-        messageLabel: "Mensaje",
-        messagePlaceholder: "Ej. Deseo recibir información sobre matrícula, horarios o carreras disponibles."
-      },
-      validationMessages: {
-        nameRequired: "El nombre es requerido",
-        phoneRequired: "El celular es requerido",
-        phoneInvalid: "Ingresa un celular válido",
-        emailRequired: "El correo es requerido",
-        emailInvalid: "Ingresa un correo válido",
-        messageRequired: "El mensaje es requerido",
-        success: "¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.",
-        error: "Por favor completa todos los campos correctamente."
-      },
       submitLabel: "Enviar solicitud",
-      submitClassName: "btn btn-action",
-      whatsappTooltip: "Escríbenos por WhatsApp",
       whatsappHref: "https://wa.me/50425572360?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20el%20Instituto%20Técnico%20Morazán"
-    },
-    floatingButtons: {
-      scrollTop: {
-        ariaLabel: "Volver arriba",
-        tooltip: "Volver arriba"
-      }
     },
     // FOOTER DE HOME
     footer: {
@@ -382,8 +337,7 @@ window.SITE_CONTENT = {
       imageAlt: "Campaña institucional del Instituto Técnico Morazán",
       primaryLabel: "Solicitar información",
       primaryHref: "#contacto-info",
-    secondaryLabel: "Continuar navegando",
-    secondaryClassName: "btn btn-section levels-cta-button promo-modal-secondary"
+      secondaryLabel: "Continuar navegando"
     }
   }
 };
