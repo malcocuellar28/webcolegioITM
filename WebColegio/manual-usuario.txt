@@ -53,6 +53,55 @@ Uso recomendado:
 - Verde: estados positivos o mensajes de apoyo.
 
 
+2.1 REGLAS PRACTICAS DE COLOR
+
+Para mantener orden visual en el sitio, no se debe crear un color nuevo para cada categoria nueva.
+
+Grupos recomendados:
+
+- Informativo / institucional
+  Azul
+
+- Academico / formativo
+  Verde
+
+- Calendario / agenda
+  Verde
+
+- Ceremonia / actos especiales
+  Violeta
+
+- Urgente / comunicado importante
+  Rojo
+
+- Tecnologico
+  Azul electrico
+
+- Administrativo / financiero
+  Verde administrativo
+
+- Cientifico / humanistico
+  Violeta
+
+Si aparece una nueva categoria, lo ideal es agruparla con una familia parecida en lugar de inventar otro color.
+
+
+2.2 REGLA PRACTICA PARA BOTONES
+
+Usa solo dos familias principales:
+
+- Boton de accion principal
+  Para enviar, solicitar, confirmar, ver mapas o avanzar a una accion importante.
+
+- Boton de seccion
+  Para enlaces internos de apoyo dentro de secciones como modalidades, actividades o novedades.
+
+- Boton cristal / transparente
+  Para acciones secundarias o botones sobre fondos visuales intensos.
+
+No mezcles estilos nuevos de botones si no es necesario. Primero decide si el boton es principal o secundario.
+
+
 3. PUBLICIDAD / MODAL PROMOCIONAL
 
 El sitio ya tiene una ventana promocional reutilizable.

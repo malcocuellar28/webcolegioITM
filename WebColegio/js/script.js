@@ -22,6 +22,21 @@ function getContactInlineIcon(type) {
     return icons[type] || icons.mail;
 }
 
+function applySectionCta(sectionKey) {
+    const cta = HOME_CONTENT.sectionCtas?.[sectionKey];
+    const wrap = document.getElementById(`${sectionKey}CtaWrap`);
+    const button = document.getElementById(`${sectionKey}CtaButton`);
+
+    if (!wrap || !button || !cta) {
+        return;
+    }
+
+    wrap.hidden = !cta.enabled;
+    button.textContent = cta.label;
+    button.href = cta.href;
+    button.className = cta.className;
+}
+
 function renderHomeContent() {
     if (!HOME_CONTENT || !document.body || !document.querySelector("main")) {
         return;
@@ -92,6 +107,7 @@ function renderHomeContent() {
     }
     if (statsSectionTitle && HOME_CONTENT.sectionTitles?.stats) statsSectionTitle.textContent = HOME_CONTENT.sectionTitles.stats;
     if (statsSectionIntro && HOME_CONTENT.statsIntro) statsSectionIntro.textContent = HOME_CONTENT.statsIntro;
+    applySectionCta("stats");
 
     if (about) {
         const aboutSectionTitle = document.getElementById("aboutSectionTitle");
@@ -128,6 +144,7 @@ function renderHomeContent() {
             }
         }
     }
+    applySectionCta("about");
 
     const faqContainer = document.getElementById("faqContainer");
     const faqSectionTitle = document.getElementById("faqSectionTitle");
@@ -137,6 +154,7 @@ function renderHomeContent() {
     }
     if (faqSectionTitle && HOME_CONTENT.sectionTitles?.faq) faqSectionTitle.textContent = HOME_CONTENT.sectionTitles.faq;
     if (faqIntro && HOME_CONTENT.faqIntro) faqIntro.textContent = HOME_CONTENT.faqIntro;
+    applySectionCta("faq");
 
     const levelsGrid = document.getElementById("levelsGrid");
     const levelsSectionTitle = document.getElementById("levelsSectionTitle");
@@ -153,6 +171,7 @@ function renderHomeContent() {
     if (levelsCtaWrap && levelsCtaButton && HOME_CONTENT.levelsCta) {
         levelsCtaButton.textContent = HOME_CONTENT.levelsCta.label;
         levelsCtaButton.href = HOME_CONTENT.levelsCta.href;
+        if (HOME_CONTENT.levelsCta.className) levelsCtaButton.className = HOME_CONTENT.levelsCta.className;
     }
 
     const careersGrid = document.getElementById("careersGrid");
@@ -169,6 +188,7 @@ function renderHomeContent() {
             careersCtaText.textContent = careers.cta.text;
             careersCtaButton.textContent = careers.cta.button.label;
             careersCtaButton.href = careers.cta.button.href;
+            if (careers.cta.button.className) careersCtaButton.className = careers.cta.button.className;
         }
     }
     if (careersSectionTitle && HOME_CONTENT.sectionTitles?.careers) careersSectionTitle.textContent = HOME_CONTENT.sectionTitles.careers;
@@ -189,6 +209,7 @@ function renderHomeContent() {
     if (galleryCtaWrap && galleryCtaButton && gallery?.cta) {
         galleryCtaButton.textContent = gallery.cta.label;
         galleryCtaButton.href = gallery.cta.href;
+        if (gallery.cta.className) galleryCtaButton.className = gallery.cta.className;
     }
 
     const noticesList = document.getElementById("noticesList");
@@ -199,6 +220,7 @@ function renderHomeContent() {
     }
     if (noticesSectionTitle && HOME_CONTENT.sectionTitles?.notices) noticesSectionTitle.textContent = HOME_CONTENT.sectionTitles.notices;
     if (noticesIntro && HOME_CONTENT.noticesIntro) noticesIntro.textContent = HOME_CONTENT.noticesIntro;
+    applySectionCta("notices");
 
     const eventsTimeline = document.getElementById("eventsTimeline");
     const eventsSectionTitle = document.getElementById("eventsSectionTitle");
@@ -208,15 +230,21 @@ function renderHomeContent() {
     }
     if (eventsSectionTitle && HOME_CONTENT.sectionTitles?.events) eventsSectionTitle.textContent = HOME_CONTENT.sectionTitles.events;
     if (eventsIntro && HOME_CONTENT.eventsIntro) eventsIntro.textContent = HOME_CONTENT.eventsIntro;
+    applySectionCta("events");
 
     const testimonialsIntro = document.getElementById("testimonialsIntro");
     const testimonialsSectionTitle = document.getElementById("testimonialsSectionTitle");
+    const testimonialsCarousel = document.getElementById("testimonialsCarousel");
+    const testimonialDots = document.getElementById("testimonialDots");
     const testimonialsTrack = document.getElementById("testimonialsTrack");
     if (testimonialsIntro && testimonials) testimonialsIntro.textContent = testimonials.intro;
     if (testimonialsTrack && testimonials) {
-        testimonialsTrack.innerHTML = testimonials.items.map((item) => `<article class="testimonial-card"><span class="testimonial-kicker">${item.kicker}</span><div class="testimonial-quote-mark" aria-hidden="true"><img src="img/icons/ui/quote-double.svg" alt=""></div><p class="testimonial-text">${item.text}</p><div class="testimonial-author"><div class="author-avatar">${item.initials}</div><div class="author-info"><strong>${item.name}</strong><span>${item.detail}</span></div></div></article>`).join("");
+        testimonialsTrack.innerHTML = testimonials.items.map((item) => `<article class="testimonial-card${item.type ? ` testimonial-card-${item.type}` : ''}"><span class="testimonial-kicker">${item.kicker}</span><div class="testimonial-quote-mark" aria-hidden="true"><img src="img/icons/ui/quote-double.svg" alt=""></div><p class="testimonial-text">${item.text}</p><div class="testimonial-author"><div class="author-avatar">${item.initials}</div><div class="author-info"><strong>${item.name}</strong><span>${item.detail}</span></div></div></article>`).join("");
     }
     if (testimonialsSectionTitle && HOME_CONTENT.sectionTitles?.testimonials) testimonialsSectionTitle.textContent = HOME_CONTENT.sectionTitles.testimonials;
+    if (testimonialsCarousel && testimonials?.carouselAriaLabel) testimonialsCarousel.setAttribute("aria-label", testimonials.carouselAriaLabel);
+    if (testimonialDots && testimonials?.dotsAriaLabel) testimonialDots.setAttribute("aria-label", testimonials.dotsAriaLabel);
+    applySectionCta("testimonials");
 
     const homeNewsGrid = document.getElementById("homeNewsGrid");
     const newsSectionTitle = document.getElementById("newsSectionTitle");
@@ -224,26 +252,42 @@ function renderHomeContent() {
         homeNewsGrid.innerHTML = homeNews.map((item) => `<article class="card noticia-card${item.featured ? ' noticia-card-featured' : ''}">${item.isNew ? '<span class="badge-new">Nuevo</span>' : ''}<div class="card-image image-rounded"><img src="${item.image}" alt="${item.alt}" loading="lazy"></div><div class="card-content"><div class="noticia-meta"><span class="noticia-tag">${item.tag}</span><span class="noticia-fecha">${item.date}</span></div><h3>${item.title}</h3><p>${item.text}</p><a href="${item.href}" class="news-link"><span>Leer más</span><img src="img/icons/ui/leerMas.svg" alt="" class="news-link-icon" aria-hidden="true"></a></div></article>`).join("");
     }
     if (newsSectionTitle && HOME_CONTENT.sectionTitles?.news) newsSectionTitle.textContent = HOME_CONTENT.sectionTitles.news;
+    applySectionCta("news");
 
     if (contact) {
         const contactSectionTitle = document.getElementById("contactSectionTitle");
         const mapaHead = document.querySelector(".mapa-head");
-        const mapaIframe = document.querySelector(".mapa-container iframe");
+        const mapaIframe = document.getElementById("contactMapFrame");
         const mapaLink = document.querySelector(".mapa-link");
         const mapLinkButton = document.getElementById("mapLinkButton");
         const contactInfoTitle = document.getElementById("contactInfoTitle");
         const contactInfoIntro = document.querySelector(".contact-info-intro p");
         const contactItems = document.querySelectorAll(".contact-item");
         const contactSocial = document.querySelector(".contact-social");
+        const contactSocialFacebook = document.getElementById("contactSocialFacebook");
+        const contactSocialInstagram = document.getElementById("contactSocialInstagram");
         const shareLabel = document.getElementById("shareLabel");
         const contactFormTitle = document.getElementById("contactFormTitle");
         const formIntro = document.querySelector(".form-intro p");
+        const contactNameLabel = document.getElementById("contactNameLabel");
+        const contactPhoneLabel = document.getElementById("contactPhoneLabel");
+        const contactEmailLabel = document.getElementById("contactEmailLabel");
+        const contactMessageLabel = document.getElementById("contactMessageLabel");
+        const nameInput = document.getElementById("nombre");
+        const phoneInput = document.getElementById("telefono");
+        const emailInput = document.getElementById("email");
+        const messageInput = document.getElementById("mensaje");
         const contactSubmitButton = document.getElementById("contactSubmitButton");
-        const whatsappButton = document.querySelector(".btn-whatsapp");
+        const whatsappButton = document.getElementById("whatsappButton");
         if (mapaHead) mapaHead.innerHTML = `<span class="mapa-kicker">${contact.mapKicker}</span><p>${contact.mapText}</p>`;
         if (contactSectionTitle && HOME_CONTENT.sectionTitles?.contact) contactSectionTitle.textContent = HOME_CONTENT.sectionTitles.contact;
         if (mapaIframe) mapaIframe.src = contact.mapEmbed;
-        if (mapaLink) { mapaLink.href = contact.mapLink; mapaLink.textContent = contact.mapButtonLabel; }
+        if (mapaIframe) mapaIframe.title = contact.mapTitle;
+        if (mapaLink) {
+            mapaLink.href = contact.mapLink;
+            mapaLink.textContent = contact.mapButtonLabel;
+            if (contact.mapButtonClassName) mapaLink.className = contact.mapButtonClassName;
+        }
         if (mapLinkButton) mapLinkButton.textContent = contact.mapButtonLabel;
         if (contactInfoTitle) contactInfoTitle.textContent = contact.infoTitle;
         if (contactInfoIntro) contactInfoIntro.textContent = contact.infoText;
@@ -254,13 +298,28 @@ function renderHomeContent() {
             });
         }
         if (contactSocial) {
-            contactSocial.innerHTML = contact.social.map((item) => `<a href="${item.href}" target="_blank" rel="noopener" aria-label="${item.label}" class="has-tooltip" data-tooltip="${item.label}"><img src="${item.icon}" alt="" aria-hidden="true"></a>`).join("");
+            contactSocial.innerHTML = contact.social.map((item) => `<a href="${item.href}" target="_blank" rel="noopener" aria-label="${item.ariaLabel || item.label}" class="has-tooltip" data-tooltip="${item.label}"><img src="${item.icon}" alt="" aria-hidden="true"></a>`).join("");
         }
+        if (contactSocialFacebook && contact.social[0]) contactSocialFacebook.setAttribute("aria-label", contact.social[0].ariaLabel || contact.social[0].label);
+        if (contactSocialInstagram && contact.social[1]) contactSocialInstagram.setAttribute("aria-label", contact.social[1].ariaLabel || contact.social[1].label);
         if (shareLabel) shareLabel.textContent = contact.shareLabel;
         if (contactFormTitle) contactFormTitle.textContent = contact.formTitle;
         if (formIntro) formIntro.textContent = contact.formText;
+        if (contactNameLabel) contactNameLabel.textContent = contact.formFields.nameLabel;
+        if (contactPhoneLabel) contactPhoneLabel.textContent = contact.formFields.phoneLabel;
+        if (contactEmailLabel) contactEmailLabel.textContent = contact.formFields.emailLabel;
+        if (contactMessageLabel) contactMessageLabel.textContent = contact.formFields.messageLabel;
+        if (nameInput) nameInput.placeholder = contact.formFields.namePlaceholder;
+        if (phoneInput) phoneInput.placeholder = contact.formFields.phonePlaceholder;
+        if (emailInput) emailInput.placeholder = contact.formFields.emailPlaceholder;
+        if (messageInput) messageInput.placeholder = contact.formFields.messagePlaceholder;
         if (contactSubmitButton) contactSubmitButton.textContent = contact.submitLabel;
-        if (whatsappButton) whatsappButton.href = contact.whatsappHref;
+        if (contactSubmitButton && contact.submitClassName) contactSubmitButton.className = contact.submitClassName;
+        if (whatsappButton) {
+            whatsappButton.href = contact.whatsappHref;
+            whatsappButton.setAttribute("aria-label", contact.whatsappTooltip);
+            whatsappButton.setAttribute("data-tooltip", contact.whatsappTooltip);
+        }
     }
 
     if (footer) {
@@ -276,6 +335,13 @@ function renderHomeContent() {
         if (footerNav) footerNav.innerHTML = footer.links.map((item) => `<a href="${item.href}"><img src="${item.icon}" alt="" class="footer-link-icon" aria-hidden="true"><span>${item.label}</span></a>`).join("");
         if (footerSocial) footerSocial.innerHTML = footer.social.map((item) => `<a href="${item.href}" target="_blank" rel="noopener" aria-label="${item.label}"><img src="${item.icon}" alt="" class="footer-social-icon" aria-hidden="true"><span>${item.label}</span></a>`).join("");
         if (footerCopy) footerCopy.textContent = footer.copy;
+    }
+
+    const floatingButtons = HOME_CONTENT.floatingButtons || {};
+    const scrollTopButton = document.getElementById("scrollTop");
+    if (scrollTopButton && floatingButtons.scrollTop) {
+        scrollTopButton.setAttribute("aria-label", floatingButtons.scrollTop.ariaLabel);
+        scrollTopButton.setAttribute("data-tooltip", floatingButtons.scrollTop.tooltip);
     }
 }
 
@@ -652,7 +718,7 @@ toggle.addEventListener("click", () => {
 // ANIMACIONES AL SCROLL
 // =========================
 const fadeElements = Array.from(document.querySelectorAll(".fade-in"));
-const staggerElements = Array.from(document.querySelectorAll(".card, .career-card, .gallery-item, .event-item, .stat-card, .faq-item, .aviso-item"));
+const staggerElements = Array.from(document.querySelectorAll(".card, .career-card, .gallery-item, .event-item, .stat-card, .faq-item, .aviso-item, .section-cta"));
 
 function assignStaggerIndices(elements) {
     const groups = new Map();
@@ -1210,19 +1276,22 @@ const testimonialsTrack = document.getElementById("testimonialsTrack");
 const testimonialDotsContainer = document.getElementById("testimonialDots");
 const testimonialPrevBtn = document.querySelector(".testimonial-btn.prev");
 const testimonialNextBtn = document.querySelector(".testimonial-btn.next");
+const TESTIMONIALS_CONFIG = HOME_CONTENT.testimonials || {};
 
 if (testimonialsTrack && testimonialDotsContainer && testimonialPrevBtn && testimonialNextBtn) {
     const testimonialCards = Array.from(testimonialsTrack.querySelectorAll(".testimonial-card"));
-    let currentSlide = 0;
+    let currentSlide = Math.max(0, Math.min(TESTIMONIALS_CONFIG.initialSlide || 0, testimonialCards.length - 1));
     let isProgrammaticScroll = false;
     let scrollSettleTimer;
+    let testimonialAutoplay;
+    let testimonialPaused = false;
 
     testimonialCards.forEach((_, index) => {
         const dot = document.createElement("button");
         dot.type = "button";
         dot.className = "testimonial-dot";
         dot.setAttribute("aria-label", `Ir al testimonio ${index + 1}`);
-        dot.classList.toggle("active", index === 0);
+        dot.classList.toggle("active", index === currentSlide);
         dot.addEventListener("click", () => goToSlide(index));
         testimonialDotsContainer.appendChild(dot);
     });
@@ -1250,7 +1319,7 @@ if (testimonialsTrack && testimonialDotsContainer && testimonialPrevBtn && testi
     }
 
     function goToSlide(index) {
-        const boundedIndex = Math.max(0, Math.min(index, testimonialCards.length - 1));
+        const boundedIndex = ((index % testimonialCards.length) + testimonialCards.length) % testimonialCards.length;
         const cardWidth = getTestimonialCardWidth();
 
         currentSlide = boundedIndex;
@@ -1269,12 +1338,36 @@ if (testimonialsTrack && testimonialDotsContainer && testimonialPrevBtn && testi
         }, prefersReducedMotion() ? 0 : 420);
     }
 
+    function restartTestimonialAutoplay() {
+        window.clearInterval(testimonialAutoplay);
+
+        if (prefersReducedMotion() || !TESTIMONIALS_CONFIG.autoplayMs || testimonialPaused) {
+            return;
+        }
+
+        testimonialAutoplay = window.setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, TESTIMONIALS_CONFIG.autoplayMs);
+    }
+
+    function pauseTestimonialAutoplay() {
+        testimonialPaused = true;
+        window.clearInterval(testimonialAutoplay);
+    }
+
+    function resumeTestimonialAutoplay() {
+        testimonialPaused = false;
+        restartTestimonialAutoplay();
+    }
+
     testimonialPrevBtn.addEventListener("click", () => {
         goToSlide(currentSlide - 1);
+        restartTestimonialAutoplay();
     });
 
     testimonialNextBtn.addEventListener("click", () => {
         goToSlide(currentSlide + 1);
+        restartTestimonialAutoplay();
     });
 
     testimonialsTrack.addEventListener("scroll", () => {
@@ -1302,6 +1395,20 @@ if (testimonialsTrack && testimonialDotsContainer && testimonialPrevBtn && testi
     window.addEventListener("resize", () => {
         goToSlide(currentSlide);
     });
+
+    testimonialsTrack.addEventListener("mouseenter", pauseTestimonialAutoplay);
+    testimonialsTrack.addEventListener("mouseleave", resumeTestimonialAutoplay);
+    testimonialPrevBtn.addEventListener("mouseenter", pauseTestimonialAutoplay);
+    testimonialPrevBtn.addEventListener("mouseleave", resumeTestimonialAutoplay);
+    testimonialNextBtn.addEventListener("mouseenter", pauseTestimonialAutoplay);
+    testimonialNextBtn.addEventListener("mouseleave", resumeTestimonialAutoplay);
+
+    testimonialsTrack.addEventListener("touchstart", pauseTestimonialAutoplay, { passive: true });
+    testimonialsTrack.addEventListener("touchend", resumeTestimonialAutoplay, { passive: true });
+    testimonialsTrack.addEventListener("touchcancel", resumeTestimonialAutoplay, { passive: true });
+
+    goToSlide(currentSlide);
+    restartTestimonialAutoplay();
 }
 
 
@@ -1359,6 +1466,7 @@ function validatePhone(phone) {
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
+    const validation = HOME_CONTENT.contact?.validationMessages || {};
     
     let isValid = true;
     const nombre = form.querySelector("#nombre");
@@ -1372,28 +1480,28 @@ form.addEventListener("submit", function(e) {
     clearError(mensaje);
 
     if (!nombre.value.trim()) {
-        showError(nombre, "El nombre es requerido");
+        showError(nombre, validation.nameRequired || "El nombre es requerido");
         isValid = false;
     }
 
     if (!telefono.value.trim()) {
-        showError(telefono, "El celular es requerido");
+        showError(telefono, validation.phoneRequired || "El celular es requerido");
         isValid = false;
     } else if (!validatePhone(telefono.value)) {
-        showError(telefono, "Ingresa un celular válido");
+        showError(telefono, validation.phoneInvalid || "Ingresa un celular válido");
         isValid = false;
     }
 
     if (!email.value.trim()) {
-        showError(email, "El correo es requerido");
+        showError(email, validation.emailRequired || "El correo es requerido");
         isValid = false;
     } else if (!validateEmail(email.value)) {
-        showError(email, "Ingresa un correo válido");
+        showError(email, validation.emailInvalid || "Ingresa un correo válido");
         isValid = false;
     }
 
     if (!mensaje.value.trim()) {
-        showError(mensaje, "El mensaje es requerido");
+        showError(mensaje, validation.messageRequired || "El mensaje es requerido");
         isValid = false;
     }
 
@@ -1401,10 +1509,10 @@ form.addEventListener("submit", function(e) {
         const formData = new FormData(form);
         console.log("Datos enviados:", Object.fromEntries(formData));
         
-        showToast("¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.", "success");
+        showToast(validation.success || "¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.", "success");
         form.reset();
     } else {
-        showToast("Por favor completa todos los campos correctamente.", "error");
+        showToast(validation.error || "Por favor completa todos los campos correctamente.", "error");
     }
 });
 
@@ -1507,10 +1615,16 @@ function closePromoModal() {
         return;
     }
 
-    promoModal.classList.remove("active");
-    promoModal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-    rememberPromoModalDismiss();
+    promoModal.style.pointerEvents = "none";
+    window.setTimeout(() => {
+        promoModal.classList.remove("active");
+        promoModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        rememberPromoModalDismiss();
+        window.setTimeout(() => {
+            promoModal.style.pointerEvents = "";
+        }, 160);
+    }, 0);
 }
 
 function openPromoModal() {
@@ -1536,6 +1650,9 @@ function openPromoModal() {
     promoModalPrimaryAction.textContent = PROMO_MODAL_CONFIG.primaryLabel;
     promoModalPrimaryAction.setAttribute("href", PROMO_MODAL_CONFIG.primaryHref);
     promoModalSecondaryAction.textContent = PROMO_MODAL_CONFIG.secondaryLabel;
+    if (PROMO_MODAL_CONFIG.secondaryClassName) {
+        promoModalSecondaryAction.className = PROMO_MODAL_CONFIG.secondaryClassName;
+    }
 
     window.setTimeout(() => {
         promoModal.classList.add("active");
@@ -1545,8 +1662,16 @@ function openPromoModal() {
 }
 
 if (promoModal && promoModalClose && promoModalSecondaryAction) {
-    promoModalClose.addEventListener("click", closePromoModal);
-    promoModalSecondaryAction.addEventListener("click", closePromoModal);
+    promoModalClose.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        closePromoModal();
+    });
+    promoModalSecondaryAction.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        closePromoModal();
+    });
     promoModal.addEventListener("click", (event) => {
         if (event.target === promoModal) {
             closePromoModal();

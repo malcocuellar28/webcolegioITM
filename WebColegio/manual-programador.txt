@@ -99,6 +99,74 @@ Este manual resume la estructura actual del proyecto y que partes se editan con 
 Estos colores viven en :root dentro de css/styles.css.
 
 
+2.3 REGLAS DE COLOR POR CATEGORIA
+
+Para evitar mezclar colores nuevos cada vez que crezca el proyecto, el sistema ahora usa familias semanticas.
+
+Base de tarjetas informativas normales:
+
+- --category-info
+- --category-info-soft
+
+Categorias agrupadas:
+
+- Institucional / general informativo
+  --category-institutional
+  --category-institutional-soft
+
+- Academico / formativo
+  --category-academic
+  --category-academic-soft
+
+- Calendario / agenda
+  --category-calendar
+  --category-calendar-soft
+
+- Ceremonia / actos especiales
+  --category-ceremony
+  --category-ceremony-soft
+
+- Urgente / comunicado prioritario
+  --category-urgent
+  --category-urgent-soft
+
+- Tecnologico
+  --category-tech
+  --category-tech-soft
+
+- Administrativo / financiero
+  --category-finance
+  --category-finance-soft
+
+- Cientifico / humanistico
+  --category-science
+  --category-science-soft
+
+Regla practica:
+
+- Si el contenido no es urgente ni especial, usa la familia institucional o info.
+- No inventes un color nuevo por cada categoria nueva.
+- Agrupa nuevas categorias dentro de una familia semantica existente cuando sea posible.
+- Tema claro y oscuro no son independientes: el dark redefine las mismas variables base para conservar coherencia.
+
+
+2.4 REGLAS DE BOTONES
+
+El sitio debe usar dos familias semanticas principales:
+
+- btn-action
+  Para acciones principales como:
+  Solicitar informacion, Ver en Google Maps, Enviar solicitud y CTAs destacados.
+
+- btn-section
+  Para CTAs internos de secciones como Conocer modalidades, Conocer nuestras actividades o Ver novedades.
+
+- btn-glass
+  Para acciones transparentes o de apoyo visual, como botones del hero sobre fondo intenso y elementos con efecto cristal.
+
+Evita decidir botones solo por color. Primero decide su funcion y luego usa la familia correcta.
+
+
 3. REGLA GENERAL PARA EDITAR
 
 - Duplica bloques existentes en lugar de inventar nueva estructura.
@@ -348,6 +416,12 @@ Ubicacion: js/content-config.js
 - El carrusel muestra testimonios dentro de .testimonial-card.
 - El icono de comillas usa img/icons/ui/quote-double.svg.
 - El fondo decorativo usa img/background/spectrum-gradient.svg.
+- Puedes configurar:
+  - carouselAriaLabel
+  - dotsAriaLabel
+  - initialSlide
+  - autoplayMs
+- Cada testimonio puede incluir type para cambiar el acento visual superior.
 
 
 13. NOTICIAS EN HOME
@@ -394,6 +468,14 @@ Bloques importantes:
 Los iconos de Direccion, Horario, Telefono y Email estan embebidos directamente en index.html.
 Los iconos de titulo del bloque de contacto usan img/icons/ui/.
 Los titulos del bloque de contacto, el label Compartir, el texto del boton del mapa y el boton Enviar solicitud se editan desde js/content-config.js.
+Tambien se editan desde js/content-config.js:
+
+- mapTitle
+- social[].ariaLabel
+- formFields
+- validationMessages
+- whatsappTooltip
+- floatingButtons.scrollTop
 
 Si editas esta seccion normalmente solo cambias:
 
