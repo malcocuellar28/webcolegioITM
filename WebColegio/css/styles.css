@@ -5291,7 +5291,7 @@ body.modal-open {
 }
 
 .promo-modal-actions .btn:hover {
-    transform: translateY(-1px);
+    transform: none;
 }
 
 .promo-modal-actions .btn:active {
@@ -5312,7 +5312,7 @@ body.modal-open {
     background: rgba(255, 255, 255, 0.88);
     cursor: pointer;
     z-index: 2;
-    transition: background 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+    transition: opacity var(--motion-duration-fast) var(--motion-ease), background var(--motion-duration-fast) var(--motion-ease), border-color var(--motion-duration-fast) var(--motion-ease), box-shadow var(--motion-duration-fast) var(--motion-ease);
 }
 
 .promo-modal-close img {
@@ -5320,18 +5320,14 @@ body.modal-open {
     height: 18px;
     display: block;
     filter: brightness(0) saturate(100%) invert(18%) sepia(21%) saturate(948%) hue-rotate(184deg) brightness(96%) contrast(90%);
-    transition: filter 0.24s ease, transform 0.28s ease;
+    transition: filter var(--motion-duration-fast) var(--motion-ease);
 }
 
 .promo-modal-close:hover {
+    opacity: 0.7;
     background: rgba(255, 255, 255, 0.98);
     border-color: rgba(54, 99, 191, 0.2);
     box-shadow: 0 12px 24px rgba(12, 22, 40, 0.12);
-    transform: translateY(-1px);
-}
-
-.promo-modal-close:hover img {
-    transform: rotate(45deg);
 }
 
 .promo-modal-secondary {
@@ -5413,12 +5409,9 @@ body.modal-open {
     }
 
     .promo-modal-close:hover {
+        opacity: 0.7;
         background: rgba(8, 18, 34, 0.94);
         border-color: rgba(255, 255, 255, 0.42);
-    }
-
-    .promo-modal-close:hover img {
-        transform: rotate(24deg);
     }
 
     .promo-modal-kicker {

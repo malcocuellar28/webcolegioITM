@@ -1615,10 +1615,16 @@ function closePromoModal() {
         return;
     }
 
-    promoModal.classList.remove("active");
-    promoModal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-    rememberPromoModalDismiss();
+    promoModal.style.pointerEvents = "none";
+    window.setTimeout(() => {
+        promoModal.classList.remove("active");
+        promoModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        rememberPromoModalDismiss();
+        window.setTimeout(() => {
+            promoModal.style.pointerEvents = "";
+        }, 160);
+    }, 0);
 }
 
 function openPromoModal() {
@@ -1656,8 +1662,16 @@ function openPromoModal() {
 }
 
 if (promoModal && promoModalClose && promoModalSecondaryAction) {
-    promoModalClose.addEventListener("click", closePromoModal);
-    promoModalSecondaryAction.addEventListener("click", closePromoModal);
+    promoModalClose.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        closePromoModal();
+    });
+    promoModalSecondaryAction.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        closePromoModal();
+    });
     promoModal.addEventListener("click", (event) => {
         if (event.target === promoModal) {
             closePromoModal();
